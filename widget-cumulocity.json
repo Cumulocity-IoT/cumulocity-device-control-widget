@@ -1,0 +1,13 @@
+{
+    "name": "DeviceControlWidget",
+    "contextPath": "device-control-widget",
+    "key": "device-control-widget-application-key",
+    "contentSecurityPolicy": "default-src 'self'",
+    "description": "DESCRIPTION FOR DeviceControlWidget",
+    "icon": {
+        "class": "fa fw fa-database"
+    },
+    "manifest": {
+        "noAppSwitcher": true
+    }
+}

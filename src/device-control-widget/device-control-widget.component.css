@@ -1,0 +1,4 @@
+.device-control-widget-container {
+    display: grid;
+    justify-content: center;
+}

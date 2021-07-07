@@ -1,0 +1,49 @@
+<div>
+    <div class="configSection">
+        <label for="DeviceControlWidgetConfig">
+            DeviceControlWidgetConfig Configuration
+        </label>
+        <h4 translate>Please select one or more Devices</h4>
+        <div class="row form-group">
+            <div class="col-lg-12">
+                <label class="label-with-help" for="deviceSelector" class="label-with-help" translate>Select device
+                    <span class="help-icon">
+                        <img src="{{CONST_HELP_IMAGE_FILE}}" alt="help tooltip"
+                             title="Select one or more devices for the chart.">
+                    </span>
+
+                    <ng-select [items]="getDeviceDropdownList$() | async" [multiple]="true" bindLabel="name"
+                               [closeOnSelect]="false" [(ngModel)]="widgetHelper.getWidgetConfig().selectedDevices"
+                               (ngModelChange)="onConfigChanged()">
+                        <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                            <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.name}}
+                        </ng-template>
+                    </ng-select>
+                </label>
+            </div>
+        </div>
+
+        <div class="row form-group">
+
+            <div class="col-lg-8 col-layout">
+                <div class="input-group mb-1">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text help-icon" id="basic-addon1">
+                            Image
+                            <img src="{{CONST_HELP_IMAGE_FILE}}" alt="help tooltip"
+                                 title="select an image.">
+
+                        </span>
+                    </div>
+                    <input class="form-control" type="file" name="file-chooser" id="file-chooser"
+                           (change)="handleImage($event)" accept="image/*">
+                </div>
+            </div>
+            <div class="col-lg-4 col-layout">
+                <img class="preview" [src]="widgetHelper.getWidgetConfig().myImage | SafeImage" alt="help tooltip"
+                     title="select an image.">
+
+            </div>
+        </div>
+    </div>
+</div>

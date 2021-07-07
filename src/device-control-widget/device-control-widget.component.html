@@ -1,0 +1,10 @@
+<div class="device-control-widget-container">
+    <h1>This is the component content</h1>
+    <h2>
+        {{widgetHelper.getWidgetConfig().myValue}}
+
+    </h2>
+    <span style="fill: red; display: inline-block;">
+        <img [src]="widgetHelper.getWidgetConfig().myImage | SafeImage" alt="simple image">
+    </span>
+</div>
