@@ -1,18 +1,15 @@
 <div>
     <div class="configSection">
-        <label for="DeviceControlWidgetConfig">
-            DeviceControlWidgetConfig Configuration
-        </label>
-        <h4 translate>Please select one or more Devices</h4>
+        <h4 translate>Select one or more Devices of the same type</h4>
         <div class="row form-group">
             <div class="col-lg-12">
                 <label class="label-with-help" for="deviceSelector" class="label-with-help" translate>Select device
                     <span class="help-icon">
                         <img src="{{CONST_HELP_IMAGE_FILE}}" alt="help tooltip"
-                             title="Select one or more devices for the chart.">
+                             title="Select one or more devices for the control widget.">
                     </span>
 
-                    <ng-select [items]="getDeviceDropdownList$() | async" [multiple]="true" bindLabel="name"
+                    <ng-select [items]="rawDevices | async" [multiple]="true" bindLabel="name"
                                [closeOnSelect]="false" [(ngModel)]="widgetHelper.getWidgetConfig().selectedDevices"
                                (ngModelChange)="onConfigChanged()">
                         <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
@@ -23,26 +20,140 @@
             </div>
         </div>
 
+        <h4 translate>Select or upload an icon to represent the devices.</h4>
         <div class="row form-group">
-
-            <div class="col-lg-8 col-layout">
+            <!-- icon choice -->
+            <div class="col-lg-1">
                 <div class="input-group mb-1">
                     <div class="input-group-prepend">
+                        Device Icon
                         <span class="input-group-text help-icon" id="basic-addon1">
-                            Image
-                            <img src="{{CONST_HELP_IMAGE_FILE}}" alt="help tooltip"
-                                 title="select an image.">
-
+                            <input style="display: none;"
+                                   class="form-control"
+                                   type="file"
+                                   name="file-chooser"
+                                   id="file-chooser"
+                                   (change)="handleImage($event)"
+                                   accept="image/*" />
                         </span>
                     </div>
-                    <input class="form-control" type="file" name="file-chooser" id="file-chooser"
-                           (change)="handleImage($event)" accept="image/*">
                 </div>
             </div>
             <div class="col-lg-4 col-layout">
-                <img class="preview" [src]="widgetHelper.getWidgetConfig().myImage | SafeImage" alt="help tooltip"
-                     title="select an image.">
+                <img class="withhover"
+                     [ngStyle]='{height:widgetHelper.getWidgetConfig().imageHeight(),width:widgetHelper.getWidgetConfig().imageWidth()}'
+                     [src]="widgetHelper.getWidgetConfig().deviceIcon('default-device') | SafeImage"
+                     alt="Device Image"
+                     title="Displayed on widget. (click to change)"
+                     onClick="document.getElementById('file-chooser').click()">
 
+            </div>
+            <div class="col-lg-2 col-layout">
+                <div class="input-group mb-1">
+                    <div class="input-group-prepend">
+                        Icon Height
+                        <input class="form-control-range" type="range" min="50" max="300"
+                               [value]="widgetHelper.getWidgetConfig().imageHeight()"
+                               #xImage
+                               (input)="widgetHelper.getWidgetConfig().setImageSize(xImage.value)">
+
+                        <output>{{widgetHelper.getWidgetConfig().imageHeight()}} x
+                            {{widgetHelper.getWidgetConfig().imageWidth()}}</output>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-layout">
+                <div class="input-group mb-1">
+                    <div class="input-group-prepend">
+                        Columns
+                        <input class="form-control-range" type="range" min="1" max="20"
+                               [value]="widgetHelper.getWidgetConfig().deviceColumns"
+                               #cols
+                               (input)="widgetHelper.getWidgetConfig().setCols(cols.value)">
+
+                        <output>{{widgetHelper.getWidgetConfig().deviceColumns}}</output>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-lg-12">
+                <label class="label-with-help" for="deviceSelector" class="label-with-help" translate>Select operations
+                    <span class="help-icon">
+                        <img src="{{CONST_HELP_IMAGE_FILE}}" alt="help tooltip"
+                             title="Select operations to be supported.">
+                    </span>
+
+                    <ng-select [items]="rawOperations | async" [multiple]="true"
+                               [closeOnSelect]="false" [(ngModel)]="widgetHelper.getWidgetConfig().selectedOperations"
+                               (ngModelChange)="onConfigChanged()">
+                        <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                            <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item}}
+                        </ng-template>
+                    </ng-select>
+                </label>
+            </div>
+
+        </div>
+
+        <div class="row form-group">
+            <div class="grid-container fixed-grid">
+                <div class="grid-item" *ngFor="let op of widgetHelper.getWidgetConfig().selectedOperations">
+                    <span>
+                        {{op}}
+                    </span>
+                    <ng-select
+                               [items]="icons"
+                               bindLabel="name"
+                               [closeOnSelect]="true"
+                               [multiple]="false"
+                               [(ngModel)]="this.widgetHelper.getWidgetConfig().deviceIcons[op]"
+                               placeholder="select icon for operation"
+                               (change)="onConfigChanged()">
+                        <ng-template class="fa mb-1 fa-lg" ng-label-tmp let-item="item" let-index="index">
+                            <span [ngClass]="'fa '+ item.key + ' fa-lg'" aria-hidden="true"></span> {{item.name}}
+                        </ng-template>
+                        <ng-template class="fa mb-1 fa-lg" ng-option-tmp let-item="item" let-index="index">
+                            <span [ngClass]="'fa ' + item.key + ' fa-lg'" aria-hidden="true"></span> {{item.name}}
+                        </ng-template>
+                    </ng-select>
+                    <label>
+                        payload json
+                    </label>
+                    <input class="form-control" type="text" [ngModelOptions]="{ standalone: true }"
+                           [(ngModel)]="widgetHelper.getWidgetConfig().operationList[op]"
+                           [value]="widgetHelper.getWidgetConfig().operationPayload(op)"
+                           (ngModelChange)="onConfigChanged()" />
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="configSection">
+        <h4 translate>Preview and Override</h4>
+
+        <div class="row form-group">
+            <div class="grid-container"
+                 [ngStyle]="{'grid-template-columns':widgetHelper.getWidgetConfig().columnsInWidget()}">
+                <div class=" grid-item" *ngFor="let mo of widgetHelper.getWidgetConfig().selectedDevices">
+                    <span>
+                        {{mo.name}}
+                    </span>
+                    <img [ngStyle]='{height:widgetHelper.getWidgetConfig().imageHeight(),width:widgetHelper.getWidgetConfig().imageWidth()}'
+                         [src]="widgetHelper.getWidgetConfig().deviceIcon(mo.name) | SafeImage"
+                         alt="help tooltip"
+                         title="select an image.">
+                    <div class="button-row">
+                        <div *ngFor="let op of widgetHelper.getWidgetConfig().selectedOperations">
+                            <button style="color:#1776BF;" type="button" class="button">
+                                <span [ngClass]="widgetHelper.getWidgetConfig().operationIcon(op)"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

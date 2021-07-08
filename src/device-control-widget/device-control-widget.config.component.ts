@@ -18,9 +18,12 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { WidgetHelper } from "./widget-helper";
 import { WidgetConfig } from "./widget-config";
-import { OperationService, IResultList, IResult, IOperation, IManagedObject, InventoryService } from '@c8y/client';
+import { OperationService, IResult, IOperation, IManagedObject } from '@c8y/client';
 import * as _ from "lodash";
-import { of } from 'rxjs';
+import { BehaviorSubject, from, Observable, of } from 'rxjs';
+import { DeviceService } from './device.service';
+import { falist } from './font-awesome4-list';
+import { map, switchMap, tap } from 'rxjs/operators';
 
 
 @Component({
@@ -30,118 +33,98 @@ import { of } from 'rxjs';
 })
 export class DeviceControlWidgetConfig implements OnInit, OnDestroy {
 
+    sublist = [];
+
     //members
-    rawDevices: IManagedObject[];
+    public rawDevices: Observable<IManagedObject[]>;
+    public rawOperations: BehaviorSubject<string[]>;
 
     public CONST_HELP_IMAGE_FILE =
         "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAADdgAAA3YBfdWCzAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAATzSURBVGiB7VlrTBxVFP7usLu8kUeBLSAFipUqFg1Qq5EgaCU2/DAxpYqJCVExmNC0Km1jolmbxgSCKbWoITG+oq1Ba6M1mvQHqxJTEyS0aEBiSyvIY2F5dl32Mczxh1WZndmdubOoTeD7d88995zvzH2cM/cC61jH2gZbFSs2m2B1l5VIEMoYUArgFgBZAa5GARogRj0CE7ono77uhc0mhes6rAAyD9iz/MQamUCPgZDJOXwUhA9FUWqfOXrfmFEOhgLIPtSd5JXEwwCeAhBp1Pk1eMDQ4fXCNt9WMc87mDsA68GuGiLWDiCVd6wGHAR6Zqql8lOeQfoDqP/BnJ7oageonpsaB4jw+lQs9sFWIerR1xVAqs0eJyyxUyB6IDx6+kDAV0zy7Xa0Vv2upStoKeQ3fhkpuPHFf0UeABjwIATLmVttnRYtXc0AXFFRRwGUrwozPlQ4l1JbtJRCLqH0JvseMHy0epz4QaCHQ23soAFsOHA2I4JZBkGUoNcZY8CO3CRUF1lRdGM8Yi0mAIBPlHBx2o2uwWmc6XfAJ/LkLzYLybvV0Vo1pdZrCjYsAubDPOQTos048lAB7t6cpNqfEmfBnbmJqN2RiYOfDOLilOb+vAZKZoLlZQANar2qM2A9ZM8hCb8gRIArYRIYOh7fhqKsG3RRcrp8qOnoxeKSX5c+AH8EE/PHm3eOBHaobmJaxtPQSR4AqovSFeRFidBzZR7nhufg9i/L+jbEWVC7navyMC+TSTX/KAOw2U1gqOOxvqswTdb2ixLq37+Ahg/60XjiR9S8qfza5VuSeVwAYHXY3RkRKFUEkLYkbQeQzmM6LzVW1u4amkH/b4t/tycXPbAPzch0spKjeVwAoAxrbkpxoFQRACOhgtMyEmPMsvbo7JJCx+WVVwbE6wQAoOSmts5LeM2WHPlWU6d4k3yPXJ7WewqtAENpoEhtE9/Ebzk0HinNRIE1Xib7/LyD2w4RtgTKVAJgG7kth0B1UTr278yTyfpGFnC6b8KIOQU3tSUUZ8SyGmpKMtBUlQ+2Ittcdrrx3McDkIxtgvhAgcoM0Kr8J2/LSsDzVZtl5H+dcWPvyZ94Epgm1JbQ1dUw3HBvDoQV7CcWPHjyvQuYWPCEY1bBTW0GDC3OlYiLNOGObPmp8+JnQ5hzh/3lFdyUeYDh53C9bEqJgUn45+uPz3twfmQhXLOACjdFAEToC9dPQpQ841+adodrEgDACL2BMsUpREyyM9L8UQuJc8NzupIbPyR7oETBdCq6+3uAKcrW/x9seLKlsidQqlKN2iQQnQjHlUlgaCjPwbt1t+N47W3YulFxfBsAnQSYInuo/w+Yl9sAKCsyndhTmoknyrJRmJmAu/KS8NqjhYgxKyphHrgiltGm1qEawNQr9zuI8LZRb8U5ibJ2UowZeWmxQbR14a3xVyucah1Bd6voWXoBKueuHozNySdPlMh4AmMYW4b5pWDdQQOYPb5rEYT9Rny+890oBib+TJp+UULr2UuYcfmMmAIR7XW23BO0OtCse6xNXW8QY6o3AlrYEGfBVa8Ir9/gMwDDMUdzxb5QKpoH/uQVZyMYThvx73T5DJNnDKcc0d88q6mnx9j1fLm7Nq7XV+J6e+DgLnommys7IwXTzQDaAXh5x6vAA4ZjXh8KeMkDa/WRT4Hgz6x/3fTO/VvPrOtYx1rHHxm4yOkGvwZ0AAAAAElFTkSuQmCC";
 
     widgetHelper: WidgetHelper<WidgetConfig>;
+    icons: ({ key: string; name: string; code: string; filter: string[]; } | { key: string; name: string; code: string; filter?: undefined; })[];
 
-    constructor(public operations: OperationService, public inventory: InventoryService) { }
+    constructor(public operations: OperationService, public deviceService: DeviceService) {
+        //make availiable for choosing
+        this.icons = [...falist.icons];
+        this.rawOperations = new BehaviorSubject<string[]>([]);
 
-    async getDevicesWithOperations(): Promise<IResultList<IManagedObject>> {
-        const filter: object = {
-            pageSize: 2000,
-            withTotalPages: true,
-            query: "has(c8y_supportedOperations)",
-        };
 
-        const query = {
-            name: "*",
-        };
-
-        //const { data, res, paging } = await
-        return this.inventory.listQueryDevices(query, filter);
     }
 
-    async getDevicesAndGroups(): Promise<IManagedObject[]> {
-        let retrieved: IManagedObject[] = [];
-
-        const filter2: object = {
-            pageSize: 2000,
-            withTotalPages: true,
-            query: "((not(has(c8y_IsDynamicGroup.invisible))) and ((type eq 'c8y_DeviceGroup') or (type eq 'c8y_DynamicGroup') or has( c8y_IsDeviceGroup ) or has(c8y_Connection) ))",
-        };
-
-        let result = await this.inventory.list(filter2);
-        if (result.res.status === 200) {
-            do {
-                result.data.forEach((mo) => {
-                    _.set(mo, "isGroup", true);
-                    retrieved.push(mo);
-                });
-
-                if (result.paging.nextPage) {
-                    result = await result.paging.next();
-                }
-            } while (result.paging && result.paging.nextPage);
-        }
-
-        result = await this.getDevicesWithOperations();
-        if (result.res.status === 200) {
-            do {
-                result.data.forEach((mo) => {
-                    _.set(mo, "isGroup", false);
-                    retrieved.push(mo);
-                });
-
-                if (result.paging.nextPage) {
-                    result = await result.paging.next();
-                }
-            } while (result.paging && result.paging.nextPage);
-        }
-        return retrieved;
-    }
-
-    getDeviceDropdownList$() {
-
-        return of(this.rawDevices);
+    getIconString(code) {
+        let startCode = parseInt(`0x${code}`);
+        return String.fromCharCode(startCode);
     }
 
     async ngOnInit(): Promise<void> {
         this.widgetHelper = new WidgetHelper(this.config, WidgetConfig); //default access through here
-
-        this.rawDevices = await this.getDevicesAndGroups();
-        console.log(this.rawDevices);
+        this.rawDevices = from(this.deviceService.getDevicesAndGroups());
+        this.populateOperations();
 
         // let ops: IResult<IOperation> = await this.operations.detail('37661367');
-        let operation: IOperation = {
-            deviceId: '37661367',
-            id: 'jbhStart',
-            jbhStart: {
-                prop1: "doIt"
-            }
-        };
+        // let operation: IOperation = {
+        //     deviceId: '37661367',
+        //     id: 'jbhStart',
+        //     jbhStart: {
+        //         prop1: "doIt"
+        //     }
+        // };
 
-        let ops: IResult<IOperation> = await this.operations.create(operation);
-        console.log(ops);
+        // let ops: IResult<IOperation> = await this.operations.create(operation);
+        // console.log(ops);
         // const options: IFetchOptions = {
         //     method: 'GET',
         //     headers: { 'Content-Type': 'application/json' }
         // };
         // const response = await this.client.fetch('/service/my-service', options); // Fetch API Response
-    }
+    };
+
+    // getDeviceDetail(name: string): string {
+    //     if (!_.has(this.widgetHelper.getWidgetConfig().deviceIcons, name)) {
+    //         this.widgetHelper.getWidgetConfig().deviceIcons[name] = "";
+    //     }
+    //     console.log(name, this.widgetHelper.getWidgetConfig().deviceIcons[name]);
+    //     return this.widgetHelper.getWidgetConfig().deviceIcons[name];
+    // }
 
     handleImage(e) {
         console.log("EVENT", e);
         const selectedImage = e.target.files[0];
         const reader = new FileReader();
-        reader.onload = () => { this.widgetHelper.getWidgetConfig().myImage = reader.result.toString(); this.onConfigChanged(); };
+        reader.onload = () => {
+            this.widgetHelper.getWidgetConfig().deviceIcons['default-device'] = reader.result.toString();
+            this.onConfigChanged();
+        };
         reader.onerror = error => console.log(error);
         reader.readAsDataURL(selectedImage);
     }
 
     ngOnDestroy(): void {
         //unsubscribe from observables here
-    }
+        this.sublist.forEach(o => o.unsubscribe());
+    };
 
 
     @Input() config: any = {};
 
+    populateOperations(): void {
+        let r: string[] = [];
+        for (let index = 0; index < this.widgetHelper.getWidgetConfig().selectedDevices.length; index++) {
+            const m = this.widgetHelper.getWidgetConfig().selectedDevices[index];
+            if (_.has(m, "c8y_SupportedOperations")) {
+                r.push(...m.c8y_SupportedOperations);
+            }
+        }
+        this.rawOperations.next([...new Set(r)]);
+    }
+
     onConfigChanged(): void {
         console.log("CONFIG-CHANGED");
-        console.log(this.config);
+        this.populateOperations();
         this.widgetHelper.setWidgetConfig(this.config); //propgate changes 
+        console.log(this.widgetHelper.getWidgetConfig());
     }
 }
+

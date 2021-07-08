@@ -1,10 +1,43 @@
 <div class="device-control-widget-container">
-    <h1>This is the component content</h1>
-    <h2>
-        {{widgetHelper.getWidgetConfig().myValue}}
+    <!-- <div class="grid-container">
+        <div class="grid-item" *ngFor="let mo of widgetHelper.getWidgetConfig().selectedDevices">
+            <span>
+                {{mo.name}}
+            </span>
+            <img
+                 [ngStyle]='{height:widgetHelper.getWidgetConfig().imageHeight(),width:widgetHelper.getWidgetConfig().imageWidth()}'
+                 [src]="widgetHelper.getWidgetConfig().deviceIcon(mo.name) | SafeImage"
+                 alt="Device"
+                 title="{{mo.name}}">
+            <div class="button-row">
+                <div *ngFor="let op of widgetHelper.getWidgetConfig().selectedOperations">
+                    <button style="color:#1776BF;" type="button" class="button">
+                        <span [ngClass]="widgetHelper.getWidgetConfig().operationIcon(op)"></span>
+                    </button>
+                </div>
+            </div>
 
-    </h2>
-    <span style="fill: red; display: inline-block;">
-        <img [src]="widgetHelper.getWidgetConfig().myImage | SafeImage" alt="simple image">
-    </span>
+        </div>
+    </div> -->
+
+    <div class="grid-container"
+         [ngStyle]="{'grid-template-columns':widgetHelper.getWidgetConfig().columnsInWidget()}">
+        <div class=" grid-item" *ngFor="let mo of widgetHelper.getWidgetConfig().selectedDevices">
+            <span>
+                {{mo.name}}
+            </span>
+            <img [ngStyle]='{height:widgetHelper.getWidgetConfig().imageHeight(),width:widgetHelper.getWidgetConfig().imageWidth()}'
+                 [src]="widgetHelper.getWidgetConfig().deviceIcon(mo.name) | SafeImage"
+                 alt="help tooltip"
+                 title="select an image.">
+            <div class="button-row">
+                <div *ngFor="let op of widgetHelper.getWidgetConfig().selectedOperations">
+                    <button style="color:#1776BF;" type="button" class="button">
+                        <span [ngClass]="widgetHelper.getWidgetConfig().operationIcon(op)"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
