@@ -18,12 +18,10 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { WidgetHelper } from "./widget-helper";
 import { WidgetConfig } from "./widget-config";
-import { OperationService, IResult, IOperation, IManagedObject } from '@c8y/client';
+import { OperationService, IManagedObject, InventoryService } from '@c8y/client';
 import * as _ from "lodash";
-import { BehaviorSubject, from, Observable, of } from 'rxjs';
-import { DeviceService } from './device.service';
+import { BehaviorSubject, from, Observable } from 'rxjs';
 import { falist } from './font-awesome4-list';
-import { map, switchMap, tap } from 'rxjs/operators';
 
 
 @Component({
@@ -36,8 +34,10 @@ export class DeviceControlWidgetConfig implements OnInit, OnDestroy {
     sublist = [];
 
     //members
+    public rawDeviceSelection: Observable<IManagedObject[]>;
     public rawDevices: Observable<IManagedObject[]>;
     public rawOperations: BehaviorSubject<string[]>;
+    public assets: BehaviorSubject<IManagedObject[]>;
 
     public CONST_HELP_IMAGE_FILE =
         "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAADdgAAA3YBfdWCzAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAATzSURBVGiB7VlrTBxVFP7usLu8kUeBLSAFipUqFg1Qq5EgaCU2/DAxpYqJCVExmNC0Km1jolmbxgSCKbWoITG+oq1Ba6M1mvQHqxJTEyS0aEBiSyvIY2F5dl32Mczxh1WZndmdubOoTeD7d88995zvzH2cM/cC61jH2gZbFSs2m2B1l5VIEMoYUArgFgBZAa5GARogRj0CE7ono77uhc0mhes6rAAyD9iz/MQamUCPgZDJOXwUhA9FUWqfOXrfmFEOhgLIPtSd5JXEwwCeAhBp1Pk1eMDQ4fXCNt9WMc87mDsA68GuGiLWDiCVd6wGHAR6Zqql8lOeQfoDqP/BnJ7oageonpsaB4jw+lQs9sFWIerR1xVAqs0eJyyxUyB6IDx6+kDAV0zy7Xa0Vv2upStoKeQ3fhkpuPHFf0UeABjwIATLmVttnRYtXc0AXFFRRwGUrwozPlQ4l1JbtJRCLqH0JvseMHy0epz4QaCHQ23soAFsOHA2I4JZBkGUoNcZY8CO3CRUF1lRdGM8Yi0mAIBPlHBx2o2uwWmc6XfAJ/LkLzYLybvV0Vo1pdZrCjYsAubDPOQTos048lAB7t6cpNqfEmfBnbmJqN2RiYOfDOLilOb+vAZKZoLlZQANar2qM2A9ZM8hCb8gRIArYRIYOh7fhqKsG3RRcrp8qOnoxeKSX5c+AH8EE/PHm3eOBHaobmJaxtPQSR4AqovSFeRFidBzZR7nhufg9i/L+jbEWVC7navyMC+TSTX/KAOw2U1gqOOxvqswTdb2ixLq37+Ahg/60XjiR9S8qfza5VuSeVwAYHXY3RkRKFUEkLYkbQeQzmM6LzVW1u4amkH/b4t/tycXPbAPzch0spKjeVwAoAxrbkpxoFQRACOhgtMyEmPMsvbo7JJCx+WVVwbE6wQAoOSmts5LeM2WHPlWU6d4k3yPXJ7WewqtAENpoEhtE9/Ebzk0HinNRIE1Xib7/LyD2w4RtgTKVAJgG7kth0B1UTr278yTyfpGFnC6b8KIOQU3tSUUZ8SyGmpKMtBUlQ+2Ittcdrrx3McDkIxtgvhAgcoM0Kr8J2/LSsDzVZtl5H+dcWPvyZ94Epgm1JbQ1dUw3HBvDoQV7CcWPHjyvQuYWPCEY1bBTW0GDC3OlYiLNOGObPmp8+JnQ5hzh/3lFdyUeYDh53C9bEqJgUn45+uPz3twfmQhXLOACjdFAEToC9dPQpQ841+adodrEgDACL2BMsUpREyyM9L8UQuJc8NzupIbPyR7oETBdCq6+3uAKcrW/x9seLKlsidQqlKN2iQQnQjHlUlgaCjPwbt1t+N47W3YulFxfBsAnQSYInuo/w+Yl9sAKCsyndhTmoknyrJRmJmAu/KS8NqjhYgxKyphHrgiltGm1qEawNQr9zuI8LZRb8U5ibJ2UowZeWmxQbR14a3xVyucah1Bd6voWXoBKueuHozNySdPlMh4AmMYW4b5pWDdQQOYPb5rEYT9Rny+890oBib+TJp+UULr2UuYcfmMmAIR7XW23BO0OtCse6xNXW8QY6o3AlrYEGfBVa8Ir9/gMwDDMUdzxb5QKpoH/uQVZyMYThvx73T5DJNnDKcc0d88q6mnx9j1fLm7Nq7XV+J6e+DgLnommys7IwXTzQDaAXh5x6vAA4ZjXh8KeMkDa/WRT4Hgz6x/3fTO/VvPrOtYx1rHHxm4yOkGvwZ0AAAAAElFTkSuQmCC";
@@ -45,13 +45,13 @@ export class DeviceControlWidgetConfig implements OnInit, OnDestroy {
     widgetHelper: WidgetHelper<WidgetConfig>;
     icons: ({ key: string; name: string; code: string; filter: string[]; } | { key: string; name: string; code: string; filter?: undefined; })[];
 
-    constructor(public operations: OperationService, public deviceService: DeviceService) {
+    constructor(public operations: OperationService, public inventoryService: InventoryService) {
         //make availiable for choosing
         this.icons = [...falist.icons];
         this.rawOperations = new BehaviorSubject<string[]>([]);
-
-
+        this.assets = new BehaviorSubject<IManagedObject[]>([]);
     }
+
 
     getIconString(code) {
         let startCode = parseInt(`0x${code}`);
@@ -60,41 +60,25 @@ export class DeviceControlWidgetConfig implements OnInit, OnDestroy {
 
     async ngOnInit(): Promise<void> {
         this.widgetHelper = new WidgetHelper(this.config, WidgetConfig); //default access through here
-        this.rawDevices = from(this.deviceService.getDevicesAndGroups());
-        this.populateOperations();
+        this.rawDevices = from(this.widgetHelper.getDevicesAndGroups(this.inventoryService));
+        if (this.widgetHelper.getDeviceTarget()) {
+            console.log("Device Target=", this.widgetHelper.getDeviceTarget());
+            let { data, res } = await this.inventoryService.detail(this.widgetHelper.getDeviceTarget());
+            console.log(data, res);
+            if (res.status == 200) {
+                this.widgetHelper.getWidgetConfig().selectedDevices = [data];
+            }
+        }
 
-        // let ops: IResult<IOperation> = await this.operations.detail('37661367');
-        // let operation: IOperation = {
-        //     deviceId: '37661367',
-        //     id: 'jbhStart',
-        //     jbhStart: {
-        //         prop1: "doIt"
-        //     }
-        // };
-
-        // let ops: IResult<IOperation> = await this.operations.create(operation);
-        // console.log(ops);
-        // const options: IFetchOptions = {
-        //     method: 'GET',
-        //     headers: { 'Content-Type': 'application/json' }
-        // };
-        // const response = await this.client.fetch('/service/my-service', options); // Fetch API Response
+        //set the selected in the case of a deviceTarget
+        this.onConfigChanged();
     };
 
-    // getDeviceDetail(name: string): string {
-    //     if (!_.has(this.widgetHelper.getWidgetConfig().deviceIcons, name)) {
-    //         this.widgetHelper.getWidgetConfig().deviceIcons[name] = "";
-    //     }
-    //     console.log(name, this.widgetHelper.getWidgetConfig().deviceIcons[name]);
-    //     return this.widgetHelper.getWidgetConfig().deviceIcons[name];
-    // }
-
     handleImage(e) {
-        console.log("EVENT", e);
         const selectedImage = e.target.files[0];
         const reader = new FileReader();
         reader.onload = () => {
-            this.widgetHelper.getWidgetConfig().deviceIcons['default-device'] = reader.result.toString();
+            this.widgetHelper.getWidgetConfig().deviceSettings['default-device'] = reader.result.toString();
             this.onConfigChanged();
         };
         reader.onerror = error => console.log(error);
@@ -109,15 +93,37 @@ export class DeviceControlWidgetConfig implements OnInit, OnDestroy {
 
     @Input() config: any = {};
 
-    populateOperations(): void {
+
+    async populateOperations(): Promise<void> {
         let r: string[] = [];
+        this.widgetHelper.getWidgetConfig().assets = [];
+
         for (let index = 0; index < this.widgetHelper.getWidgetConfig().selectedDevices.length; index++) {
+
             const m = this.widgetHelper.getWidgetConfig().selectedDevices[index];
-            if (_.has(m, "c8y_SupportedOperations")) {
+
+            //if m is a group we should expand it
+            if (_.has(m, "c8y_IsDeviceGroup")) {
+                let children = await this.widgetHelper.getDevicesForGroup(this.inventoryService, m);
+                for (const child of children) {
+                    this.widgetHelper.getWidgetConfig().assets.push(child);
+                    if (_.has(child, "c8y_SupportedOperations")) {
+                        r.push(...child.c8y_SupportedOperations);
+                    }
+                }
+
+            } else if (_.has(m, "c8y_SupportedOperations")) {
+                this.widgetHelper.getWidgetConfig().assets.push(m);
                 r.push(...m.c8y_SupportedOperations);
+            } else {
+                this.widgetHelper.getWidgetConfig().assets.push(m);
             }
+
+
+
         }
         this.rawOperations.next([...new Set(r)]);
+        this.assets.next([...this.widgetHelper.getWidgetConfig().assets]);
     }
 
     onConfigChanged(): void {

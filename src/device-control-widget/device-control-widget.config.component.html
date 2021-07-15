@@ -53,7 +53,7 @@
                     <div class="input-group-prepend">
                         Icon Height
                         <input class="form-control-range" type="range" min="50" max="300"
-                               [value]="widgetHelper.getWidgetConfig().imageHeight()"
+                               [value]="widgetHelper.getWidgetConfig().deviceImageWidth"
                                #xImage
                                (input)="widgetHelper.getWidgetConfig().setImageSize(xImage.value)">
 
@@ -108,7 +108,7 @@
                                bindLabel="name"
                                [closeOnSelect]="true"
                                [multiple]="false"
-                               [(ngModel)]="this.widgetHelper.getWidgetConfig().deviceIcons[op]"
+                               [(ngModel)]="this.widgetHelper.getWidgetConfig().deviceSettings[op]"
                                placeholder="select icon for operation"
                                (change)="onConfigChanged()">
                         <ng-template class="fa mb-1 fa-lg" ng-label-tmp let-item="item" let-index="index">
@@ -133,26 +133,36 @@
 
     </div>
     <div class="configSection">
-        <h4 translate>Preview and Override</h4>
+        <h4 translate>Preview</h4>
 
         <div class="row form-group">
             <div class="grid-container"
                  [ngStyle]="{'grid-template-columns':widgetHelper.getWidgetConfig().columnsInWidget()}">
-                <div class=" grid-item" *ngFor="let mo of widgetHelper.getWidgetConfig().selectedDevices">
-                    <span>
-                        {{mo.name}}
-                    </span>
-                    <img [ngStyle]='{height:widgetHelper.getWidgetConfig().imageHeight(),width:widgetHelper.getWidgetConfig().imageWidth()}'
+                <div class=" grid-item" *ngFor="let mo of assets | async">
+                    <img
+                         [ngStyle]='{height:widgetHelper.getWidgetConfig().imageHeight(),width:widgetHelper.getWidgetConfig().imageWidth()}'
                          [src]="widgetHelper.getWidgetConfig().deviceIcon(mo.name) | SafeImage"
                          alt="help tooltip"
                          title="select an image.">
                     <div class="button-row">
                         <div *ngFor="let op of widgetHelper.getWidgetConfig().selectedOperations">
-                            <button style="color:#1776BF;" type="button" class="button">
+                            <button *ngIf="widgetHelper.getWidgetConfig().validOperation(mo,op)" style="color:#1776BF;"
+                                    type="button" class="button">
                                 <span [ngClass]="widgetHelper.getWidgetConfig().operationIcon(op)"></span>
                             </button>
                         </div>
                     </div>
+                    <span class=" grid-element">
+                        {{mo.name}}
+                    </span>
+                    <!--widgetHelper.getWidgetConfig().operationIcon('heartbeat')-->
+                    <span [ngClass]="['grid-element badge badge-pill',widgetHelper.getWidgetConfig().deviceStatus(mo)]">
+                        {{widgetHelper.getWidgetConfig().deviceStatusLabel(mo)}}
+                    </span>
+                    <span
+                          [ngClass]="['grid-element grid-element badge badge-pill',widgetHelper.getWidgetConfig().alarmStatus(mo)]">
+                        {{widgetHelper.getWidgetConfig().getAlarmCount(mo)}} alarms
+                    </span>
                 </div>
             </div>
         </div>

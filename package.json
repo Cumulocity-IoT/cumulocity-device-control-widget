@@ -1,10 +1,11 @@
 {
     "name": "device-control-widget",
-    "version": "1.0.1",
+    "version": "1.0.33",
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start": "c8ycli server",
+        "start-sm": "c8ycli server -u https://smartenergy.eu-latest.cumulocity.com/",
+        "start-is": "c8ycli server -u https://industrysolutions.cumulocity.com/",
         "build": "c8ycli build",
         "deploy": "c8ycli deploy",
         "buildRuntime": "gulp"

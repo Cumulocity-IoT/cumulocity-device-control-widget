@@ -20,9 +20,11 @@
  */
 
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { Realtime, InventoryService } from "@c8y/client";
+import { OperationService, IResult, IOperation, IManagedObject, InventoryService } from '@c8y/client';
 import { WidgetHelper } from "./widget-helper";
 import { WidgetConfig } from "./widget-config";
+import * as _ from 'lodash';
+import { Observable, Subscription, interval } from 'rxjs';
 
 @Component({
     selector: "lib-device-control-widget",
@@ -33,17 +35,49 @@ export class DeviceControlWidget implements OnDestroy, OnInit {
 
     widgetHelper: WidgetHelper<WidgetConfig>;
     @Input() config;
+    private timerObs: Observable<number>;
+    private subs: Subscription[] = [];
 
 
-    constructor(private realtime: Realtime, private invSvc: InventoryService) {
+    constructor(private operations: OperationService, private inventoryService: InventoryService) {
     }
 
     async ngOnInit(): Promise<void> {
         this.widgetHelper = new WidgetHelper(this.config, WidgetConfig); //default access through here
+        this.updateDeviceStates();
+        this.timerObs = interval(30000);
+        this.subs.push(this.timerObs.subscribe(t => {
+            this.updateDeviceStates();
+        }));
         return;
+    }
+
+    async performOperation(mo: IManagedObject, op: string): Promise<void> {
+        //let ops: IResult<IOperation> = await this.operations.detail('37661367');
+        let payload = this.widgetHelper.getWidgetConfig().operationPayload(op);
+
+        let operation: IOperation = {
+            deviceId: mo.id,
+            id: op,
+            op: payload
+        };
+
+        console.log("PAYLOAD", operation);
+        let ops: IResult<IOperation> = await this.operations.create(operation);
+        console.log("RESP", ops);
     }
 
     ngOnDestroy(): void {
         //unsubscribe from observables here
+        this.subs.forEach(s => s.unsubscribe());
     }
+
+    async updateDeviceStates(): Promise<void> {
+        //here we just update the objects to refect their current state. 
+        let ids: string[] = this.widgetHelper.getWidgetConfig().assets.map(mo => mo.id);
+        this.widgetHelper.getWidgetConfig().assets = await this.widgetHelper.getDevices(this.inventoryService, ids);
+        return;
+    }
+
 }
+

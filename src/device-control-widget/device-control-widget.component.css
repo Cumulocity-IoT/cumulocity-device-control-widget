@@ -60,14 +60,13 @@ img.small-icon.withhover:hover {
     align-items: center;
 }
 
-.button-row {
+.grid-element {
     display: flex;
     width: 100%;
-    flex-flow: row;
-    padding: 0.25em;
+    flex-flow: column;
+    padding: 0.5em;
     text-align: center;
     align-items: center;
-    justify-content: center;
 }
 
 .button-row {

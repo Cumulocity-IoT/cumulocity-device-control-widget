@@ -47,9 +47,9 @@ import { SafeImage } from "./src/device-control-widget/safeImage.pipe";
                     data: {
                         ng1: {
                             options: {
-                                noDeviceTarget: false,
+                                noDeviceTarget: true,
                                 noNewWidgets: false,
-                                deviceTargetNotRequired: false,
+                                deviceTargetNotRequired: true,
                                 groupsSelectable: true
                             },
                         }

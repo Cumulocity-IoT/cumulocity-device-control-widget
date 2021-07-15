@@ -25,11 +25,11 @@ export class WidgetConfig {
      * Members for the config
      * widgetConfiguration.myValue
      */
-
     operationList: Map<string, string>;
-    selectedDevices: IManagedObject[];
+    selectedDevices: IManagedObject[]; //can include groups
+    assets: IManagedObject[]; //should be just devices
     selectedOperations: string[];
-    deviceIcons: Map<string, string>;
+    deviceSettings: Map<string, string>;
     deviceImageHeight: number;
     deviceImageWidth: number;
     deviceColumns: number;
@@ -40,16 +40,35 @@ export class WidgetConfig {
     constructor() {
         this.operationList = new Map();
         this.selectedDevices = [];
+        this.assets = [];
         this.selectedOperations = [];
-        this.deviceIcons = new Map();
+        this.deviceSettings = new Map();
         this.deviceImageHeight = 50;
         this.deviceImageWidth = 50;
         this.deviceColumns = 3;
-        this.deviceIcons['default-device'] = require("@widget-assets/iot-sensor-icon.jpg");
-        this.deviceIcons['default-operation'] = {
+        this.deviceSettings['default-device'] = require("@widget-assets/iot-sensor-icon.jpg");
+        this.deviceSettings['default-operation'] = {
             key: "fa-power-off", name: "Power Off", code: "f011", filter: ["on"]
         };
+        this.deviceSettings['heartbeat'] = {
+            "key": "fa-heartbeat",
+            "name": "Heartbeat",
+            "code": "f21e",
+            "filter": [
+                "ekg"
+            ]
+        };
     }
+
+    validOperation(mo: IManagedObject, op: string): boolean {
+        if (_.has(mo, "c8y_SupportedOperations")) {
+            if (mo.c8y_SupportedOperations.includes(op)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     imageWidth(): string {
         return this.deviceImageWidth + "px";
@@ -75,25 +94,59 @@ export class WidgetConfig {
         return style;
     }
 
+    deviceStatus(mo: IManagedObject): string {
+        if (_.has(mo, "c8y_Availability")) {
+            if (mo["c8y_Availability"].status === "UNAVAILABLE") {
+                return "badge-danger";
+            } else if (mo["c8y_Availability"].status === "AVAILABLE" && _.has(mo, "sag_IsShutDown")) {
+                return "badge-warning";
+            } else if (mo["c8y_Availability"].status === "AVAILABLE") {
+                return "badge-success";
+            } else if (mo["c8y_Availability"].status === "MAINTENANCE") {
+                return "badge-warning";
+            }
+            return "badge-primary";
+        }
+        return "badge-success";
+    }
+
+    alarmStatus(mo: IManagedObject): string {
+        let ac = this.getAlarmCount(mo);
+        if (ac > 0) {
+            return "badge-danger";
+        }
+        return "badge-success";
+    }
+
+    deviceStatusLabel(mo: IManagedObject): string {
+        if (_.has(mo, "c8y_Availability")) {
+            if (mo["c8y_Availability"].status === "AVAILABLE" && _.has(mo, "sag_IsShutDown")) {
+                return "AVAILABLE (STANDBY)";
+            }
+            return mo["c8y_Availability"].status;
+        }
+        return "AVAILABLE";
+    }
+
     operationIcon(op: string): string {
-        if (!_.has(this.deviceIcons, op)) {
-            this.deviceIcons[op] = this.deviceIcons['default-operation'];
+        if (!_.has(this.deviceSettings, op)) {
+            this.deviceSettings[op] = this.deviceSettings['default-operation'];
         }
         else
-            return 'fa ' + this.deviceIcons[op].key + ' fa-lg';
+            return 'fa ' + this.deviceSettings[op].key + ' fa-lg';
     }
 
     operationPayload(op: string): string {
-        if (!_.has(this.deviceIcons, op)) {
-            this.deviceIcons[op] = "{}";
+        if (!_.has(this.operationList, op)) {
+            this.operationList[op] = `value`;
         }
         return this.operationList[op];
     }
     deviceIcon(op: string): string {
-        if (_.has(this.deviceIcons, op)) {
-            return this.deviceIcons[op];
+        if (_.has(this.deviceSettings, op)) {
+            return this.deviceSettings[op];
         }
-        return this.deviceIcons['default-device'];
+        return this.deviceSettings['default-device'];
     }
 
     selectedDevices$(): Observable<IManagedObject[]> {
@@ -102,5 +155,18 @@ export class WidgetConfig {
 
     selectedOperations$(): Observable<string[]> {
         return of(this.selectedOperations);
+    }
+
+    getAlarmCount(device) {
+        let countAlarms = 0;
+
+        if (_.has(device, 'c8y_ActiveAlarmsStatus')) {
+
+            const alarmStatus = _.get(device, 'c8y_ActiveAlarmsStatus');
+            _.forEach(_.values(alarmStatus), alarmCount => {
+                countAlarms += alarmCount;
+            });
+        }
+        return countAlarms;
     }
 }

@@ -1,43 +1,34 @@
 <div class="device-control-widget-container">
-    <!-- <div class="grid-container">
-        <div class="grid-item" *ngFor="let mo of widgetHelper.getWidgetConfig().selectedDevices">
-            <span>
-                {{mo.name}}
-            </span>
-            <img
+    <div class="grid-container"
+         [ngStyle]="{'grid-template-columns':widgetHelper.getWidgetConfig().columnsInWidget()}">
+        <div class=" grid-item" *ngFor="let mo of widgetHelper.getWidgetConfig().assets">
+            <img class=" grid-element"
                  [ngStyle]='{height:widgetHelper.getWidgetConfig().imageHeight(),width:widgetHelper.getWidgetConfig().imageWidth()}'
                  [src]="widgetHelper.getWidgetConfig().deviceIcon(mo.name) | SafeImage"
                  alt="Device"
                  title="{{mo.name}}">
             <div class="button-row">
                 <div *ngFor="let op of widgetHelper.getWidgetConfig().selectedOperations">
-                    <button style="color:#1776BF;" type="button" class="button">
+                    <button *ngIf="widgetHelper.getWidgetConfig().validOperation(mo,op)"
+                            style="color:#1776BF;"
+                            type="button"
+                            class="button"
+                            (click)="performOperation(mo,op)">
                         <span [ngClass]="widgetHelper.getWidgetConfig().operationIcon(op)"></span>
                     </button>
                 </div>
             </div>
-
-        </div>
-    </div> -->
-
-    <div class="grid-container"
-         [ngStyle]="{'grid-template-columns':widgetHelper.getWidgetConfig().columnsInWidget()}">
-        <div class=" grid-item" *ngFor="let mo of widgetHelper.getWidgetConfig().selectedDevices">
-            <span>
+            <span class=" grid-element">
                 {{mo.name}}
             </span>
-            <img [ngStyle]='{height:widgetHelper.getWidgetConfig().imageHeight(),width:widgetHelper.getWidgetConfig().imageWidth()}'
-                 [src]="widgetHelper.getWidgetConfig().deviceIcon(mo.name) | SafeImage"
-                 alt="help tooltip"
-                 title="select an image.">
-            <div class="button-row">
-                <div *ngFor="let op of widgetHelper.getWidgetConfig().selectedOperations">
-                    <button style="color:#1776BF;" type="button" class="button">
-                        <span [ngClass]="widgetHelper.getWidgetConfig().operationIcon(op)"></span>
-                    </button>
-                </div>
-            </div>
+            <!--widgetHelper.getWidgetConfig().operationIcon('heartbeat')-->
+            <span [ngClass]="['grid-element badge badge-pill',widgetHelper.getWidgetConfig().deviceStatus(mo)]">
+                {{widgetHelper.getWidgetConfig().deviceStatusLabel(mo)}}
+            </span>
+            <span
+                  [ngClass]="['grid-element grid-element badge badge-pill',widgetHelper.getWidgetConfig().alarmStatus(mo)]">
+                {{widgetHelper.getWidgetConfig().getAlarmCount(mo)}} alarms
+            </span>
         </div>
     </div>
-
 </div>

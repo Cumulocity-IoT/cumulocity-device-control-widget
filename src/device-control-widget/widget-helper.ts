@@ -14,6 +14,8 @@
 
 import * as _ from "lodash";
 import { v4 as uuidv4 } from "uuid";
+import { IManagedObject, InventoryService } from '@c8y/client';
+import { WIDGET_HEADER_CLASSES } from "@c8y/ngx-components/context-dashboard";
 
 
 /**
@@ -39,7 +41,7 @@ export class WidgetHelper<CONFIGTYPE> {
      *  member that holds the actual data
      */
     private config: CONFIGTYPE;
-
+    private rawConfig: any;
     /**
      *
      * E.G. let h = new WidgetHelper(config, MyConfigType); // type argument inference
@@ -49,7 +51,7 @@ export class WidgetHelper<CONFIGTYPE> {
      */
     constructor(c: Object, ConfigCreator: new () => CONFIGTYPE) {
         this.reference = new ConfigCreator(); //template
-
+        this.rawConfig = c;
         // only set if it doesn't exist
         if (!_.has(c, "customwidgetdata")) {
             this.config = new ConfigCreator();
@@ -63,6 +65,7 @@ export class WidgetHelper<CONFIGTYPE> {
                 Object.setPrototypeOf(this.config, Object.getPrototypeOf(this.reference));
             }
         }
+        console.log("composite", this.config);
     }
 
     /**
@@ -72,6 +75,20 @@ export class WidgetHelper<CONFIGTYPE> {
      */
     getWidgetConfig(): CONFIGTYPE {
         return this.config;
+    }
+
+    getDeviceTarget(): string | undefined {
+        if (_.has(this.rawConfig, "device")) {
+            console.log("DEVICE");
+            return this.rawConfig["device"].id;
+        } else if (_.has(this.rawConfig, "settings")) {
+            console.log("SETTINGS");
+            if (_.has(this.rawConfig["settings"], "context")) {
+                console.log("CONTEXT");
+                return this.rawConfig["settings"]["context"].id;
+            }
+        }
+        return undefined;
     }
 
     /**
@@ -91,4 +108,85 @@ export class WidgetHelper<CONFIGTYPE> {
         //console.log(this.config);
         return _.get(this.config, "uuid");
     }
+
+
+    async getDevicesAndGroups(inventoryService: InventoryService): Promise<IManagedObject[]> {
+
+        let mos: IManagedObject[] = await this.getDeviceGroups(inventoryService);
+
+        const filter: object = {
+            pageSize: 2000,
+            withTotalPages: true,
+            query: "has(c8y_SupportedOperations) or has(c8y_IsDevice) or has(c8y_IsDeviceGroup)",
+        };
+
+        const query = {
+            name: "*",
+        };
+
+        //const { data, res, paging } = await
+        const { data, res, paging } = await inventoryService.listQueryDevices(query, filter);
+        if (res.status === 200) {
+            mos.push(...data);
+        }
+        console.log("DEVICES AND GROUPS", mos);
+        return mos;
+    }
+
+    async getDeviceGroups(inventoryService: InventoryService): Promise<IManagedObject[]> {
+        console.log("GetGroups");
+
+        let mos: IManagedObject[] = [];
+
+        const filter: object = {
+            pageSize: 2000,
+            withTotalPages: true,
+            query: "has(c8y_IsDeviceGroup)",
+        };
+
+        const query = {
+            name: "*",
+        };
+
+        const { data, res } = await inventoryService.listQueryDevices(query, filter);
+        if (res.status === 200) {
+            for (let g = 0; g < data.length; g++) {
+                const group = data[g];
+                if (!_.isEmpty(group.childAssets.references)) {
+                    mos.push(group); //has children...
+                }
+            }
+        }
+        return mos;
+    }
+
+    async getDevices(inventoryService: InventoryService, ids: string[]): Promise<IManagedObject[]> {
+        console.log("GetDevices");
+        let retrieved: IManagedObject[] = [];
+        for (const id of ids) {
+            let { data, res } = await inventoryService.detail(id);
+            if (res.status === 200) {
+                retrieved.push(data);
+            }
+        }
+        console.log(retrieved);
+        return retrieved;
+    }
+
+    async getDevicesForGroup(inventoryService: InventoryService, mo: IManagedObject): Promise<IManagedObject[]> {
+        console.log("GetDevicesForGroup");
+        let mos: IManagedObject[] = [];
+        for (let g = 0; g < mo.childAssets.references.length; g++) {
+            const device = mo.childAssets.references[g];
+            const entry = device.managedObject.id;
+            let { data, res } = await inventoryService.detail(entry);
+            if (res.status === 200) {
+                mos.push(data);
+            }
+        }
+        return mos;
+    }
+
+
+
 }
