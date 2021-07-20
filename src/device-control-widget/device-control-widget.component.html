@@ -7,28 +7,35 @@
                  [src]="widgetHelper.getWidgetConfig().deviceIcon(mo.name) | SafeImage"
                  alt="Device"
                  title="{{mo.name}}">
-            <div class="button-row">
-                <div *ngFor="let op of widgetHelper.getWidgetConfig().selectedOperations">
-                    <button *ngIf="widgetHelper.getWidgetConfig().validOperation(mo,op)"
-                            style="color:#1776BF;"
-                            type="button"
-                            class="button"
-                            (click)="performOperation(mo,op)">
-                        <span [ngClass]="widgetHelper.getWidgetConfig().operationIcon(op)"></span>
-                    </button>
-                </div>
-            </div>
             <span class=" grid-element">
                 {{mo.name}}
             </span>
-            <!--widgetHelper.getWidgetConfig().operationIcon('heartbeat')-->
-            <span [ngClass]="['grid-element badge badge-pill',widgetHelper.getWidgetConfig().deviceStatus(mo)]">
-                {{widgetHelper.getWidgetConfig().deviceStatusLabel(mo)}}
-            </span>
-            <span
-                  [ngClass]="['grid-element grid-element badge badge-pill',widgetHelper.getWidgetConfig().alarmStatus(mo)]">
-                {{widgetHelper.getWidgetConfig().getAlarmCount(mo)}} alarms
-            </span>
+            <ng-container *ngIf="widgetHelper.getWidgetConfig().showAvailability">
+                <!--widgetHelper.getWidgetConfig().operationIcon('heartbeat')-->
+                <span
+                      [ngClass]="['grid-element badge badge-pill',widgetHelper.getWidgetConfig().deviceStatus(mo)]">
+                    {{widgetHelper.getWidgetConfig().deviceStatusLabel(mo)}}
+                </span>
+            </ng-container>
+            <ng-container *ngIf="widgetHelper.getWidgetConfig().showAlarms">
+                <span
+                      [ngClass]="['grid-element grid-element badge badge-pill',widgetHelper.getWidgetConfig().alarmStatus(mo)]">
+                    {{widgetHelper.getWidgetConfig().getAlarmCount(mo)}} alarms
+                </span>
+            </ng-container>
+            <ng-container *ngIf="widgetHelper.getWidgetConfig().showOperations">
+                <div class="button-row">
+                    <div *ngFor="let op of widgetHelper.getWidgetConfig().selectedOperations">
+                        <button *ngIf="widgetHelper.getWidgetConfig().validOperation(mo,op)"
+                                style="color:#1776BF;"
+                                type="button"
+                                class="button"
+                                (click)="performOperation(mo,op)">
+                            <span [ngClass]="widgetHelper.getWidgetConfig().operationIcon(op)"></span>
+                        </button>
+                    </div>
+                </div>
+            </ng-container>
         </div>
     </div>
 </div>

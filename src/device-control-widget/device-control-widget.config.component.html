@@ -40,8 +40,7 @@
                 </div>
             </div>
             <div class="col-lg-4 col-layout">
-                <img class="withhover"
-                     [ngStyle]='{height:widgetHelper.getWidgetConfig().imageHeight(),width:widgetHelper.getWidgetConfig().imageWidth()}'
+                <img class="imgctrl withhover"
                      [src]="widgetHelper.getWidgetConfig().deviceIcon('default-device') | SafeImage"
                      alt="Device Image"
                      title="Displayed on widget. (click to change)"
@@ -76,7 +75,38 @@
                 </div>
             </div>
         </div>
-
+        <div class="row form-group">
+            <div class="form-check-inline col-lg-2">
+                <label class="label-with-help" class="form-check-label" for="contextFlag" translate>
+                    <input class="form-check-input" type="checkbox" name="fillArea"
+                           [(ngModel)]="widgetHelper.getWidgetConfig().showAvailability"
+                           (ngModelChange)="onConfigChanged()" /> Show availability<span class="help-icon">
+                        <img src="{{CONST_HELP_IMAGE_FILE}}" alt="help tooltip"
+                             title="Display availability on widget.">
+                    </span>
+                </label>
+            </div>
+            <div class="form-check-inline col-lg-2">
+                <label class="label-with-help" class="form-check-label" for="contextFlag" translate>
+                    <input class="form-check-input" type="checkbox" name="fillArea"
+                           [(ngModel)]="widgetHelper.getWidgetConfig().showAlarms"
+                           (ngModelChange)="onConfigChanged()" /> Show alarms<span class="help-icon">
+                        <img src="{{CONST_HELP_IMAGE_FILE}}" alt="help tooltip"
+                             title="Show alarms on device.">
+                    </span>
+                </label>
+            </div>
+            <div class="form-check-inline col-lg-2">
+                <label class="label-with-help" class="form-check-label" for="contextFlag" translate>
+                    <input class="form-check-input" type="checkbox" name="fillArea"
+                           [(ngModel)]="widgetHelper.getWidgetConfig().showOperations"
+                           (ngModelChange)="onConfigChanged()" /> Show alarms<span class="help-icon">
+                        <img src="{{CONST_HELP_IMAGE_FILE}}" alt="help tooltip"
+                             title="Show alarms on device.">
+                    </span>
+                </label>
+            </div>
+        </div>
         <div class="row form-group">
             <div class="col-lg-12">
                 <label class="label-with-help" for="deviceSelector" class="label-with-help" translate>Select operations
@@ -143,26 +173,34 @@
                          [ngStyle]='{height:widgetHelper.getWidgetConfig().imageHeight(),width:widgetHelper.getWidgetConfig().imageWidth()}'
                          [src]="widgetHelper.getWidgetConfig().deviceIcon(mo.name) | SafeImage"
                          alt="help tooltip"
-                         title="select an image.">
-                    <div class="button-row">
-                        <div *ngFor="let op of widgetHelper.getWidgetConfig().selectedOperations">
-                            <button *ngIf="widgetHelper.getWidgetConfig().validOperation(mo,op)" style="color:#1776BF;"
-                                    type="button" class="button">
-                                <span [ngClass]="widgetHelper.getWidgetConfig().operationIcon(op)"></span>
-                            </button>
-                        </div>
-                    </div>
+                         title="{{mo.name}}">
                     <span class=" grid-element">
                         {{mo.name}}
                     </span>
-                    <!--widgetHelper.getWidgetConfig().operationIcon('heartbeat')-->
-                    <span [ngClass]="['grid-element badge badge-pill',widgetHelper.getWidgetConfig().deviceStatus(mo)]">
-                        {{widgetHelper.getWidgetConfig().deviceStatusLabel(mo)}}
-                    </span>
-                    <span
-                          [ngClass]="['grid-element grid-element badge badge-pill',widgetHelper.getWidgetConfig().alarmStatus(mo)]">
-                        {{widgetHelper.getWidgetConfig().getAlarmCount(mo)}} alarms
-                    </span>
+                    <ng-container *ngIf="widgetHelper.getWidgetConfig().showAvailability">
+                        <!--widgetHelper.getWidgetConfig().operationIcon('heartbeat')-->
+                        <span
+                              [ngClass]="['grid-element badge badge-pill',widgetHelper.getWidgetConfig().deviceStatus(mo)]">
+                            {{widgetHelper.getWidgetConfig().deviceStatusLabel(mo)}}
+                        </span>
+                    </ng-container>
+                    <ng-container *ngIf="widgetHelper.getWidgetConfig().showAlarms">
+                        <span
+                              [ngClass]="['grid-element grid-element badge badge-pill',widgetHelper.getWidgetConfig().alarmStatus(mo)]">
+                            {{widgetHelper.getWidgetConfig().getAlarmCount(mo)}} alarms
+                        </span>
+                    </ng-container>
+                    <ng-container *ngIf="widgetHelper.getWidgetConfig().showOperations">
+                        <div class="button-row">
+                            <div *ngFor="let op of widgetHelper.getWidgetConfig().selectedOperations">
+                                <button *ngIf="widgetHelper.getWidgetConfig().validOperation(mo,op)"
+                                        style="color:#1776BF;"
+                                        type="button" class="button">
+                                    <span [ngClass]="widgetHelper.getWidgetConfig().operationIcon(op)"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </ng-container>
                 </div>
             </div>
         </div>

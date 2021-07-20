@@ -66,7 +66,7 @@ export class DeviceControlWidgetConfig implements OnInit, OnDestroy {
             let { data, res } = await this.inventoryService.detail(this.widgetHelper.getDeviceTarget());
             console.log(data, res);
             if (res.status == 200) {
-                this.widgetHelper.getWidgetConfig().selectedDevices = [data];
+                this.widgetHelper.getWidgetConfig().selectedDevices = [...new Set([...this.widgetHelper.getWidgetConfig().selectedDevices, data])];
             }
         }
 

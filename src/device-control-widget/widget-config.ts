@@ -33,6 +33,9 @@ export class WidgetConfig {
     deviceImageHeight: number;
     deviceImageWidth: number;
     deviceColumns: number;
+    showAvailability: boolean;
+    showAlarms: boolean;
+    showOperations: boolean;
 
     /**
      *  Create an instance of the config object
@@ -46,6 +49,9 @@ export class WidgetConfig {
         this.deviceImageHeight = 50;
         this.deviceImageWidth = 50;
         this.deviceColumns = 3;
+        this.showAvailability = true;
+        this.showAlarms = true;
+        this.showOperations = true;
         this.deviceSettings['default-device'] = require("@widget-assets/iot-sensor-icon.jpg");
         this.deviceSettings['default-operation'] = {
             key: "fa-power-off", name: "Power Off", code: "f011", filter: ["on"]
