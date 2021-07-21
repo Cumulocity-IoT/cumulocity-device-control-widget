@@ -10,6 +10,7 @@
 -   the user can use images (including vector graphics) to represent the devices.
 -   select operations and define tooltips, and payload for each.
 -   Toggling of flags on the managed object supported.
+    -   > N.B. referred to as "toggles" below.
 -   Supports group template dashboard
 
 ## Installation
@@ -62,7 +63,7 @@ The widget configuration page contains a number of configuration attributes.
 
 **Select operations or add toggles**
 
-> N.B. "toggles" are a name for a mechanism the widget provides to flip a boolean fragment on the Managed Object that represents the device. It is intended to be a generic mechanism to help demos, but may well have utility in other areas.
+> N.B. (reminder) "toggles" are a name for a mechanism the widget provides to flip a boolean fragment on the Managed Object that represents the device. It is intended to be a generic mechanism to help demos, but may well have utility in other areas.
 
 -   **Select operations** : if the selected devices have the `c8y_SupportedOperations` fragment then the list will be displayed here. The list will be a composite of the `c8y_SupportedOperations` fragments from all selected devices with duplicates removed.
 
@@ -87,7 +88,7 @@ After selecting an operation a column of options for the operation will appear.
 
 ![addwidget](images/toggle.gif)
 
-The following shows the widget responding to the change in managed object flag state. because it has the `c8y_Availability` when the fragment `sag_IsShutDown` is toggled to true (and its status is available) the device shows as being in standby. 
+The following shows the widget responding to the change in managed object flag state. because it has the `c8y_Availability` when the fragment `sag_IsShutDown` is toggled to true (and its status is available) the device shows as being in standby.
 
 ![addwidget](images/toggleworking.gif)
 
@@ -101,10 +102,9 @@ for example the Laboratory group in my examples above:
 
 ![addwidget](images/groupdashboard.png)
 
-Now each page can have a widget that displays the device linked to the route selected. 
+Now each page can have a widget that displays the device linked to the route selected.
 
 ![addwidget](images/grouptemplate.gif)
-
 
 ---
 
