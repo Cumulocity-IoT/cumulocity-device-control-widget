@@ -1,3 +1,11 @@
+export interface IconEntry {
+    "key": string;
+    "name": string;
+    "code": string;
+    "filter": string[];
+}
+
+
 export const falist = {
     "icons": [
         {
@@ -5176,4 +5184,4 @@ export const falist = {
             "code": "f2e0"
         }
     ]
-}
+};

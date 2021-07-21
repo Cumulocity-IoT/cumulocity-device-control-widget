@@ -6,16 +6,20 @@
 import { IManagedObject } from '@c8y/client';
 import { Observable, of } from 'rxjs';
 import * as _ from "lodash";
+import { IconEntry } from './font-awesome4-list';
 
 
 //there will be a finite set of operations which can be represented 
 //by "buttons" on the front screen 
-interface DeviceOperation {
+export interface DeviceOperation {
+    payload: any;
     name: string;
-    image: string;
+    operation: string;
+    icon: IconEntry;
+    description: string;
+    toggle: boolean;
+    source: string;
 }
-
-
 
 /**
  * This class will contain all the bespoke config for the widget
@@ -25,10 +29,11 @@ export class WidgetConfig {
      * Members for the config
      * widgetConfiguration.myValue
      */
-    operationList: Map<string, string>;
+    //operationList: Map<string, string>;
     selectedDevices: IManagedObject[]; //can include groups
     assets: IManagedObject[]; //should be just devices
-    selectedOperations: string[];
+    selectedOperations: DeviceOperation[];
+    selectedToggles: DeviceOperation[];
     deviceSettings: Map<string, string>;
     deviceImageHeight: number;
     deviceImageWidth: number;
@@ -41,10 +46,11 @@ export class WidgetConfig {
      *  Create an instance of the config object
      */
     constructor() {
-        this.operationList = new Map();
+        //this.operationList = new Map();
         this.selectedDevices = [];
         this.assets = [];
         this.selectedOperations = [];
+        this.selectedToggles = [];
         this.deviceSettings = new Map();
         this.deviceImageHeight = 50;
         this.deviceImageWidth = 50;
@@ -66,13 +72,13 @@ export class WidgetConfig {
         };
     }
 
-    validOperation(mo: IManagedObject, op: string): boolean {
+    validOperation(mo: IManagedObject, op: DeviceOperation): boolean {
         if (_.has(mo, "c8y_SupportedOperations")) {
-            if (mo.c8y_SupportedOperations.includes(op)) {
+            if (mo.c8y_SupportedOperations.includes(op.operation)) {
                 return true;
             }
         }
-        return false;
+        return op.toggle;
     }
 
 
@@ -105,7 +111,11 @@ export class WidgetConfig {
             if (mo["c8y_Availability"].status === "UNAVAILABLE") {
                 return "badge-danger";
             } else if (mo["c8y_Availability"].status === "AVAILABLE" && _.has(mo, "sag_IsShutDown")) {
-                return "badge-warning";
+                if (mo["sag_IsShutDown"] == true) {
+                    return "badge-warning";
+                } else {
+                    return "badge-success";
+                }
             } else if (mo["c8y_Availability"].status === "AVAILABLE") {
                 return "badge-success";
             } else if (mo["c8y_Availability"].status === "MAINTENANCE") {
@@ -127,30 +137,30 @@ export class WidgetConfig {
     deviceStatusLabel(mo: IManagedObject): string {
         if (_.has(mo, "c8y_Availability")) {
             if (mo["c8y_Availability"].status === "AVAILABLE" && _.has(mo, "sag_IsShutDown")) {
-                return "AVAILABLE (STANDBY)";
+                if (mo["sag_IsShutDown"] == true) {
+                    return "AVAILABLE (STANDBY)";
+                }
             }
             return mo["c8y_Availability"].status;
         }
         return "AVAILABLE";
     }
 
-    operationIcon(op: string): string {
-        if (!_.has(this.deviceSettings, op)) {
-            this.deviceSettings[op] = this.deviceSettings['default-operation'];
+    operationIcon(op: string | DeviceOperation): string {
+        if (typeof op === "string") {
+            if (!_.has(this.deviceSettings, op)) {
+                this.deviceSettings[op] = this.deviceSettings['default-operation'];
+            }
+            else
+                return 'fa ' + this.deviceSettings[op].key + ' fa-lg';
+        } else {
+            return 'fa ' + op.icon.key + ' fa-lg';
         }
-        else
-            return 'fa ' + this.deviceSettings[op].key + ' fa-lg';
     }
 
-    operationPayload(op: string): string {
-        if (!_.has(this.operationList, op)) {
-            this.operationList[op] = `value`;
-        }
-        return this.operationList[op];
-    }
-    deviceIcon(op: string): string {
-        if (_.has(this.deviceSettings, op)) {
-            return this.deviceSettings[op];
+    deviceIcon(dev: string): string {
+        if (_.has(this.deviceSettings, dev)) {
+            return this.deviceSettings[dev];
         }
         return this.deviceSettings['default-device'];
     }
@@ -159,7 +169,7 @@ export class WidgetConfig {
         return of(this.selectedDevices);
     }
 
-    selectedOperations$(): Observable<string[]> {
+    selectedOperations$(): Observable<DeviceOperation[]> {
         return of(this.selectedOperations);
     }
 
@@ -174,5 +184,16 @@ export class WidgetConfig {
             });
         }
         return countAlarms;
+    }
+
+    getOperationsList(): DeviceOperation[] {
+        let operations: DeviceOperation[] = [];
+        if (this.selectedToggles) {
+            operations.push(...this.selectedToggles);
+        }
+        if (this.selectedOperations) {
+            operations.push(...this.selectedOperations);
+        }
+        return operations;
     }
 }

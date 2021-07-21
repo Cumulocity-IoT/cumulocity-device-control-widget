@@ -17,7 +17,7 @@
  */
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { WidgetHelper } from "./widget-helper";
-import { WidgetConfig } from "./widget-config";
+import { WidgetConfig, DeviceOperation } from "./widget-config";
 import { OperationService, IManagedObject, InventoryService } from '@c8y/client';
 import * as _ from "lodash";
 import { BehaviorSubject, from, Observable } from 'rxjs';
@@ -36,7 +36,7 @@ export class DeviceControlWidgetConfig implements OnInit, OnDestroy {
     //members
     public rawDeviceSelection: Observable<IManagedObject[]>;
     public rawDevices: Observable<IManagedObject[]>;
-    public rawOperations: BehaviorSubject<string[]>;
+    public rawOperations: BehaviorSubject<DeviceOperation[]>;
     public assets: BehaviorSubject<IManagedObject[]>;
 
     public CONST_HELP_IMAGE_FILE =
@@ -48,7 +48,7 @@ export class DeviceControlWidgetConfig implements OnInit, OnDestroy {
     constructor(public operations: OperationService, public inventoryService: InventoryService) {
         //make availiable for choosing
         this.icons = [...falist.icons];
-        this.rawOperations = new BehaviorSubject<string[]>([]);
+        this.rawOperations = new BehaviorSubject<DeviceOperation[]>([]);
         this.assets = new BehaviorSubject<IManagedObject[]>([]);
     }
 
@@ -96,6 +96,8 @@ export class DeviceControlWidgetConfig implements OnInit, OnDestroy {
 
     async populateOperations(): Promise<void> {
         let r: string[] = [];
+
+        //create a 'toggle' operation
         this.widgetHelper.getWidgetConfig().assets = [];
 
         for (let index = 0; index < this.widgetHelper.getWidgetConfig().selectedDevices.length; index++) {
@@ -111,7 +113,6 @@ export class DeviceControlWidgetConfig implements OnInit, OnDestroy {
                         r.push(...child.c8y_SupportedOperations);
                     }
                 }
-
             } else if (_.has(m, "c8y_SupportedOperations")) {
                 this.widgetHelper.getWidgetConfig().assets.push(m);
                 r.push(...m.c8y_SupportedOperations);
@@ -122,7 +123,23 @@ export class DeviceControlWidgetConfig implements OnInit, OnDestroy {
 
 
         }
-        this.rawOperations.next([...new Set(r)]);
+        //unique 
+        r = [...new Set(r)];
+
+        //map to objects
+        let ops = r.map(o => {
+            return <DeviceOperation>{
+                operation: o,
+                name: o,
+                icon: falist.icons[0],
+                payload: "value",
+                toggle: false,
+                source: "key",
+                description: ""
+            };
+        });
+
+        this.rawOperations.next(ops);
         this.assets.next([...this.widgetHelper.getWidgetConfig().assets]);
     }
 
@@ -132,5 +149,24 @@ export class DeviceControlWidgetConfig implements OnInit, OnDestroy {
         this.widgetHelper.setWidgetConfig(this.config); //propgate changes 
         console.log(this.widgetHelper.getWidgetConfig());
     }
+
+    addToggle() {
+        this.widgetHelper.getWidgetConfig().selectedToggles.push(
+            <DeviceOperation>{
+                operation: "toggle",
+                name: "toggle",
+                icon: falist.icons[0],
+                payload: "NA",
+                toggle: true,
+                source: "managed object key",
+                description: "toggle key true/false on the managed object"
+            }
+        );
+    }
+
+    removeToggle(index: number) {
+        this.widgetHelper.getWidgetConfig().selectedToggles.splice(index, 1);
+    }
+
 }
 

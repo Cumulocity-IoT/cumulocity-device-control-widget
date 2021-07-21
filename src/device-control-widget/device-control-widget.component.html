@@ -25,7 +25,7 @@
             </ng-container>
             <ng-container *ngIf="widgetHelper.getWidgetConfig().showOperations">
                 <div class="button-row">
-                    <div *ngFor="let op of widgetHelper.getWidgetConfig().selectedOperations">
+                    <div *ngFor="let op of widgetHelper.getWidgetConfig().getOperationsList()">
                         <button *ngIf="widgetHelper.getWidgetConfig().validOperation(mo,op)"
                                 style="color:#1776BF;"
                                 type="button"

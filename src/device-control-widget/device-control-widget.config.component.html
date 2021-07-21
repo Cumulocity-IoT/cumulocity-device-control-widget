@@ -100,45 +100,78 @@
                 <label class="label-with-help" class="form-check-label" for="contextFlag" translate>
                     <input class="form-check-input" type="checkbox" name="fillArea"
                            [(ngModel)]="widgetHelper.getWidgetConfig().showOperations"
-                           (ngModelChange)="onConfigChanged()" /> Show alarms<span class="help-icon">
+                           (ngModelChange)="onConfigChanged()" /> Show operations<span class="help-icon">
                         <img src="{{CONST_HELP_IMAGE_FILE}}" alt="help tooltip"
-                             title="Show alarms on device.">
+                             title="Show operations on device.">
                     </span>
                 </label>
             </div>
         </div>
+    </div>
+    <div class="configSection">
+        <h4 translate>Select operations or add toggles.</h4>
+
+        <div class="col-lg-2">
+            <label class="label-with-help">
+                Add Toggle
+                <img src="{{CONST_HELP_IMAGE_FILE}}" alt="help tooltip"
+                     title="Add operations that toggle managed object flags.">
+            </label>
+            <button
+                    style="color:#1776BF;"
+                    type="button" class="button"
+                    (click)="addToggle()">
+                <span class="fa fa-plus fa-lg"></span>
+            </button>
+        </div>
+
         <div class="row form-group">
-            <div class="col-lg-12">
-                <label class="label-with-help" for="deviceSelector" class="label-with-help" translate>Select operations
+            <div class="col-lg-6">
+                <label class="label-with-help">
+                    Select operations
                     <span class="help-icon">
                         <img src="{{CONST_HELP_IMAGE_FILE}}" alt="help tooltip"
                              title="Select operations to be supported.">
                     </span>
-
-                    <ng-select [items]="rawOperations | async" [multiple]="true"
-                               [closeOnSelect]="false" [(ngModel)]="widgetHelper.getWidgetConfig().selectedOperations"
-                               (ngModelChange)="onConfigChanged()">
-                        <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
-                            <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item}}
-                        </ng-template>
-                    </ng-select>
                 </label>
+                <ng-select [items]="rawOperations | async"
+                           [multiple]="true"
+                           bindLabel="operation"
+                           [closeOnSelect]="false"
+                           [(ngModel)]="widgetHelper.getWidgetConfig().selectedOperations"
+                           (ngModelChange)="onConfigChanged()">
+                    <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                        <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.operation}}
+                    </ng-template>
+                </ng-select>
             </div>
 
         </div>
 
         <div class="row form-group">
             <div class="grid-container fixed-grid">
-                <div class="grid-item" *ngFor="let op of widgetHelper.getWidgetConfig().selectedOperations">
-                    <span>
-                        {{op}}
-                    </span>
+                <div class="grid-item"
+                     *ngFor="let op of widgetHelper.getWidgetConfig().getOperationsList(); let i = index;">
+
+                    <label>
+                        Display Name
+                    </label>
+
+                    <input class="form-control" type="text" [ngModelOptions]="{ standalone: true }"
+                           [(ngModel)]="op.name"
+                           [value]="op.name"
+                           (ngModelChange)="onConfigChanged()" />
+
+                    <label>
+                        Button Icon
+                    </label>
+
                     <ng-select
                                [items]="icons"
                                bindLabel="name"
                                [closeOnSelect]="true"
                                [multiple]="false"
-                               [(ngModel)]="this.widgetHelper.getWidgetConfig().deviceSettings[op]"
+                               [(ngModel)]="op.icon"
                                placeholder="select icon for operation"
                                (change)="onConfigChanged()">
                         <ng-template class="fa mb-1 fa-lg" ng-label-tmp let-item="item" let-index="index">
@@ -148,14 +181,32 @@
                             <span [ngClass]="'fa ' + item.key + ' fa-lg'" aria-hidden="true"></span> {{item.name}}
                         </ng-template>
                     </ng-select>
-                    <label>
-                        payload json
-                    </label>
-                    <input class="form-control" type="text" [ngModelOptions]="{ standalone: true }"
-                           [(ngModel)]="widgetHelper.getWidgetConfig().operationList[op]"
-                           [value]="widgetHelper.getWidgetConfig().operationPayload(op)"
-                           (ngModelChange)="onConfigChanged()" />
 
+                    <div *ngIf="op.toggle; else normalOp">
+                        <label>
+                            Managed Object node
+                        </label>
+                        <input class="form-control" type="text" [ngModelOptions]="{ standalone: true }"
+                               [(ngModel)]="op.source"
+                               [value]="op.source"
+                               (ngModelChange)="onConfigChanged()" />
+                        <button
+                                style="color:#1776BF;"
+                                type="button" class="button"
+                                (click)="removeToggle(i)">
+                            <span class="fa fa-minus fa-lg"></span>Delete
+                        </button>
+                    </div>
+
+                    <ng-template #normalOp>
+                        <label>
+                            payload json
+                        </label>
+                        <input class="form-control" type="text" [ngModelOptions]="{ standalone: true }"
+                               [(ngModel)]="op.payload"
+                               [value]="op.payload"
+                               (ngModelChange)="onConfigChanged()" />
+                    </ng-template>
                 </div>
             </div>
 
@@ -192,7 +243,7 @@
                     </ng-container>
                     <ng-container *ngIf="widgetHelper.getWidgetConfig().showOperations">
                         <div class="button-row">
-                            <div *ngFor="let op of widgetHelper.getWidgetConfig().selectedOperations">
+                            <div *ngFor="let op of widgetHelper.getWidgetConfig().getOperationsList()">
                                 <button *ngIf="widgetHelper.getWidgetConfig().validOperation(mo,op)"
                                         style="color:#1776BF;"
                                         type="button" class="button">
