@@ -10,6 +10,7 @@
 -   the user can use images (including vector graphics) to represent the devices.
 -   select operations and define tooltips, and payload for each.
 -   Toggling of flags on the managed object supported.
+-   Supports group template dashboard
 
 ## Installation
 
@@ -89,6 +90,21 @@ After selecting an operation a column of options for the operation will appear.
 The following shows the widget responding to the change in managed object flag state. because it has the `c8y_Availability` when the fragment `sag_IsShutDown` is toggled to true (and its status is available) the device shows as being in standby. 
 
 ![addwidget](images/toggleworking.gif)
+
+**Group template**
+
+You can use this widget with a group template dashboard:
+
+![addwidget](images/templatedashboard.png)
+
+for example the Laboratory group in my examples above:
+
+![addwidget](images/groupdashboard.png)
+
+Now each page can have a widget that displays the device linked to the route selected. 
+
+![addwidget](images/grouptemplate.gif)
+
 
 ---
 
