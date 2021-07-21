@@ -83,9 +83,8 @@ export class DeviceControlWidget implements OnDestroy, OnInit {
             let operation: IOperation = {
                 deviceId: mo.id,
                 id: op.operation,
-                op: payload
             };
-
+            operation[op.operation] = payload;
             console.log("operation", operation);
             let ops: IResult<IOperation> = await this.operations.create(operation);
             console.log("RESP", ops);

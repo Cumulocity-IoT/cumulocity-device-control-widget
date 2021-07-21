@@ -37,7 +37,7 @@ The widget configuration page contains a number of configuration attributes.
 
 -   **Title** : Enter the title which will display at the top of your widget
 
-**Device Options** section
+**Device Options**
 
 -   **Select device** : Choose a group of devices and/or individual devices to display on the widget. As you choose the Preview section will update to reflect your choices.
 
@@ -50,6 +50,45 @@ The widget configuration page contains a number of configuration attributes.
 -   **Columns** : use the slider to change how many devices will display side by side before wrapping.
 
 ![addwidget](images/chooseicon.gif)
+
+-   **Show Availability** : check to show the current status of the device - based on the fragment `c8y_Availability`.
+
+-   **Show alarms** : Check this option to display a pill containing the number of alarms for this device.
+
+-   **Show operations** : Check this option to display the buttons to allow operations and toggles to be invoked.
+
+![addwidget](images/operations.gif)
+
+**Select operations or add toggles**
+
+> N.B. "toggles" are a name for a mechanism the widget provides to flip a boolean fragment on the Managed Object that represents the device. It is intended to be a generic mechanism to help demos, but may well have utility in other areas.
+
+-   **Select operations** : if the selected devices have the `c8y_SupportedOperations` fragment then the list will be displayed here. The list will be a composite of the `c8y_SupportedOperations` fragments from all selected devices with duplicates removed.
+
+After selecting an operation a column of options for the operation will appear.
+
+-   **Display Name** : This is a tool tip which will be displayed when you mouse over the operation on the widget.
+
+-   **Button icon** : select an icon from the font awsome 4 list of icons to represent the selected operation.
+
+-   **payload** : this is an arbitrary string or payload (json) that will be sent in the operation. Typically the payload can be anything but is the value of a fragment of the operation object that will be sent. a code representation is shown below but the contents of the field will depend wholly on what operation the user selects and what it expects. See [Cumulocity create](http://resources.cumulocity.com/documentation/websdk/client/classes/operationservice.html) section for more details
+
+```
+    //this is an example for supplorted operation 'myOperation'
+    //deviceId is supplied by the widget
+    let operation: IOperation = {
+        deviceId: xxxxxx,
+        myOperation: <payload field contents>
+    }
+```
+
+-   **Add toggle** : Clicking this will add a column, similar to the one added by selecting a command above. However the fields are slightly different.
+
+![addwidget](images/toggle.gif)
+
+The following shows the widget responding to the change in managed object flag state. because it has the `c8y_Availability` when the fragment `sag_IsShutDown` is toggled to true (and its status is available) the device shows as being in standby. 
+
+![addwidget](images/toggleworking.gif)
 
 ---
 
