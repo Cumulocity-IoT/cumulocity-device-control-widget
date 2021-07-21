@@ -50,7 +50,7 @@ img.withhover:hover {
     gap: 1em;
 }
 .fixed-grid {
-    grid-template-columns: fit-content(20%) fit-content(20%) fit-content(20%) fit-content(20%);
+    grid-template-columns: fit-content(25%) fit-content(25%) fit-content(25%) fit-content(25%);
 }
 .grid-item {
     display: flex;

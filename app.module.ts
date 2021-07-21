@@ -39,8 +39,8 @@ import { SafeImage } from "./src/device-control-widget/safeImage.pipe";
             useValue: [
                 {
                     id: "com.softwareag.globalpresales.device.control.widget",
-                    label: "DeviceControlWidget",
-                    description: "Description of DeviceControlWidget widget",
+                    label: "Device Control Widget",
+                    description: "widget to show devices status and allow operations to be performed.",
                     component: DeviceControlWidget,
                     configComponent: DeviceControlWidgetConfig,
                     previewImage: require("@widget-assets/img-preview.png"),
