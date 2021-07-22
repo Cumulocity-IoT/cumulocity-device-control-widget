@@ -52,7 +52,6 @@ export class DeviceControlWidgetConfig implements OnInit, OnDestroy {
         this.assets = new BehaviorSubject<IManagedObject[]>([]);
     }
 
-
     getIconString(code) {
         let startCode = parseInt(`0x${code}`);
         return String.fromCharCode(startCode);
@@ -108,6 +107,7 @@ export class DeviceControlWidgetConfig implements OnInit, OnDestroy {
             if (_.has(m, "c8y_IsDeviceGroup")) {
                 let children = await this.widgetHelper.getDevicesForGroup(this.inventoryService, m);
                 for (const child of children) {
+                    this.widgetHelper.getWidgetConfig().addToGroup(m.name, child);
                     this.widgetHelper.getWidgetConfig().assets.push(child);
                     if (_.has(child, "c8y_SupportedOperations")) {
                         r.push(...child.c8y_SupportedOperations);

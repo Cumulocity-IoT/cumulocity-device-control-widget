@@ -29,7 +29,7 @@ export class WidgetConfig {
      * Members for the config
      * widgetConfiguration.myValue
      */
-    //operationList: Map<string, string>;
+    group: Map<string, string>;
     selectedDevices: IManagedObject[]; //can include groups
     assets: IManagedObject[]; //should be just devices
     selectedOperations: DeviceOperation[];
@@ -46,7 +46,7 @@ export class WidgetConfig {
      *  Create an instance of the config object
      */
     constructor() {
-        //this.operationList = new Map();
+        this.group = new Map();
         this.selectedDevices = [];
         this.assets = [];
         this.selectedOperations = [];
@@ -72,6 +72,23 @@ export class WidgetConfig {
         };
     }
 
+    //add managed object to group list
+    addToGroup(group: string, mo: IManagedObject): void {
+        if (!this.group) {
+            this.group = new Map();
+        }
+        this.group[mo.id] = group;
+    }
+
+    //get the dashboard url for a device
+    dashboardUrl(mo: IManagedObject): string {
+        let url = "";
+        if (mo.id in this.group) {
+            url = `${this.deviceSettings['group' + this.group[mo.id]]}/device/${mo.id}`;
+        }
+        return url;
+    }
+
     validOperation(mo: IManagedObject, op: DeviceOperation): boolean {
         if (_.has(mo, "c8y_SupportedOperations")) {
             if (mo.c8y_SupportedOperations.includes(op.operation)) {
@@ -91,20 +108,12 @@ export class WidgetConfig {
 
     setCols(x: number): void {
         this.deviceColumns = x;
-    }
+    };
 
     setImageSize(x: number): void {
         this.deviceImageWidth = x;
         this.deviceImageHeight = x;
-    }
-
-    columnsInWidget(): string {
-        let style: string = "";
-        for (let index = 0; index < this.deviceColumns; index++) {
-            style += 'auto ';
-        }
-        return style;
-    }
+    };
 
     deviceStatus(mo: IManagedObject): string {
         if (_.has(mo, "c8y_Availability")) {
@@ -167,11 +176,11 @@ export class WidgetConfig {
 
     selectedDevices$(): Observable<IManagedObject[]> {
         return of(this.selectedDevices);
-    }
+    };
 
     selectedOperations$(): Observable<DeviceOperation[]> {
         return of(this.selectedOperations);
-    }
+    };
 
     getAlarmCount(device) {
         let countAlarms = 0;
