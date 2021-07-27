@@ -8,7 +8,7 @@
         <div class="col-lg-4 form-check-inline">
             <label class="form-check-label" for="showrisk" translate>
                 <input class="form-check-input" type="checkbox" name="showrisk"
-                       [(ngModel)]="atRisk" (change)="updateDeviceStates()" /> at risk Only<span class="help-icon">
+                       [(ngModel)]="widgetHelper.getWidgetConfig().atRisk" (change)="updateDeviceStates()" /> at risk Only<span class="help-icon">
                 </span>
             </label>
         </div>

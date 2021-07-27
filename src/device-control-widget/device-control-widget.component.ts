@@ -39,8 +39,6 @@ export class DeviceControlWidget implements OnDestroy, OnInit {
     @Input() config;
     private timerObs: Observable<number>;
     private subs: Subscription[] = [];
-    public deviceFilter: string = '';
-    public atRisk: boolean = false;
 
     constructor(private operations: OperationService, private inventoryService: InventoryService, private alertService: AlertService) {
     }
@@ -48,17 +46,17 @@ export class DeviceControlWidget implements OnDestroy, OnInit {
     async ngOnInit(): Promise<void> {
         this.widgetHelper = new WidgetHelper(this.config, WidgetConfig); //default access through here
         this.updateDeviceStates(); //all devices
-        this.timerObs = interval(30000);
-        // this.subs.push(this.timerObs.subscribe(t => {
-        //     this.updateDeviceStates();
-        // }));
+        this.timerObs = interval(60000);
+        this.subs.push(this.timerObs.subscribe(t => {
+            this.updateDeviceStates();
+        }));
         this.subs.push(fromEvent(document.getElementById('assetfilter'), 'keyup')
             .pipe(
                 debounceTime(200),
                 map((e: any) => e.target.value),
                 distinctUntilChanged(),
                 tap((c: string) => {
-                    this.deviceFilter = c;
+                    this.widgetHelper.getWidgetConfig().deviceFilter = c;
                     this.updateDeviceStates();
                 })
             )
@@ -144,19 +142,19 @@ export class DeviceControlWidget implements OnDestroy, OnInit {
         let ids: string[] = this.widgetHelper.getWidgetConfig().assets.map(mo => mo.id);
         this.widgetHelper.getWidgetConfig().assets = await this.widgetHelper.getDevices(this.inventoryService, ids);
 
-        console.log("UPDATE", this.widgetHelper.getWidgetConfig().assets, this.atRisk, this.deviceFilter);
+        //console.log("UPDATE", this.widgetHelper.getWidgetConfig().assets, this.widgetHelper.getWidgetConfig().atRisk, this.widgetHelper.getWidgetConfig().deviceFilter);
         //filter names and at risk
         this.widgetHelper.getWidgetConfig().filteredAssets = this.widgetHelper.getWidgetConfig().assets.filter(mo => {
-            console.log("MO", mo);
-            if (this.deviceFilter === '') {
-                console.log("FILTER EMPTY - RISK", mo, this.deviceAtRisk(mo));
-                return !this.atRisk || this.deviceAtRisk(mo);
+            //console.log("MO", mo);
+            if (this.widgetHelper.getWidgetConfig().deviceFilter === '') {
+                //console.log("FILTER EMPTY - RISK", mo, this.deviceAtRisk(mo));
+                return !this.widgetHelper.getWidgetConfig().atRisk || this.deviceAtRisk(mo);
             }
-            console.log("NAME", mo.name.toLowerCase(), "FILTER", this.deviceFilter.toLowerCase(), "RISK", this.deviceAtRisk(mo));
-            let filterByName = mo.name.toLowerCase().includes(this.deviceFilter.toLowerCase());
-            return filterByName || (this.atRisk && this.deviceAtRisk(mo));
+            //console.log("NAME", mo.name.toLowerCase(), "FILTER", this.widgetHelper.getWidgetConfig().deviceFilter.toLowerCase(), "RISK", this.deviceAtRisk(mo));
+            let filterByName = mo.name.toLowerCase().includes(this.widgetHelper.getWidgetConfig().deviceFilter.toLowerCase());
+            return filterByName || (this.widgetHelper.getWidgetConfig().atRisk && this.deviceAtRisk(mo));
         });
-        console.log("FILTERED UPDATE", this.widgetHelper.getWidgetConfig().filteredAssets);
+        //console.log("FILTERED UPDATE", this.widgetHelper.getWidgetConfig().filteredAssets);
 
         this.widgetHelper.getWidgetConfig().filteredAssets = this.widgetHelper.getWidgetConfig().filteredAssets.sort((a, b) => a.name.localeCompare(b.name));
         return;
@@ -165,7 +163,6 @@ export class DeviceControlWidget implements OnDestroy, OnInit {
     deviceAtRisk(mo: IManagedObject): boolean {
         let r = false; //default - no filter
         if (_.has(mo, "c8y_Availability")) {
-            console.log("AVAILABILITY", mo["c8y_Availability"].status);
             let s = mo["c8y_Availability"].status;
             r = true;
             if (s === "AVAILABLE") {
@@ -175,6 +172,16 @@ export class DeviceControlWidget implements OnDestroy, OnInit {
                 }
             }
         }
+
+        //other elements to check - connected?
+        if (_.has(mo, "c8y_Connection")) {
+            let s = mo["c8y_Availability"].status;
+            r = s == "DISCONNECTED";
+        }
+
+
+        //alarms are risk if they are active
+        r = r || this.widgetHelper.getWidgetConfig().getAlarmCount(mo) > 0;
         return r;
     }
 

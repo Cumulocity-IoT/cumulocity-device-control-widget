@@ -42,6 +42,8 @@ export class WidgetConfig {
     showAvailability: boolean;
     showAlarms: boolean;
     showOperations: boolean;
+    atRisk: boolean = false;
+    deviceFilter: string = '';
 
     /**
      *  Create an instance of the config object
