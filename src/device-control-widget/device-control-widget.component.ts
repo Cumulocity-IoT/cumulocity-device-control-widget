@@ -19,7 +19,7 @@
  * @format
  */
 
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { OperationService, OperationStatus, IOperation, IManagedObject, InventoryService } from '@c8y/client';
 import { WidgetHelper } from "./widget-helper";
 import { WidgetConfig, DeviceOperation } from "./widget-config";
@@ -37,8 +37,14 @@ export class DeviceControlWidget implements OnDestroy, OnInit {
 
     widgetHelper: WidgetHelper<WidgetConfig>;
     @Input() config;
+
+    @ViewChild('assetfilter', { static: true }) filterInput: ElementRef;
+
     private timerObs: Observable<number>;
     private subs: Subscription[] = [];
+    public input$ = new Subject<string | null>();
+
+
 
     constructor(private operations: OperationService, private inventoryService: InventoryService, private alertService: AlertService) {
     }
@@ -48,9 +54,9 @@ export class DeviceControlWidget implements OnDestroy, OnInit {
         this.updateDeviceStates(); //all devices
         this.timerObs = interval(60000);
         this.subs.push(this.timerObs.subscribe(t => {
-            this.updateDeviceStates();
+            this.updateDeviceStates(true);
         }));
-        this.subs.push(fromEvent(document.getElementById('assetfilter'), 'keyup')
+        this.subs.push(fromEvent(this.filterInput.nativeElement, 'keyup')
             .pipe(
                 debounceTime(200),
                 map((e: any) => e.target.value),
@@ -137,24 +143,31 @@ export class DeviceControlWidget implements OnDestroy, OnInit {
         this.subs.forEach(s => s.unsubscribe());
     }
 
-    async updateDeviceStates(): Promise<void> {
+    async updateDeviceStates(makeCall: boolean = false): Promise<void> {
         //here we just update the objects to refect their current state. 
         let ids: string[] = this.widgetHelper.getWidgetConfig().assets.map(mo => mo.id);
-        this.widgetHelper.getWidgetConfig().assets = await this.widgetHelper.getDevices(this.inventoryService, ids);
+        if (makeCall) {
+            this.widgetHelper.getWidgetConfig().assets = await this.widgetHelper.getDevices(this.inventoryService, ids);
+        }
 
         //console.log("UPDATE", this.widgetHelper.getWidgetConfig().assets, this.widgetHelper.getWidgetConfig().atRisk, this.widgetHelper.getWidgetConfig().deviceFilter);
-        //filter names and at risk
+
+
+        //filter at risk
         this.widgetHelper.getWidgetConfig().filteredAssets = this.widgetHelper.getWidgetConfig().assets.filter(mo => {
-            //console.log("MO", mo);
-            if (this.widgetHelper.getWidgetConfig().deviceFilter === '') {
-                //console.log("FILTER EMPTY - RISK", mo, this.deviceAtRisk(mo));
-                return !this.widgetHelper.getWidgetConfig().atRisk || this.deviceAtRisk(mo);
+            if (!this.widgetHelper.getWidgetConfig().atRisk) {
+                return true; //allow all
             }
-            //console.log("NAME", mo.name.toLowerCase(), "FILTER", this.widgetHelper.getWidgetConfig().deviceFilter.toLowerCase(), "RISK", this.deviceAtRisk(mo));
-            let filterByName = mo.name.toLowerCase().includes(this.widgetHelper.getWidgetConfig().deviceFilter.toLowerCase());
-            return filterByName || (this.widgetHelper.getWidgetConfig().atRisk && this.deviceAtRisk(mo));
+            return this.deviceAtRisk(mo);
         });
-        //console.log("FILTERED UPDATE", this.widgetHelper.getWidgetConfig().filteredAssets);
+
+        //filter names
+        this.widgetHelper.getWidgetConfig().filteredAssets = this.widgetHelper.getWidgetConfig().filteredAssets.filter(mo => {
+            if (this.widgetHelper.getWidgetConfig().deviceFilter === '') {
+                return true;
+            }
+            return mo.name.toLowerCase().includes(this.widgetHelper.getWidgetConfig().deviceFilter.toLowerCase());
+        });
 
         this.widgetHelper.getWidgetConfig().filteredAssets = this.widgetHelper.getWidgetConfig().filteredAssets.sort((a, b) => a.name.localeCompare(b.name));
         return;
@@ -176,7 +189,7 @@ export class DeviceControlWidget implements OnDestroy, OnInit {
         //other elements to check - connected?
         if (_.has(mo, "c8y_Connection")) {
             let s = mo["c8y_Availability"].status;
-            r = s == "DISCONNECTED";
+            r = r || s == "DISCONNECTED";
         }
 
 

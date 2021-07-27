@@ -1,79 +1,97 @@
 <div class="device-control-widget-container">
 
-    <div class="row form-inline">
-        <div class="col-lg-4 input-group">
-            <label for="assetfilter">filter </label>
-            <input class="form-control" id="assetfilter" />
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group">
+                <label for="assetfilter">filter </label>
+                <input class="form-control" #assetfilter />
+            </div>
         </div>
-        <div class="col-lg-4 form-check-inline">
-            <label class="form-check-label" for="showrisk" translate>
-                <input class="form-check-input" type="checkbox" name="showrisk"
-                       [(ngModel)]="widgetHelper.getWidgetConfig().atRisk" (change)="updateDeviceStates()" /> at risk Only<span class="help-icon">
-                </span>
-            </label>
+        <div class="col-lg6">
+            <div class="form-check-inline">
+                <label class="form-check-label" for="showrisk" translate>
+                    <input class="form-check-input" type="checkbox" name="showrisk"
+                           [(ngModel)]="widgetHelper.getWidgetConfig().atRisk" (change)="updateDeviceStates()" />
+                    at risk Only
+                </label>
+            </div>
         </div>
     </div>
+    <!-- <div class="row form-inline">
+            <div class="col-lg-4 input-group">
+                <label for="assetfilter">filter </label>
+                <input class="form-control" #assetfilter />
+            </div>
+            <div class="col-lg-4 form-check-inline">
+                <label class="form-check-label" for="showrisk" translate>
+                    <input class="form-check-input" type="checkbox" name="showrisk"
+                           [(ngModel)]="widgetHelper.getWidgetConfig().atRisk" (change)="updateDeviceStates()" /> at risk Only<span class="help-icon">
+                    </span>
+                </label>
+            </div>
+        </div> -->
 
 
 
 
-
-    <div class="grid-container">
-        <div class=" grid-item" *ngFor="let mo of widgetHelper.getWidgetConfig().filteredAssets">
-            <a *ngIf="widgetHelper.getWidgetConfig().dashboardUrl(mo) else justimage"
-               href="{{widgetHelper.getWidgetConfig().dashboardUrl(mo)}}">
-                <img
-                     [ngStyle]='{height:widgetHelper.getWidgetConfig().imageHeight(),width:widgetHelper.getWidgetConfig().imageWidth()}'
-                     [src]="widgetHelper.getWidgetConfig().deviceIcon(mo.name) | SafeImage"
-                     alt="Device"
-                     title="{{mo.name}}">
-            </a>
-            <ng-template #justimage>
-                <img [ngStyle]='{height:widgetHelper.getWidgetConfig().imageHeight(),width:widgetHelper.getWidgetConfig().imageWidth()}'
-                     [src]="widgetHelper.getWidgetConfig().deviceIcon(mo.name) | SafeImage"
-                     alt="Device"
-                     title="{{mo.name}}">
-            </ng-template>
-            <span class=" grid-element">
-                {{mo.name}}
-            </span>
-            <ng-container *ngIf="widgetHelper.getWidgetConfig().showAvailability">
-                <!--widgetHelper.getWidgetConfig().operationIcon('heartbeat')-->
-                <span
-                      [ngClass]="['grid-element badge badge-pill',widgetHelper.getWidgetConfig().deviceStatus(mo)]">
-                    {{widgetHelper.getWidgetConfig().deviceStatusLabel(mo)}}
+    <div class="row">
+        <div class="col-lg-12 grid-container">
+            <div class=" grid-item" *ngFor="let mo of widgetHelper.getWidgetConfig().filteredAssets">
+                <a *ngIf="widgetHelper.getWidgetConfig().dashboardUrl(mo) else justimage"
+                   href="{{widgetHelper.getWidgetConfig().dashboardUrl(mo)}}">
+                    <img
+                         [ngStyle]='{height:widgetHelper.getWidgetConfig().imageHeight(),width:widgetHelper.getWidgetConfig().imageWidth()}'
+                         [src]="widgetHelper.getWidgetConfig().deviceIcon(mo.name) | SafeImage"
+                         alt="Device"
+                         title="{{mo.name}}">
+                </a>
+                <ng-template #justimage>
+                    <img [ngStyle]='{height:widgetHelper.getWidgetConfig().imageHeight(),width:widgetHelper.getWidgetConfig().imageWidth()}'
+                         [src]="widgetHelper.getWidgetConfig().deviceIcon(mo.name) | SafeImage"
+                         alt="Device"
+                         title="{{mo.name}}">
+                </ng-template>
+                <span class=" grid-element">
+                    {{mo.name}}
                 </span>
-            </ng-container>
-            <ng-container *ngIf="widgetHelper.getWidgetConfig().showAlarms">
-                <span
-                      [ngClass]="['grid-element grid-element badge badge-pill',widgetHelper.getWidgetConfig().alarmStatus(mo)]">
-                    {{widgetHelper.getWidgetConfig().getAlarmCount(mo)}} alarms
-                </span>
-            </ng-container>
-            <ng-container *ngIf="widgetHelper.getWidgetConfig().showOperations">
-                <div class="button-col">
-                    <div *ngFor="let op of widgetHelper.getWidgetConfig().selectedToggles">
-                        <label class="c8y-switch">
-                            <input type="checkbox"
-                                   [checked]="mo[op.source]"
-                                   (change)="performOperation(mo,op)">
-                            <span></span>{{op.name}}
-                        </label>
+                <ng-container *ngIf="widgetHelper.getWidgetConfig().showAvailability">
+                    <!--widgetHelper.getWidgetConfig().operationIcon('heartbeat')-->
+                    <span
+                          [ngClass]="['grid-element badge badge-pill',widgetHelper.getWidgetConfig().deviceStatus(mo)]">
+                        {{widgetHelper.getWidgetConfig().deviceStatusLabel(mo)}}
+                    </span>
+                </ng-container>
+                <ng-container *ngIf="widgetHelper.getWidgetConfig().showAlarms">
+                    <span
+                          [ngClass]="['grid-element grid-element badge badge-pill',widgetHelper.getWidgetConfig().alarmStatus(mo)]">
+                        {{widgetHelper.getWidgetConfig().getAlarmCount(mo)}} alarms
+                    </span>
+                </ng-container>
+                <ng-container *ngIf="widgetHelper.getWidgetConfig().showOperations">
+                    <div class="button-col">
+                        <div *ngFor="let op of widgetHelper.getWidgetConfig().selectedToggles">
+                            <label class="c8y-switch">
+                                <input type="checkbox"
+                                       [checked]="mo[op.source]"
+                                       (change)="performOperation(mo,op)">
+                                <span></span>{{op.name}}
+                            </label>
+                        </div>
                     </div>
-                </div>
-                <div class="button-row">
-                    <div *ngFor="let op of widgetHelper.getWidgetConfig().selectedOperations">
-                        <button *ngIf="widgetHelper.getWidgetConfig().validOperation(mo,op)"
-                                style="color:#1776BF;"
-                                type="button"
-                                class="button"
-                                (click)="performOperation(mo,op)"
-                                title="{{op.name}}">
-                            <span [ngClass]="widgetHelper.getWidgetConfig().operationIcon(op)"></span>
-                        </button>
+                    <div class="button-row">
+                        <div *ngFor="let op of widgetHelper.getWidgetConfig().selectedOperations">
+                            <button *ngIf="widgetHelper.getWidgetConfig().validOperation(mo,op)"
+                                    style="color:#1776BF;"
+                                    type="button"
+                                    class="button"
+                                    (click)="performOperation(mo,op)"
+                                    title="{{op.name}}">
+                                <span [ngClass]="widgetHelper.getWidgetConfig().operationIcon(op)"></span>
+                            </button>
+                        </div>
                     </div>
-                </div>
-            </ng-container>
+                </ng-container>
+            </div>
         </div>
     </div>
 </div>
