@@ -163,7 +163,7 @@ export class DeviceControlWidget implements OnDestroy, OnInit {
 
         //filter names
         this.widgetHelper.getWidgetConfig().filteredAssets = this.widgetHelper.getWidgetConfig().filteredAssets.filter(mo => {
-            if (this.widgetHelper.getWidgetConfig().deviceFilter === '') {
+            if (this.widgetHelper.getWidgetConfig().deviceFilter === undefined || this.widgetHelper.getWidgetConfig().deviceFilter === '') {
                 return true;
             }
             return mo.name.toLowerCase().includes(this.widgetHelper.getWidgetConfig().deviceFilter.toLowerCase());
