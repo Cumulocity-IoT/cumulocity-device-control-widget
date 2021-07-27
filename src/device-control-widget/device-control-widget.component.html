@@ -1,14 +1,20 @@
 <div class="device-control-widget-container">
     <div class="grid-container">
         <div class=" grid-item" *ngFor="let mo of widgetHelper.getWidgetConfig().assets">
-            <a
+            <a *ngIf="widgetHelper.getWidgetConfig().dashboardUrl(mo) else justimage"
                href="{{widgetHelper.getWidgetConfig().dashboardUrl(mo)}}">
-                <img class=" grid-element"
+                <img
                      [ngStyle]='{height:widgetHelper.getWidgetConfig().imageHeight(),width:widgetHelper.getWidgetConfig().imageWidth()}'
                      [src]="widgetHelper.getWidgetConfig().deviceIcon(mo.name) | SafeImage"
                      alt="Device"
-                     title="{{mo.name}} | external Id: {{mo.externalId ? mo.externalId : '-'}}">
+                     title="{{mo.name}}">
             </a>
+            <ng-template #justimage>
+                <img [ngStyle]='{height:widgetHelper.getWidgetConfig().imageHeight(),width:widgetHelper.getWidgetConfig().imageWidth()}'
+                     [src]="widgetHelper.getWidgetConfig().deviceIcon(mo.name) | SafeImage"
+                     alt="Device"
+                     title="{{mo.name}}">
+            </ng-template>
             <span class=" grid-element">
                 {{mo.name}}
             </span>
@@ -26,6 +32,16 @@
                 </span>
             </ng-container>
             <ng-container *ngIf="widgetHelper.getWidgetConfig().showOperations">
+                <div class="button-col">
+                    <div *ngFor="let op of widgetHelper.getWidgetConfig().selectedToggles">
+                        <label class="c8y-switch">
+                            <input type="checkbox"
+                                   [checked]="mo[op.source]"
+                                   (change)="performOperation(mo,op)">
+                            <span></span>{{op.name}}
+                        </label>
+                    </div>
+                </div>
                 <div class="button-row">
                     <div *ngFor="let op of widgetHelper.getWidgetConfig().selectedOperations">
                         <button *ngIf="widgetHelper.getWidgetConfig().validOperation(mo,op)"
@@ -36,16 +52,6 @@
                                 title="{{op.name}}">
                             <span [ngClass]="widgetHelper.getWidgetConfig().operationIcon(op)"></span>
                         </button>
-                    </div>
-                </div>
-                <div class="button-col">
-                    <div *ngFor="let op of widgetHelper.getWidgetConfig().selectedToggles">
-                        <label class="c8y-switch">
-                            <input type="checkbox"
-                                   [checked]="mo[op.source]"
-                                   (change)="performOperation(mo,op)">
-                            <span></span>{{op.name}}
-                        </label>
                     </div>
                 </div>
             </ng-container>

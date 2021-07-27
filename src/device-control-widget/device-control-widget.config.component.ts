@@ -23,11 +23,11 @@ import * as _ from "lodash";
 import { BehaviorSubject, from, Observable } from 'rxjs';
 import { falist } from './font-awesome4-list';
 
-
+//shared css with main widget
 @Component({
     selector: "device-control-widget-config-component",
     templateUrl: "./device-control-widget.config.component.html",
-    styleUrls: ["./device-control-widget.config.component.css"]
+    styleUrls: ["./device-control-widget.component.css"]
 })
 export class DeviceControlWidgetConfig implements OnInit, OnDestroy {
 
@@ -140,7 +140,7 @@ export class DeviceControlWidgetConfig implements OnInit, OnDestroy {
         });
 
         this.rawOperations.next(ops);
-        this.assets.next([...this.widgetHelper.getWidgetConfig().assets]);
+        this.assets.next([...this.widgetHelper.getWidgetConfig().assets.sort((a, b) => a.name.localeCompare(b.name))]);
     }
 
     onConfigChanged(): void {

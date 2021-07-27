@@ -20,11 +20,12 @@
  */
 
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { OperationService, IResult, IOperation, IManagedObject, InventoryService } from '@c8y/client';
+import { OperationService, OperationStatus, IOperation, IManagedObject, InventoryService } from '@c8y/client';
 import { WidgetHelper } from "./widget-helper";
 import { WidgetConfig, DeviceOperation } from "./widget-config";
 import * as _ from 'lodash';
 import { Observable, Subscription, interval } from 'rxjs';
+import { AlertService } from '@c8y/ngx-components';
 
 @Component({
     selector: "lib-device-control-widget",
@@ -39,7 +40,7 @@ export class DeviceControlWidget implements OnDestroy, OnInit {
     private subs: Subscription[] = [];
 
 
-    constructor(private operations: OperationService, private inventoryService: InventoryService) {
+    constructor(private operations: OperationService, private inventoryService: InventoryService, private alertService: AlertService) {
     }
 
     async ngOnInit(): Promise<void> {
@@ -68,26 +69,55 @@ export class DeviceControlWidget implements OnDestroy, OnInit {
                 id: `${mo.id}`,
             };
             partialUpdateObject[op.source] = flag;
-
-            console.log("sending update", partialUpdateObject);
             const { data, res } = await this.inventoryService.update(partialUpdateObject);
 
-            console.log("SETTING", data[op.source]);
-            console.log("RESULT", res);
-            mo[op.source] = data[op.source];
+            if (res.status === 200) {
+                this.alertService.success(`operation ${op.name} for ${mo.name} successful`);
+                mo[op.source] = data[op.source];
+            } else {
+                let reason = await res.text();
+                this.alertService.danger(`operation ${op.name} for ${mo.name} failed, reason: ${reason}`);
+            }
+
 
         } else {
+            try {
+                console.log(op.payload);
+                let payload = JSON.parse(op.payload);
+                console.log(payload);
 
-            let payload = op.payload;
+                let operation: IOperation = {
+                    deviceId: mo.id,
+                    id: op.operation,
+                };
+                operation[op.operation] = payload;
+                console.log("operation", operation);
 
-            let operation: IOperation = {
-                deviceId: mo.id,
-                id: op.operation,
-            };
-            operation[op.operation] = payload;
-            console.log("operation", operation);
-            let ops: IResult<IOperation> = await this.operations.create(operation);
-            console.log("RESP", ops);
+                let { data, res } = await this.operations.create(operation);
+                console.log("operation res", res);
+
+                if (res.status >= 200 && res.status < 300) {
+
+                    if (data.status) {
+                        if (data.status == OperationStatus.SUCCESSFUL) {
+                            this.alertService.success(`operation ${op.name} for ${mo.name} is ${data.status}`);
+                        } else if (data.status == OperationStatus.PENDING || data.status == OperationStatus.PENDING) {
+                            this.alertService.warning(`operation ${op.name} for ${mo.name} is ${data.status}`);
+                        } else {
+                            this.alertService.danger(`operation ${op.name} for ${mo.name} is ${data.status}`);
+                        }
+                    } else {
+                        this.alertService.success(`operation ${op.name} for ${mo.name} run`);
+                    }
+                } else {
+                    this.alertService.danger(`operation ${op.name} for ${mo.name} failed, reason: ${res}`);
+                }
+                console.log("RESP", data);
+
+            } catch (e) {
+                console.log("ERROR", e);
+                this.alertService.danger(`operation ${op.name} for ${mo.name} failed, reason: ${e}`);
+            }
         }
     }
 
@@ -99,7 +129,8 @@ export class DeviceControlWidget implements OnDestroy, OnInit {
     async updateDeviceStates(): Promise<void> {
         //here we just update the objects to refect their current state. 
         let ids: string[] = this.widgetHelper.getWidgetConfig().assets.map(mo => mo.id);
-        this.widgetHelper.getWidgetConfig().assets = await this.widgetHelper.getDevices(this.inventoryService, ids);
+        let newAssets = await this.widgetHelper.getDevices(this.inventoryService, ids);
+        this.widgetHelper.getWidgetConfig().assets = newAssets.sort((a, b) => a.name.localeCompare(b.name));
         return;
     }
 

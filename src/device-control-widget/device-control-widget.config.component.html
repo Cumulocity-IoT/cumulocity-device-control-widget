@@ -61,19 +61,6 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-2 col-layout">
-                <div class="input-group mb-1">
-                    <div class="input-group-prepend">
-                        Columns
-                        <input class="form-control-range" type="range" min="1" max="20"
-                               [value]="widgetHelper.getWidgetConfig().deviceColumns"
-                               #cols
-                               (input)="widgetHelper.getWidgetConfig().setCols(cols.value)">
-
-                        <output>{{widgetHelper.getWidgetConfig().deviceColumns}}</output>
-                    </div>
-                </div>
-            </div>
         </div>
         <div class="row form-group">
             <div class="form-check-inline col-lg-2">
@@ -122,14 +109,6 @@
                     </div>
 
                 </div>
-                <!-- <ng-template #something>
-                    <div class="col-lg-12">
-                        <div class="alert alert-danger" role="alert">
-                            <span class="sr-only">Error:</span>
-                            <span class="error-message">{{mo.name}} is not a device group.</span>
-                        </div>
-                    </div>
-                </ng-template> -->
             </div>
         </div>
     </div>
@@ -173,8 +152,8 @@
         </div>
 
         <div class="row form-group">
-            <div class="grid-container">
-                <div class="grid-item"
+            <div class="op-container">
+                <div class="op-item"
                      *ngFor="let op of widgetHelper.getWidgetConfig().getOperationsList(); let i = index;">
 
 
@@ -252,7 +231,7 @@
         <div class="row form-group">
             <div class="grid-container">
                 <div class=" grid-item" *ngFor="let mo of assets | async">
-                    <a
+                    <a *ngIf="widgetHelper.getWidgetConfig().dashboardUrl(mo) else justimage"
                        href="{{widgetHelper.getWidgetConfig().dashboardUrl(mo)}}">
                         <img
                              [ngStyle]='{height:widgetHelper.getWidgetConfig().imageHeight(),width:widgetHelper.getWidgetConfig().imageWidth()}'
@@ -260,6 +239,12 @@
                              alt="Device"
                              title="{{mo.name}}">
                     </a>
+                    <ng-template #justimage>
+                        <img [ngStyle]='{height:widgetHelper.getWidgetConfig().imageHeight(),width:widgetHelper.getWidgetConfig().imageWidth()}'
+                             [src]="widgetHelper.getWidgetConfig().deviceIcon(mo.name) | SafeImage"
+                             alt="Device"
+                             title="{{mo.name}}">
+                    </ng-template>
                     <span class=" grid-element">
                         {{mo.name}}
                     </span>
@@ -277,6 +262,14 @@
                         </span>
                     </ng-container>
                     <ng-container *ngIf="widgetHelper.getWidgetConfig().showOperations">
+                        <div class="toggle-column">
+                            <div *ngFor="let op of widgetHelper.getWidgetConfig().selectedToggles">
+                                <label class="c8y-switch">
+                                    <input type="checkbox" [checked]="mo[op.source]">
+                                    <span></span>{{op.name}}
+                                </label>
+                            </div>
+                        </div>
                         <div class="button-row">
                             <div *ngFor="let op of widgetHelper.getWidgetConfig().selectedOperations">
                                 <button *ngIf="widgetHelper.getWidgetConfig().validOperation(mo,op)"
@@ -286,14 +279,6 @@
                                         title="{{op.name}}">
                                     <span [ngClass]="widgetHelper.getWidgetConfig().operationIcon(op)"></span>
                                 </button>
-                            </div>
-                        </div>
-                        <div class="toggle-column">
-                            <div *ngFor="let op of widgetHelper.getWidgetConfig().selectedToggles">
-                                <label class="c8y-switch">
-                                    <input type="checkbox" [checked]="mo[op.source]">
-                                    <span></span>{{op.name}}
-                                </label>
                             </div>
                         </div>
                     </ng-container>

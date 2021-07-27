@@ -81,10 +81,15 @@ export class WidgetConfig {
     }
 
     //get the dashboard url for a device
-    dashboardUrl(mo: IManagedObject): string {
-        let url = "";
-        if (mo.id in this.group) {
-            url = `${this.deviceSettings['group' + this.group[mo.id]]}/device/${mo.id}`;
+    dashboardUrl(mo: IManagedObject): string | undefined {
+        let url = undefined;
+        if (_.has(this.group, mo.id)) {
+            if (this.deviceSettings['group' + this.group[mo.id]] !== "") {
+                url = _.has(this.deviceSettings, 'group' + this.group[mo.id]) ? this.deviceSettings['group' + this.group[mo.id]] : undefined;
+                if (url) {
+                    url += `/device/${mo.id}`;
+                }
+            }
         }
         return url;
     }
