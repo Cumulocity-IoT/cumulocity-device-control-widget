@@ -1,6 +1,25 @@
 <div class="device-control-widget-container">
+
+    <form class="form-inline">
+        <div class="col-lg-4 input-group">
+            <label for="assetfilter">filter </label>
+            <input class="form-control" id="assetfilter" />
+        </div>
+        <div class="col-lg-4 form-check-inline">
+            <label class="form-check-label" for="showrisk" translate>
+                <input class="form-check-input" type="checkbox" name="showrisk"
+                       [(ngModel)]="atRisk" (change)="updateDeviceStates()" /> at risk Only<span class="help-icon">
+                </span>
+            </label>
+        </div>
+    </form>
+
+
+
+
+
     <div class="grid-container">
-        <div class=" grid-item" *ngFor="let mo of widgetHelper.getWidgetConfig().assets">
+        <div class=" grid-item" *ngFor="let mo of widgetHelper.getWidgetConfig().filteredAssets">
             <a *ngIf="widgetHelper.getWidgetConfig().dashboardUrl(mo) else justimage"
                href="{{widgetHelper.getWidgetConfig().dashboardUrl(mo)}}">
                 <img

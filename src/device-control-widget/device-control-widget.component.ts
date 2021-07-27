@@ -24,7 +24,8 @@ import { OperationService, OperationStatus, IOperation, IManagedObject, Inventor
 import { WidgetHelper } from "./widget-helper";
 import { WidgetConfig, DeviceOperation } from "./widget-config";
 import * as _ from 'lodash';
-import { Observable, Subscription, interval } from 'rxjs';
+import { Observable, Subscription, interval, Subject, fromEvent } from 'rxjs';
+import { debounceTime, distinctUntilChanged, map, switchMap, tap } from 'rxjs/operators';
 import { AlertService } from '@c8y/ngx-components';
 
 @Component({
@@ -38,18 +39,30 @@ export class DeviceControlWidget implements OnDestroy, OnInit {
     @Input() config;
     private timerObs: Observable<number>;
     private subs: Subscription[] = [];
-
+    public deviceFilter: string = '';
+    public atRisk: boolean = false;
 
     constructor(private operations: OperationService, private inventoryService: InventoryService, private alertService: AlertService) {
     }
 
     async ngOnInit(): Promise<void> {
         this.widgetHelper = new WidgetHelper(this.config, WidgetConfig); //default access through here
-        this.updateDeviceStates();
+        this.updateDeviceStates(); //all devices
         this.timerObs = interval(30000);
-        this.subs.push(this.timerObs.subscribe(t => {
-            this.updateDeviceStates();
-        }));
+        // this.subs.push(this.timerObs.subscribe(t => {
+        //     this.updateDeviceStates();
+        // }));
+        this.subs.push(fromEvent(document.getElementById('assetfilter'), 'keyup')
+            .pipe(
+                debounceTime(200),
+                map((e: any) => e.target.value),
+                distinctUntilChanged(),
+                tap((c: string) => {
+                    this.deviceFilter = c;
+                    this.updateDeviceStates();
+                })
+            )
+            .subscribe());
         return;
     }
 
@@ -58,10 +71,10 @@ export class DeviceControlWidget implements OnDestroy, OnInit {
 
         if (op.toggle) {
             //update the managed object to set the flag to the opposite of what it is currently
-            console.log("INCOMING", mo);
+            //console.log("INCOMING", mo);
             let flag: boolean = false;
             if (_.has(mo, op.source)) {
-                console.log("FLAG", !mo[op.source]);
+                //console.log("FLAG", !mo[op.source]);
                 flag = !mo[op.source];
             }
 
@@ -82,19 +95,19 @@ export class DeviceControlWidget implements OnDestroy, OnInit {
 
         } else {
             try {
-                console.log(op.payload);
+                //console.log(op.payload);
                 let payload = JSON.parse(op.payload);
-                console.log(payload);
+                //console.log(payload);
 
                 let operation: IOperation = {
                     deviceId: mo.id,
                     id: op.operation,
                 };
                 operation[op.operation] = payload;
-                console.log("operation", operation);
+                //console.log("operation", operation);
 
                 let { data, res } = await this.operations.create(operation);
-                console.log("operation res", res);
+                //console.log("operation res", res);
 
                 if (res.status >= 200 && res.status < 300) {
 
@@ -112,10 +125,10 @@ export class DeviceControlWidget implements OnDestroy, OnInit {
                 } else {
                     this.alertService.danger(`operation ${op.name} for ${mo.name} failed, reason: ${res}`);
                 }
-                console.log("RESP", data);
+                //console.log("RESP", data);
 
             } catch (e) {
-                console.log("ERROR", e);
+                //console.log("ERROR", e);
                 this.alertService.danger(`operation ${op.name} for ${mo.name} failed, reason: ${e}`);
             }
         }
@@ -129,9 +142,40 @@ export class DeviceControlWidget implements OnDestroy, OnInit {
     async updateDeviceStates(): Promise<void> {
         //here we just update the objects to refect their current state. 
         let ids: string[] = this.widgetHelper.getWidgetConfig().assets.map(mo => mo.id);
-        let newAssets = await this.widgetHelper.getDevices(this.inventoryService, ids);
-        this.widgetHelper.getWidgetConfig().assets = newAssets.sort((a, b) => a.name.localeCompare(b.name));
+        this.widgetHelper.getWidgetConfig().assets = await this.widgetHelper.getDevices(this.inventoryService, ids);
+
+        console.log("UPDATE", this.widgetHelper.getWidgetConfig().assets, this.atRisk, this.deviceFilter);
+        //filter names and at risk
+        this.widgetHelper.getWidgetConfig().filteredAssets = this.widgetHelper.getWidgetConfig().assets.filter(mo => {
+            console.log("MO", mo);
+            if (this.deviceFilter === '') {
+                console.log("FILTER EMPTY - RISK", mo, this.deviceAtRisk(mo));
+                return !this.atRisk || this.deviceAtRisk(mo);
+            }
+            console.log("NAME", mo.name.toLowerCase(), "FILTER", this.deviceFilter.toLowerCase(), "RISK", this.deviceAtRisk(mo));
+            let filterByName = mo.name.toLowerCase().includes(this.deviceFilter.toLowerCase());
+            return filterByName || (this.atRisk && this.deviceAtRisk(mo));
+        });
+        console.log("FILTERED UPDATE", this.widgetHelper.getWidgetConfig().filteredAssets);
+
+        this.widgetHelper.getWidgetConfig().filteredAssets = this.widgetHelper.getWidgetConfig().filteredAssets.sort((a, b) => a.name.localeCompare(b.name));
         return;
+    }
+
+    deviceAtRisk(mo: IManagedObject): boolean {
+        let r = false; //default - no filter
+        if (_.has(mo, "c8y_Availability")) {
+            console.log("AVAILABILITY", mo["c8y_Availability"].status);
+            let s = mo["c8y_Availability"].status;
+            r = true;
+            if (s === "AVAILABLE") {
+                r = false;
+                if (_.has(mo, "sag_IsShutDown") && mo["sag_IsShutDown"] == true) {
+                    r = true;
+                }
+            }
+        }
+        return r;
     }
 
 }

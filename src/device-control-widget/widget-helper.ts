@@ -55,17 +55,17 @@ export class WidgetHelper<CONFIGTYPE> {
         // only set if it doesn't exist
         if (!_.has(c, "customwidgetdata")) {
             this.config = new ConfigCreator();
-            console.log("Create new config", this.config);
+            //console.log("Create new config", this.config);
         } else {
             // because this is stored and retrieved from mongo db
             // reset the prototype and leave the data
-            console.log("Exists", c);
+            //console.log("Exists", c);
             this.config = _.get(c, "customwidgetdata");
             if (Object.getPrototypeOf(this.config) !== Object.getPrototypeOf(this.reference)) {
                 Object.setPrototypeOf(this.config, Object.getPrototypeOf(this.reference));
             }
         }
-        console.log("composite", this.config);
+        //console.log("composite", this.config);
     }
 
     /**
@@ -79,12 +79,12 @@ export class WidgetHelper<CONFIGTYPE> {
 
     getDeviceTarget(): string | undefined {
         if (_.has(this.rawConfig, "device")) {
-            console.log("DEVICE");
+            //console.log("DEVICE");
             return this.rawConfig["device"].id;
         } else if (_.has(this.rawConfig, "settings")) {
-            console.log("SETTINGS");
+            //console.log("SETTINGS");
             if (_.has(this.rawConfig["settings"], "context")) {
-                console.log("CONTEXT");
+                //console.log("CONTEXT");
                 return this.rawConfig["settings"]["context"].id;
             }
         }
@@ -129,12 +129,12 @@ export class WidgetHelper<CONFIGTYPE> {
         if (res.status === 200) {
             mos.push(...data);
         }
-        console.log("DEVICES AND GROUPS", mos);
+        //console.log("DEVICES AND GROUPS", mos);
         return mos;
     }
 
     async getDeviceGroups(inventoryService: InventoryService): Promise<IManagedObject[]> {
-        console.log("GetGroups");
+        //console.log("GetGroups");
 
         let mos: IManagedObject[] = [];
 
@@ -161,7 +161,7 @@ export class WidgetHelper<CONFIGTYPE> {
     }
 
     async getDevices(inventoryService: InventoryService, ids: string[]): Promise<IManagedObject[]> {
-        console.log("GetDevices");
+        //console.log("GetDevices");
         let retrieved: IManagedObject[] = [];
         for (const id of ids) {
             let { data, res } = await inventoryService.detail(id);
@@ -169,12 +169,12 @@ export class WidgetHelper<CONFIGTYPE> {
                 retrieved.push(data);
             }
         }
-        console.log(retrieved);
+        //console.log(retrieved);
         return retrieved;
     }
 
     async getDevicesForGroup(inventoryService: InventoryService, mo: IManagedObject): Promise<IManagedObject[]> {
-        console.log("GetDevicesForGroup");
+        //console.log("GetDevicesForGroup");
         let mos: IManagedObject[] = [];
         for (let g = 0; g < mo.childAssets.references.length; g++) {
             const device = mo.childAssets.references[g];

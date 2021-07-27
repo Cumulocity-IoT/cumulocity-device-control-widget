@@ -32,6 +32,7 @@ export class WidgetConfig {
     group: Map<string, string>;
     selectedDevices: IManagedObject[]; //can include groups
     assets: IManagedObject[]; //should be just devices
+    filteredAssets: IManagedObject[]; //should be just devices
     selectedOperations: DeviceOperation[];
     selectedToggles: DeviceOperation[];
     deviceSettings: Map<string, string>;
@@ -49,6 +50,7 @@ export class WidgetConfig {
         this.group = new Map();
         this.selectedDevices = [];
         this.assets = [];
+        this.filteredAssets = [];
         this.selectedOperations = [];
         this.selectedToggles = [];
         this.deviceSettings = new Map();

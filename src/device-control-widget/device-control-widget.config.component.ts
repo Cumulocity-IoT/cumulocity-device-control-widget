@@ -61,9 +61,9 @@ export class DeviceControlWidgetConfig implements OnInit, OnDestroy {
         this.widgetHelper = new WidgetHelper(this.config, WidgetConfig); //default access through here
         this.rawDevices = from(this.widgetHelper.getDevicesAndGroups(this.inventoryService));
         if (this.widgetHelper.getDeviceTarget()) {
-            console.log("Device Target=", this.widgetHelper.getDeviceTarget());
+            //console.log("Device Target=", this.widgetHelper.getDeviceTarget());
             let { data, res } = await this.inventoryService.detail(this.widgetHelper.getDeviceTarget());
-            console.log(data, res);
+            //console.log(data, res);
             if (res.status == 200) {
                 this.widgetHelper.getWidgetConfig().selectedDevices = [...new Set([...this.widgetHelper.getWidgetConfig().selectedDevices, data])];
             }
@@ -144,10 +144,10 @@ export class DeviceControlWidgetConfig implements OnInit, OnDestroy {
     }
 
     onConfigChanged(): void {
-        console.log("CONFIG-CHANGED");
+        //console.log("CONFIG-CHANGED");
         this.populateOperations();
         this.widgetHelper.setWidgetConfig(this.config); //propgate changes 
-        console.log(this.widgetHelper.getWidgetConfig());
+        //console.log(this.widgetHelper.getWidgetConfig());
     }
 
     addToggle() {
