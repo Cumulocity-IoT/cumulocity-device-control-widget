@@ -9,6 +9,7 @@
 -   the user can select groups and individual devices.
 -   the user can use images (including vector graphics) to represent the devices.
 -   select operations and define tooltips, and payload for each.
+-   filter and display "at risk" devices
 -   Toggling of flags on the managed object supported.
     -   > N.B. referred to as "toggles" below.
 -   Supports group template dashboard
@@ -59,6 +60,8 @@ The widget configuration page contains a number of configuration attributes.
 
 -   **Show operations** : Check this option to display the buttons to allow operations and toggles to be invoked.
 
+-   **Show at risk only** : Check this option to default the widget to display only those devices that are offline, in maintenance or have alarms.
+
 ![addwidget](images/operations.gif)
 
 **Select operations or add toggles**
@@ -105,6 +108,24 @@ for example the Laboratory group in my examples above:
 Now each page can have a widget that displays the device linked to the route selected.
 
 ![addwidget](images/grouptemplate.gif)
+
+Additionally you can set up a link from the individual devices on the widget to the individuals group page:
+
+![addwidget](images/grouplinks.gif)
+
+## Widget display
+
+Once configured the widget displays the selected devices, or all devices in a selected group. You can configure the widget to only display "at risk" devices by default also.
+
+Additionally by checking/unchecking the "Only ay risk" option you can change what is seen.
+
+Lastly there is a search facility allowing you to select a subset of devices based off their name.
+
+![filters](images/filter.gif)
+
+as shown above in the configuration, if the group dashboard link is set then clicking on the icon will take you to that devices page in the group template dashboard.
+
+The devices will update every 30 seconds with the latest state.
 
 ---
 
