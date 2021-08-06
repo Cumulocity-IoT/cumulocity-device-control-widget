@@ -4,11 +4,12 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start-sm": "c8ycli server -u https://smartenergy.eu-latest.cumulocity.com/",
-        "start-is": "c8ycli server -u https://industrysolutions.cumulocity.com/",
+        "start": "c8ycli server",
+        "start-se": "c8ycli server -u https://smartenergy.eu-latest.cumulocity.com/",
         "build": "c8ycli build",
         "deploy": "c8ycli deploy",
-        "buildRuntime": "gulp"
+        "buildRuntime": "gulp",
+        "dev-install": "npm install --force --development"
     },
     "keywords": [],
     "author": "",
