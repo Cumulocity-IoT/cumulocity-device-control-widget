@@ -2,7 +2,6 @@
 
 .device-control-widget-container {
     display: grid;
-    justify-content: center;
     width: 90%;
 }
 
@@ -38,6 +37,10 @@ img.small-icon.withhover:hover {
     padding: 0.5em;
     text-align: center;
     align-items: center;
+}
+
+.padinline {
+    padding: 0.5em;
 }
 
 .button-row {
