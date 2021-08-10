@@ -11,7 +11,7 @@
         <div class="col-lg-6 ">
             <label class="c8y-switch" translate>
                 <input type="checkbox" name="showrisk"
-                       [checked]="widgetHelper.getWidgetConfig().atRisk"
+                       [(ngModel)]="widgetHelper.getWidgetConfig().atRisk"
                        (change)="updateDeviceStates()">
                 <span></span>at Risk Only
             </label>

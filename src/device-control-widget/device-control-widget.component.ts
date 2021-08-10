@@ -25,7 +25,7 @@ import { WidgetHelper } from "./widget-helper";
 import { WidgetConfig, DeviceOperation } from "./widget-config";
 import * as _ from 'lodash';
 import { Observable, Subscription, interval, Subject, fromEvent } from 'rxjs';
-import { debounceTime, distinctUntilChanged, map, switchMap, tap } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, map, tap } from 'rxjs/operators';
 import { AlertService } from '@c8y/ngx-components';
 
 @Component({
