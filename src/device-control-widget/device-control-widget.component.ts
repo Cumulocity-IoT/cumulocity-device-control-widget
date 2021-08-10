@@ -150,7 +150,7 @@ export class DeviceControlWidget implements OnDestroy, OnInit {
             this.widgetHelper.getWidgetConfig().assets = await this.widgetHelper.getDevices(this.inventoryService, ids);
         }
 
-        //console.log("UPDATE", this.widgetHelper.getWidgetConfig().assets, this.widgetHelper.getWidgetConfig().atRisk, this.widgetHelper.getWidgetConfig().deviceFilter);
+        console.log("UPDATE", this.widgetHelper.getWidgetConfig().assets, this.widgetHelper.getWidgetConfig().atRisk, this.widgetHelper.getWidgetConfig().deviceFilter);
 
 
         //filter at risk

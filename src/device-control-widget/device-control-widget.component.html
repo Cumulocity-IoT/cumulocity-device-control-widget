@@ -1,14 +1,21 @@
 <div class="device-control-widget-container">
 
 
-    <div class="form-row align-items-center">
-        <label class="form-label-sm padinline" for="assetfilter">filter </label>
-        <input class="form-control-sm padinline" #assetfilter />
-        <label class="form-label-sm padinline" for="showrisk" translate>
-            at risk Only
-        </label>
-        <input class="padinline" type="checkbox" name="showrisk"
-               [(ngModel)]="widgetHelper.getWidgetConfig().atRisk" (change)="updateDeviceStates()" />
+    <div class="row">
+        <div class="col-lg-6">
+            <label class="padinline" for="assetfilter">filter
+                <input class="padinline" #assetfilter />
+            </label>
+        </div>
+
+        <div class="col-lg-6 ">
+            <label class="c8y-switch" translate>
+                <input type="checkbox" name="showrisk"
+                       [checked]="widgetHelper.getWidgetConfig().atRisk"
+                       (change)="updateDeviceStates()">
+                <span></span>at Risk Only
+            </label>
+        </div>
     </div>
 
 
