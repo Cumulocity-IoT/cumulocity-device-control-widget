@@ -1,9 +1,8 @@
 /** @format */
 
 .device-control-widget-container {
-    display: grid;
-    width: 90%;
-    margin: 1em;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 .small-icon {
@@ -21,7 +20,7 @@ img.small-icon.withhover:hover {
     flex-wrap: wrap;
     gap: 1em;
     text-align-last: justify;
-    justify-content: left;
+    justify-content: center;
 }
 .grid-item {
     display: flex;
@@ -42,6 +41,7 @@ img.small-icon.withhover:hover {
 
 .padinline {
     padding: 0.5em;
+    vertical-align: bottom;
 }
 
 .button-row {
@@ -113,4 +113,14 @@ img.withhover:hover {
     display: flex;
     flex-flow: column;
     padding: 0.5em;
+}
+
+.mdlstyled-input {
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    width: 85%;
+}
+
+.mdlstyled-input:focus {
+    outline: none;
 }

@@ -2,20 +2,20 @@
 
 
     <div class="row">
-        <div class="col-lg-6">
-            <label class="padinline" for="assetfilter">filter
-                <input class="padinline" #assetfilter />
-            </label>
-        </div>
-
-        <div class="col-lg-6 ">
+        <div class="col-lg-3 col-xs-12">
             <label class="c8y-switch" translate>
                 <input type="checkbox" name="showrisk"
                        [(ngModel)]="widgetHelper.getWidgetConfig().atRisk"
                        (change)="updateDeviceStates()">
-                <span></span>at Risk Only
+                <span></span> at Risk Only
             </label>
         </div>
+        <div class="col-lg-9 col-xs-12">
+            <label for="assetfilter">Filter</label>
+            <input class="mdlstyled-input" #assetfilter
+                   placeholder="filter by name, external id, status..." />
+        </div>
+
     </div>
 
 
