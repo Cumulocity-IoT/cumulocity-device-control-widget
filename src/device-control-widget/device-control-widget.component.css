@@ -22,6 +22,7 @@ img.small-icon.withhover:hover {
     text-align-last: justify;
     justify-content: center;
 }
+
 .grid-item {
     display: flex;
     flex-flow: column;

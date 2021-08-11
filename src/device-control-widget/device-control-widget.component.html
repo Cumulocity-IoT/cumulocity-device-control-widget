@@ -2,18 +2,34 @@
 
 
     <div class="row">
-        <div class="col-lg-3 col-xs-12">
+        <div class="col-lg-3 col-xs-12 ">
             <label class="c8y-switch" translate>
                 <input type="checkbox" name="showrisk"
                        [(ngModel)]="widgetHelper.getWidgetConfig().atRisk"
                        (change)="updateDeviceStates()">
-                <span></span> at Risk Only
+                <span></span> only show devices at risk
             </label>
         </div>
-        <div class="col-lg-9 col-xs-12">
-            <label for="assetfilter">Filter</label>
-            <input class="mdlstyled-input" #assetfilter
-                   placeholder="filter by name, external id, status..." />
+        <div class="col-lg-9 col-xs-12 input-group input-group-search">
+            <input
+                   type="search"
+                   class="form-control"
+                   placeholder="filter by name, external id, status..."
+                   #assetfilter />
+            <span class="input-group-addon">
+                <i c8yIcon="search"
+                   *ngIf="!this.widgetHelper.getWidgetConfig().deviceFilter || this.widgetHelper.getWidgetConfig().deviceFilter.length === 0"></i>
+                <i
+                   c8yIcon="times"
+                   class="text-muted"
+                   *ngIf="this.widgetHelper.getWidgetConfig().deviceFilter && this.widgetHelper.getWidgetConfig().deviceFilter.length > 0"
+                   (click)="this.widgetHelper.getWidgetConfig().deviceFilter = ''"></i>
+            </span>
+
+            <!-- <label for="assetfilter">Filter</label>
+            <input class="mdlstyled-input" #assetfilter                    
+            placeholder="filter by name, external id, status..." /> -->
+
         </div>
 
     </div>
