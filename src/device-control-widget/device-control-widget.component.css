@@ -59,7 +59,6 @@ img.small-icon.withhover:hover {
 **/
 
 .configSection {
-    display: grid;
     border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 4px;
     margin: 0.25em;

@@ -121,9 +121,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="configSection">
-        <h4 translate>Select operations or add toggles.</h4>
 
         <div class="col-lg-2">
             <label class="label-with-help">
@@ -135,7 +132,7 @@
                     style="color:#1776BF;"
                     type="button" class="button"
                     (click)="addToggle()">
-                <span class="fa fa-plus fa-lg"></span>
+                <span class="fa fa-plus"></span>
             </button>
         </div>
 
@@ -161,86 +158,92 @@
             </div>
         </div>
 
-        <div class="row form-group">
-            <div class="op-container">
-                <div class="op-item"
-                     *ngFor="let op of widgetHelper.getWidgetConfig().getOperationsList(); let i = index;">
-
-
-                    <div *ngIf="op.toggle; else normalOp">
-                        <label>
-                            Display Name
-                        </label>
-
-                        <input class="form-control" type="text" [ngModelOptions]="{ standalone: true }"
-                               [(ngModel)]="op.name"
-                               [value]="op.name"
-                               (change)="onConfigChanged()" />
-                        <label>
-                            Managed Object node
-                        </label>
-                        <input class="form-control" type="text" [ngModelOptions]="{ standalone: true }"
-                               [(ngModel)]="op.source"
-                               [value]="op.source"
-                               (change)="onConfigChanged()" />
-                        <button
-                                style="color:#1776BF;"
-                                type="button" class="button"
-                                (click)="removeToggle(i)">
-                            <span class="fa fa-minus fa-lg"></span>Delete
-                        </button>
-                    </div>
-
-                    <ng-template #normalOp>
-                        <label>
-                            Tooltip text
-                        </label>
-
-                        <input class="form-control" type="text" [ngModelOptions]="{ standalone: true }"
-                               [(ngModel)]="op.name"
-                               [value]="op.name"
-                               (change)="onConfigChanged()" />
-                        <label>
-                            Button Icon
-                        </label>
-
-                        <ng-select
-                                   [items]="icons"
-                                   bindLabel="name"
-                                   [closeOnSelect]="true"
-                                   [multiple]="false"
-                                   [(ngModel)]="op.icon"
-                                   placeholder="select icon for operation"
-                                   (change)="onConfigChanged()">
-                            <ng-template class="fa mb-1 fa-lg" ng-label-tmp let-item="item" let-index="index">
-                                <span [ngClass]="'fa '+ item.key + ' fa-lg'" aria-hidden="true"></span>
-                                {{item.name}}
-                            </ng-template>
-                            <ng-template class="fa mb-1 fa-lg" ng-option-tmp let-item="item" let-index="index">
-                                <span [ngClass]="'fa ' + item.key + ' fa-lg'" aria-hidden="true"></span>
-                                {{item.name}}
-                            </ng-template>
-                        </ng-select>
-                        <label>
-                            payload json
-                        </label>
-                        <input class="form-control" type="text" [ngModelOptions]="{ standalone: true }"
-                               [(ngModel)]="op.payload"
-                               [value]="op.payload"
-                               (change)="onConfigChanged()" />
-                    </ng-template>
-                </div>
-            </div>
-
-        </div>
-
     </div>
-    <div class="configSection">
-        <h4 translate>Preview</h4>
 
-        <div class="row form-group">
-            <div class="grid-container">
-                <div class=" grid-item" *ngFor="let mo of assets | async">
+
+    <div class="bg-gray-lighter card-group flex-wrap flex-grow j-c-evenly">
+        <div class="col card m-8"
+             *ngFor="let op of widgetHelper.getWidgetConfig().getOperationsList(); let i = index;">
+
+            <div class="card-block">
+
+                <div *ngIf="op.toggle; else normalOp">
+                    <h4>Toggle</h4>
+                    <label>
+                        Display Name
+                    </label>
+
+                    <input class="form-control" type="text" [ngModelOptions]="{ standalone: true }"
+                           [(ngModel)]="op.name"
+                           [value]="op.name"
+                           (change)="onConfigChanged()" />
+                    <label>
+                        Managed Object node
+                    </label>
+                    <input class="form-control" type="text" [ngModelOptions]="{ standalone: true }"
+                           [(ngModel)]="op.source"
+                           [value]="op.source"
+                           (change)="onConfigChanged()" />
+                    <button
+                            style="color:#1776BF;"
+                            type="button" class="button"
+                            (click)="removeToggle(i)">
+                        <span class="fa fa-minus fa-lg"></span>Delete
+                    </button>
+                </div>
+
+                <ng-template #normalOp>
+                    <h4>Operation</h4>
+                    <label>
+                        Tooltip text
+                    </label>
+
+                    <input class="form-control" type="text" [ngModelOptions]="{ standalone: true }"
+                           [(ngModel)]="op.name"
+                           [value]="op.name"
+                           (change)="onConfigChanged()" />
+                    <label>
+                        Button Icon
+                    </label>
+
+                    <ng-select
+                               [items]="icons"
+                               bindLabel="name"
+                               [closeOnSelect]="true"
+                               [multiple]="false"
+                               [(ngModel)]="op.icon"
+                               placeholder="select icon for operation"
+                               (change)="onConfigChanged()">
+                        <ng-template class="fa mb-1 fa-lg" ng-label-tmp let-item="item" let-index="index">
+                            <span [ngClass]="'fa '+ item.key + ' fa-lg'" aria-hidden="true"></span>
+                            {{item.name}}
+                        </ng-template>
+                        <ng-template class="fa mb-1 fa-lg" ng-option-tmp let-item="item" let-index="index">
+                            <span [ngClass]="'fa ' + item.key + ' fa-lg'" aria-hidden="true"></span>
+                            {{item.name}}
+                        </ng-template>
+                    </ng-select>
+                    <label>
+                        payload json
+                    </label>
+                    <input class="form-control" type="text" [ngModelOptions]="{ standalone: true }"
+                           [(ngModel)]="op.payload"
+                           [value]="op.payload"
+                           (change)="onConfigChanged()" />
+                </ng-template>
+            </div>
+        </div>
+    </div>
+
+    <h4 style="align-content: center; width: 100%;">Preview</h4>
+    <div class="card-group bg-gray-lighter flex-wrap flex-grow j-c-evenly">
+        <!-- Device list -->
+        <div class="col card m-8" style="margin-bottom: 8px;"
+             *ngFor="let mo of widgetHelper.getWidgetConfig().filteredAssets; let i = index">
+
+            <ng-container *ngIf="i < 3">
+                <!-- HEADER -->
+                <div class="card-header separator">
                     <a *ngIf="widgetHelper.getWidgetConfig().dashboardUrl(mo) else justimage"
                        href="{{widgetHelper.getWidgetConfig().dashboardUrl(mo)}}">
                         <img
@@ -255,9 +258,12 @@
                              alt="Device"
                              title="{{mo.name}}">
                     </ng-template>
-                    <span class=" grid-element">
+                    <span class=" grid-element card-title">
                         {{mo.name}}
                     </span>
+                </div>
+                <!-- BODY -->
+                <div class="card-block">
                     <ng-container *ngIf="widgetHelper.getWidgetConfig().showAvailability">
                         <!--widgetHelper.getWidgetConfig().operationIcon('heartbeat')-->
                         <span
@@ -272,10 +278,11 @@
                         </span>
                     </ng-container>
                     <ng-container *ngIf="widgetHelper.getWidgetConfig().showOperations">
-                        <div class="toggle-column">
+                        <div class="button-col">
                             <div *ngFor="let op of widgetHelper.getWidgetConfig().selectedToggles">
                                 <label class="c8y-switch">
-                                    <input type="checkbox" [checked]="mo[op.source]">
+                                    <input type="checkbox"
+                                           [checked]="mo[op.source]">
                                     <span></span>{{op.name}}
                                 </label>
                             </div>
@@ -293,7 +300,8 @@
                         </div>
                     </ng-container>
                 </div>
-            </div>
+            </ng-container>
         </div>
-    </div>
+
+    </div> <!-- row -->
 </div>
