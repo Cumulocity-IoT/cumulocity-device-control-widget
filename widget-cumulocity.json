@@ -5,7 +5,7 @@
     "contentSecurityPolicy": "default-src 'self'",
     "description": "widget to show devices status and allow operations to be performed.",
     "icon": {
-        "class": "fa fw fa-database"
+        "class": "fa fw fa-cogs"
     },
     "manifest": {
         "noAppSwitcher": true
