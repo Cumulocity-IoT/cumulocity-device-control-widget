@@ -47,7 +47,7 @@ export class DeviceControlWidget implements OnDestroy, OnInit {
 
 
     constructor(private operations: OperationService, private inventoryService: InventoryService, private alertService: AlertService) {
-        
+
     }
 
     async ngOnInit(): Promise<void> {
@@ -64,6 +64,7 @@ export class DeviceControlWidget implements OnDestroy, OnInit {
                 distinctUntilChanged(),
                 tap((c: string) => {
                     this.widgetHelper.getWidgetConfig().deviceFilter = c;
+                    //console.log("search", this.widgetHelper.getWidgetConfig().deviceFilter);
                     this.updateDeviceStates();
                 })
             )
@@ -167,7 +168,11 @@ export class DeviceControlWidget implements OnDestroy, OnInit {
             if (this.widgetHelper.getWidgetConfig().deviceFilter === undefined || this.widgetHelper.getWidgetConfig().deviceFilter === '') {
                 return true;
             }
-            return mo.name.toLowerCase().includes(this.widgetHelper.getWidgetConfig().deviceFilter.toLowerCase());
+
+            let ExternalIdMatch = _.has(mo, "externalId") && mo.externalId.toLowerCase().indexOf(this.widgetHelper.getWidgetConfig().deviceFilter.toLowerCase()) !== -1;
+            let statusMatch = _.has(mo, "c8y_Availability") && _.has(mo["c8y_Availability"], "status") && mo["c8y_Availability"]["status"].toLowerCase().indexOf(this.widgetHelper.getWidgetConfig().deviceFilter.toLowerCase()) !== -1;
+
+            return ExternalIdMatch || statusMatch || mo.name.toLowerCase().includes(this.widgetHelper.getWidgetConfig().deviceFilter.toLowerCase());
         });
 
         this.widgetHelper.getWidgetConfig().filteredAssets = this.widgetHelper.getWidgetConfig().filteredAssets.sort((a, b) => a.name.localeCompare(b.name));
