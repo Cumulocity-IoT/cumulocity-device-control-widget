@@ -2,7 +2,7 @@
 
     <div class="col-xs-12">
 
-        <div *ngIf="widgetHelper.getWidgetConfig().showFilters">
+        <div [hidden]="!widgetHelper.getWidgetConfig().showFilters">
             <!-- Filter row-->
             <label class="c8y-switch" translate>
                 <input type="checkbox" name="showrisk"

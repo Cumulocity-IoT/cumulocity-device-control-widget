@@ -47,6 +47,7 @@ export class DeviceControlWidget implements OnDestroy, OnInit {
 
 
     constructor(private operations: OperationService, private inventoryService: InventoryService, private alertService: AlertService) {
+        
     }
 
     async ngOnInit(): Promise<void> {
