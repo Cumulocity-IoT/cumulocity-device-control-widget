@@ -96,9 +96,7 @@ export class DeviceControlWidgetConfig implements OnInit, OnDestroy {
     async populateOperations(): Promise<void> {
         let r: string[] = [];
 
-        //create a 'toggle' operation
         this.widgetHelper.getWidgetConfig().assets = [];
-
         for (let index = 0; index < this.widgetHelper.getWidgetConfig().selectedDevices.length; index++) {
 
             const m = this.widgetHelper.getWidgetConfig().selectedDevices[index];
@@ -109,6 +107,7 @@ export class DeviceControlWidgetConfig implements OnInit, OnDestroy {
                 for (const child of children) {
                     this.widgetHelper.getWidgetConfig().addToGroup(m.name, child);
                     this.widgetHelper.getWidgetConfig().assets.push(child);
+                    console.log("adding", child.name );
                     if (_.has(child, "c8y_SupportedOperations")) {
                         r.push(...child.c8y_SupportedOperations);
                     }
@@ -125,6 +124,8 @@ export class DeviceControlWidgetConfig implements OnInit, OnDestroy {
         }
         //unique 
         r = [...new Set(r)];
+        this.widgetHelper.getWidgetConfig().assets = [...new Set(this.widgetHelper.getWidgetConfig().assets)];
+        console.log("after", this.widgetHelper.getWidgetConfig().assets);
 
         //map to objects
         let ops = r.map(o => {

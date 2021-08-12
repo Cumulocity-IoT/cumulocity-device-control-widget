@@ -35,7 +35,8 @@
                  *ngFor="let mo of widgetHelper.getWidgetConfig().filteredAssets">
 
                 <!-- HEADER -->
-                <div class="card-header separator">
+                <!-- <div class="card-header separator"> -->
+                <div class="card-block">
                     <a *ngIf="widgetHelper.getWidgetConfig().dashboardUrl(mo) else justimage"
                        href="{{widgetHelper.getWidgetConfig().dashboardUrl(mo)}}">
                         <img
@@ -53,9 +54,7 @@
                     <span class=" grid-element card-title">
                         {{mo.name}}
                     </span>
-                </div>
                 <!-- BODY -->
-                <div class="card-block">
                     <ng-container *ngIf="widgetHelper.getWidgetConfig().showAvailability">
                         <!--widgetHelper.getWidgetConfig().operationIcon('heartbeat')-->
                         <span
