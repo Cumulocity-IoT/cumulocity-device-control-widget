@@ -51,7 +51,7 @@ export class DeviceControlWidget implements OnDestroy, OnInit {
 
     async ngOnInit(): Promise<void> {
         this.widgetHelper = new WidgetHelper(this.config, WidgetConfig); //default access through here
-        this.updateDeviceStates(); //all devices
+        await this.updateDeviceStates(true); //all devices
         this.timerObs = interval(60000);
         this.subs.push(this.timerObs.subscribe(t => {
             this.updateDeviceStates(true);

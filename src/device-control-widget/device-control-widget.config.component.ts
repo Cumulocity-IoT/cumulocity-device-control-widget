@@ -22,6 +22,7 @@ import { OperationService, IManagedObject, InventoryService } from '@c8y/client'
 import * as _ from "lodash";
 import { BehaviorSubject, from, Observable } from 'rxjs';
 import { falist } from './font-awesome4-list';
+import { AlertService } from '@c8y/ngx-components';
 
 //shared css with main widget
 @Component({
@@ -45,7 +46,7 @@ export class DeviceControlWidgetConfig implements OnInit, OnDestroy {
     widgetHelper: WidgetHelper<WidgetConfig>;
     icons: ({ key: string; name: string; code: string; filter: string[]; } | { key: string; name: string; code: string; filter?: undefined; })[];
 
-    constructor(public operations: OperationService, public inventoryService: InventoryService) {
+    constructor(public operations: OperationService, public inventoryService: InventoryService, public alertService: AlertService) {
         //make availiable for choosing
         this.icons = [...falist.icons];
         this.rawOperations = new BehaviorSubject<DeviceOperation[]>([]);
@@ -60,14 +61,18 @@ export class DeviceControlWidgetConfig implements OnInit, OnDestroy {
     async ngOnInit(): Promise<void> {
         this.widgetHelper = new WidgetHelper(this.config, WidgetConfig); //default access through here
         this.rawDevices = from(this.widgetHelper.getDevicesAndGroups(this.inventoryService));
-        if (this.widgetHelper.getDeviceTarget()) {
+        console.log("OVERRIDE", this.widgetHelper.getWidgetConfig().overrideDashboardDevice, "DEVICE TARGET", this.widgetHelper.getDeviceTarget());
+        if (!this.widgetHelper.getWidgetConfig().overrideDashboardDevice && this.widgetHelper.getDeviceTarget()) {
             //console.log("Device Target=", this.widgetHelper.getDeviceTarget());
             let { data, res } = await this.inventoryService.detail(this.widgetHelper.getDeviceTarget());
             //console.log(data, res);
-            if (res.status == 200) {
-                this.widgetHelper.getWidgetConfig().selectedDevices = [...new Set([...this.widgetHelper.getWidgetConfig().selectedDevices, data])];
+            if (res.status >= 200 && res.status < 300) {
+                this.widgetHelper.getWidgetConfig().selectedDevices = [data];
+            } else {
+                this.alertService.danger(`There was an issue getting device details, please refresh the page.`);
+                return;
             }
-        }
+        }//else use un altered list from the user set in config
 
         //set the selected in the case of a deviceTarget
         this.onConfigChanged();

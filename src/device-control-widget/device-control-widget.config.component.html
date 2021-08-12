@@ -62,6 +62,19 @@
                 </div>
             </div>
         </div>
+        <!-- this.widgetHelper.getWidgetConfig().overrideDashboardDevice -->
+        <div class="row form-group" *ngIf="this.widgetHelper.getDeviceTarget()">
+            <div class="form-check-inline col-lg-2">
+                <label class="label-with-help" class="form-check-label" for="overrideDevice" translate>
+                    <input class="form-check-input" type="checkbox" name="overrideDevice"
+                           [(ngModel)]="this.widgetHelper.getWidgetConfig().overrideDashboardDevice"
+                           (ngModelChange)="onConfigChanged()" /> Override dashboard device<span class="help-icon">
+                        <img src="{{CONST_HELP_IMAGE_FILE}}" alt="help tooltip"
+                             title="On a template dashboard allow user to select the device(s).">
+                    </span>
+                </label>
+            </div>
+        </div>
         <div class="row form-group">
             <div class="form-check-inline col-lg-2">
                 <label class="label-with-help" class="form-check-label" for="showav" translate>

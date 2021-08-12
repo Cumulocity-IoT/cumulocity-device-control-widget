@@ -44,6 +44,7 @@ export class WidgetConfig {
     showOperations: boolean;
     atRisk: boolean = false;
     showFilters: boolean = false;
+    overrideDashboardDevice: boolean = false;
     deviceFilter: string = '';
 
     /**
