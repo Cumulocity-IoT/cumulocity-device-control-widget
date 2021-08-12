@@ -93,6 +93,18 @@
                     </span>
                 </label>
             </div>
+
+            <div class="form-check-inline col-lg-2">
+                <label class="label-with-help" class="form-check-label" for="showfilters" translate>
+                    <input class="form-check-input" type="checkbox" name="showfilters"
+                           [(ngModel)]="widgetHelper.getWidgetConfig().showFilters"
+                           (ngModelChange)="onConfigChanged()" /> Show filters<span class="help-icon">
+                        <img src="{{CONST_HELP_IMAGE_FILE}}" alt="help tooltip"
+                             title="Should the search and at risk filters be shown.">
+                    </span>
+                </label>
+            </div>
+
             <div class="form-check-inline col-lg-2">
                 <label class="label-with-help" class="form-check-label" for="showatRisk" translate>
                     <input class="form-check-input" type="checkbox" name="showatRisk"

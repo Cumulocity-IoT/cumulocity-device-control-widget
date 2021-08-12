@@ -43,6 +43,7 @@ export class WidgetConfig {
     showAlarms: boolean;
     showOperations: boolean;
     atRisk: boolean = false;
+    showFilters: boolean = false;
     deviceFilter: string = '';
 
     /**

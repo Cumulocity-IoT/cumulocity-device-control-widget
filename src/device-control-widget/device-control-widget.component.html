@@ -2,29 +2,36 @@
 
     <div class="col">
 
-        <div>
+        <div *ngIf="widgetHelper.getWidgetConfig().showFilters">
             <!-- Filter row-->
-            <label class="c8y-switch" translate>
-                <input type="checkbox" name="showrisk"
-                       [(ngModel)]="widgetHelper.getWidgetConfig().atRisk"
-                       (change)="updateDeviceStates()">
-                <span></span> only show devices at risk
-            </label>
-            <div class="input-group input-group-search">
-                <input
-                       type="search"
-                       class="form-control"
-                       placeholder="filter by name, external id, status..."
-                       #assetfilter />
-                <span class="input-group-addon">
-                    <i c8yIcon="search"
-                       *ngIf="!this.widgetHelper.getWidgetConfig().deviceFilter || this.widgetHelper.getWidgetConfig().deviceFilter.length === 0"></i>
-                    <i
-                       c8yIcon="times"
-                       class="text-muted"
-                       *ngIf="this.widgetHelper.getWidgetConfig().deviceFilter && this.widgetHelper.getWidgetConfig().deviceFilter.length > 0"
-                       (click)="this.widgetHelper.getWidgetConfig().deviceFilter = ''"></i>
-                </span>
+            <div class="row">
+                <div class="col-3">
+                    <label class="c8y-switch" translate>
+                        <input type="checkbox" name="showrisk"
+                               [(ngModel)]="widgetHelper.getWidgetConfig().atRisk"
+                               (change)="updateDeviceStates()">
+                        <span></span> only show devices at risk
+                    </label>
+                </div>
+                <div class="col-9">
+                    <div class="input-group input-group-search">
+                        <input
+                               type="search"
+                               class="form-control"
+                               placeholder="filter by name, external id, status..."
+                               #assetfilter />
+                        <span class="input-group-addon">
+                            <i c8yIcon="search"
+                               *ngIf="!this.widgetHelper.getWidgetConfig().deviceFilter || this.widgetHelper.getWidgetConfig().deviceFilter.length === 0"></i>
+                            <i
+                               c8yIcon="times"
+                               class="text-muted"
+                               *ngIf="this.widgetHelper.getWidgetConfig().deviceFilter && this.widgetHelper.getWidgetConfig().deviceFilter.length > 0"
+                               (click)="this.widgetHelper.getWidgetConfig().deviceFilter = ''"></i>
+                        </span>
+                    </div>
+
+                </div>
             </div>
         </div>
 
@@ -54,7 +61,7 @@
                     <span class=" grid-element card-title">
                         {{mo.name}}
                     </span>
-                <!-- BODY -->
+                    <!-- BODY -->
                     <ng-container *ngIf="widgetHelper.getWidgetConfig().showAvailability">
                         <!--widgetHelper.getWidgetConfig().operationIcon('heartbeat')-->
                         <span
