@@ -61,6 +61,7 @@ export class DeviceControlWidgetConfig implements OnInit, OnDestroy {
     async ngOnInit(): Promise<void> {
         this.widgetHelper = new WidgetHelper(this.config, WidgetConfig); //default access through here
         this.rawDevices = from(this.widgetHelper.getDevicesAndGroups(this.inventoryService));
+        this.widgetHelper.getWidgetConfig().deviceFilter = ""; //clear if you edit
         console.log("OVERRIDE", this.widgetHelper.getWidgetConfig().overrideDashboardDevice, "DEVICE TARGET", this.widgetHelper.getDeviceTarget());
         if (!this.widgetHelper.getWidgetConfig().overrideDashboardDevice && this.widgetHelper.getDeviceTarget()) {
             //console.log("Device Target=", this.widgetHelper.getDeviceTarget());

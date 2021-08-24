@@ -24,9 +24,10 @@ import { OperationService, OperationStatus, IOperation, IManagedObject, Inventor
 import { WidgetHelper } from "./widget-helper";
 import { WidgetConfig, DeviceOperation } from "./widget-config";
 import * as _ from 'lodash';
-import { Observable, Subscription, interval, Subject, fromEvent } from 'rxjs';
+import { Observable, Subscription, interval, Subject, fromEvent, BehaviorSubject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map, tap } from 'rxjs/operators';
 import { AlertService } from '@c8y/ngx-components';
+import { Realtime } from '@c8y/ngx-components/api';
 
 @Component({
     selector: "lib-device-control-widget",
@@ -43,10 +44,11 @@ export class DeviceControlWidget implements OnDestroy, OnInit {
     private timerObs: Observable<number>;
     private subs: Subscription[] = [];
     public input$ = new Subject<string | null>();
+    public moSubs$ = new BehaviorSubject<any | null>(null);
 
 
 
-    constructor(private operations: OperationService, private inventoryService: InventoryService, private alertService: AlertService) {
+    constructor(private realtime: Realtime, private operations: OperationService, private inventoryService: InventoryService, private alertService: AlertService) {
 
     }
 
@@ -54,9 +56,7 @@ export class DeviceControlWidget implements OnDestroy, OnInit {
         this.widgetHelper = new WidgetHelper(this.config, WidgetConfig); //default access through here
         await this.updateDeviceStates(true); //all devices
         this.timerObs = interval(60000);
-        this.subs.push(this.timerObs.subscribe(t => {
-            this.updateDeviceStates(true);
-        }));
+
         this.subs.push(fromEvent(this.filterInput.nativeElement, 'keyup')
             .pipe(
                 debounceTime(200),
@@ -68,7 +68,15 @@ export class DeviceControlWidget implements OnDestroy, OnInit {
                     this.updateDeviceStates();
                 })
             )
-            .subscribe());
+            .subscribe()
+        );
+
+        this.subs.push(this.moSubs$.subscribe(data => {
+            if (data) {
+                this.updateDevice(data);
+            }
+        }));
+
         return;
     }
 
@@ -145,9 +153,15 @@ export class DeviceControlWidget implements OnDestroy, OnInit {
         this.subs.forEach(s => s.unsubscribe());
     }
 
+    async updateDevice(mo: any): Promise<void> {
+        console.log("moSubs", mo);
+        return;
+    }
+
     async updateDeviceStates(makeCall: boolean = false): Promise<void> {
         //here we just update the objects to refect their current state. 
         let ids: string[] = this.widgetHelper.getWidgetConfig().assets.map(mo => mo.id);
+
         if (makeCall) {
             this.widgetHelper.getWidgetConfig().assets = await this.widgetHelper.getDevices(this.inventoryService, ids);
         }
@@ -169,10 +183,10 @@ export class DeviceControlWidget implements OnDestroy, OnInit {
                 return true;
             }
 
-            let ExternalIdMatch = _.has(mo, "externalId") && mo.externalId.toLowerCase().indexOf(this.widgetHelper.getWidgetConfig().deviceFilter.toLowerCase()) !== -1;
-            let statusMatch = _.has(mo, "c8y_Availability") && _.has(mo["c8y_Availability"], "status") && mo["c8y_Availability"]["status"].toLowerCase().indexOf(this.widgetHelper.getWidgetConfig().deviceFilter.toLowerCase()) !== -1;
-
-            return ExternalIdMatch || statusMatch || mo.name.toLowerCase().includes(this.widgetHelper.getWidgetConfig().deviceFilter.toLowerCase());
+            // let ExternalIdMatch = _.has(mo, "externalId") && mo.externalId.toLowerCase().indexOf(this.widgetHelper.getWidgetConfig().deviceFilter.toLowerCase()) !== -1;
+            // let statusMatch = _.has(mo, "c8y_Availability") && _.has(mo["c8y_Availability"], "status") && mo["c8y_Availability"]["status"].toLowerCase().indexOf(this.widgetHelper.getWidgetConfig().deviceFilter.toLowerCase()) !== -1;
+            // return ExternalIdMatch || statusMatch || mo.name.toLowerCase().includes(this.widgetHelper.getWidgetConfig().deviceFilter.toLowerCase());
+            return mo.name.toLowerCase().includes(this.widgetHelper.getWidgetConfig().deviceFilter.toLowerCase());
         });
 
         this.widgetHelper.getWidgetConfig().filteredAssets = this.widgetHelper.getWidgetConfig().filteredAssets.sort((a, b) => a.name.localeCompare(b.name));

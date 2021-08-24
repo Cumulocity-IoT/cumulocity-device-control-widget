@@ -118,6 +118,15 @@
                 </label>
             </div>
 
+            <!-- <div class="m-r-8">
+                            <label class="c8y-switch" translate>
+                                <input type="checkbox" name="showrisk"
+                                       [(ngModel)]="widgetHelper.getWidgetConfig().atRisk"
+                                       (change)="updateDeviceStates()">
+                                <span></span> only show devices at risk
+                            </label>
+                        </div> -->
+
             <div class="form-check-inline col-lg-2">
                 <label class="label-with-help" class="form-check-label" for="showatRisk" translate>
                     <input class="form-check-input" type="checkbox" name="showatRisk"
@@ -150,8 +159,10 @@
         <div class="col-lg-2">
             <label class="label-with-help">
                 Add Toggle
-                <img src="{{CONST_HELP_IMAGE_FILE}}" alt="help tooltip"
-                     title="Add operations that toggle managed object flags.">
+                <span class="help-icon">
+                    <img src="{{CONST_HELP_IMAGE_FILE}}" alt="help tooltip"
+                         title="Add operations that toggle managed object flags.">
+                </span>
             </label>
             <button
                     style="color:#1776BF;"
