@@ -13,6 +13,7 @@
 -   Toggling of flags on the managed object supported.
     -   > N.B. referred to as "toggles" below.
 -   Supports group template dashboard
+-   Realtime update of the managed objects
 
 ## Installation
 
@@ -76,7 +77,7 @@ After selecting an operation a column of options for the operation will appear.
 
 -   **Button icon** : select an icon from the font awsome 4 list of icons to represent the selected operation.
 
--   **payload** : this is an arbitrary string or payload (json) that will be sent in the operation. Typically the payload can be anything but is the value of a fragment of the operation object that will be sent. a code representation is shown below but the contents of the field will depend wholly on what operation the user selects and what it expects. See [Cumulocity create](http://resources.cumulocity.com/documentation/websdk/client/classes/operationservice.html) section for more details
+-   **payload** : this is an arbitrary payload (json) that will be sent in the operation. Typically the payload can be anything but is the value of a fragment of the operation object that will be sent. a code representation is shown below but the contents of the field will depend wholly on what operation the user selects and what it expects. See [Cumulocity create](http://resources.cumulocity.com/documentation/websdk/client/classes/operationservice.html) section for more details
 
 ```
     //this is an example for supplorted operation 'myOperation'
@@ -125,7 +126,7 @@ Lastly there is a search facility allowing you to select a subset of devices bas
 
 as shown above in the configuration, if the group dashboard link is set then clicking on the icon will take you to that devices page in the group template dashboard.
 
-The devices will update every 30 seconds with the latest state.
+The devices will update when the managed objects change.
 
 ---
 
