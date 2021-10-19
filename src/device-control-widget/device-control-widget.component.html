@@ -5,11 +5,11 @@
             <!-- Filter row-->
             <div class="m-r-8">
                 <label class="c8y-switch" translate>
-                    <input type="checkbox" name="showrisk"
-                           [(ngModel)]="widgetHelper.getWidgetConfig().atRisk"
-                           (change)="updateDeviceStates()">
-                    <span></span> only show devices at risk
                 </label>
+                <input type="checkbox" name="showrisk"
+                       [(ngModel)]="widgetHelper.getWidgetConfig().atRisk"
+                       (change)="updateDeviceStates()">
+                <span></span> only show devices at risk
             </div>
             <div class="input-group input-group-search flex-grow" style="width: inherit;">
                 <input

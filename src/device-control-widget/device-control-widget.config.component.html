@@ -9,14 +9,14 @@
                              title="Select one or more devices for the control widget.">
                     </span>
 
-                    <ng-select [items]="rawDevices | async" [multiple]="true" bindLabel="name"
-                               [closeOnSelect]="false" [(ngModel)]="widgetHelper.getWidgetConfig().selectedDevices"
-                               (ngModelChange)="onConfigChanged()">
-                        <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
-                            <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.name}}
-                        </ng-template>
-                    </ng-select>
                 </label>
+                <ng-select [items]="rawDevices | async" [multiple]="true" bindLabel="name"
+                           [closeOnSelect]="false" [(ngModel)]="widgetHelper.getWidgetConfig().selectedDevices"
+                           (ngModelChange)="onConfigChanged()">
+                    <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+                        <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" /> {{item.name}}
+                    </ng-template>
+                </ng-select>
             </div>
         </div>
 
@@ -78,44 +78,44 @@
         <div class="row form-group">
             <div class="form-check-inline col-lg-2">
                 <label class="label-with-help" class="form-check-label" for="showav" translate>
-                    <input class="form-check-input" type="checkbox" name="showav"
-                           [(ngModel)]="widgetHelper.getWidgetConfig().showAvailability"
-                           (ngModelChange)="onConfigChanged()" /> Show availability<span class="help-icon">
-                        <img src="{{CONST_HELP_IMAGE_FILE}}" alt="help tooltip"
-                             title="Display availability on widget.">
-                    </span>
                 </label>
+                <input class="form-check-input" type="checkbox" name="showav"
+                       [(ngModel)]="widgetHelper.getWidgetConfig().showAvailability"
+                       (ngModelChange)="onConfigChanged()" /> Show availability<span class="help-icon">
+                    <img src="{{CONST_HELP_IMAGE_FILE}}" alt="help tooltip"
+                         title="Display availability on widget.">
+                </span>
             </div>
             <div class="form-check-inline col-lg-2">
                 <label class="label-with-help" class="form-check-label" for="showal" translate>
-                    <input class="form-check-input" type="checkbox" name="showal"
-                           [(ngModel)]="widgetHelper.getWidgetConfig().showAlarms"
-                           (ngModelChange)="onConfigChanged()" /> Show alarms<span class="help-icon">
-                        <img src="{{CONST_HELP_IMAGE_FILE}}" alt="help tooltip"
-                             title="Show alarms on device.">
-                    </span>
                 </label>
+                <input class="form-check-input" type="checkbox" name="showal"
+                       [(ngModel)]="widgetHelper.getWidgetConfig().showAlarms"
+                       (ngModelChange)="onConfigChanged()" /> Show alarms<span class="help-icon">
+                    <img src="{{CONST_HELP_IMAGE_FILE}}" alt="help tooltip"
+                         title="Show alarms on device.">
+                </span>
             </div>
             <div class="form-check-inline col-lg-2">
                 <label class="label-with-help" class="form-check-label" for="showop" translate>
-                    <input class="form-check-input" type="checkbox" name="showop"
-                           [(ngModel)]="widgetHelper.getWidgetConfig().showOperations"
-                           (ngModelChange)="onConfigChanged()" /> Show operations<span class="help-icon">
-                        <img src="{{CONST_HELP_IMAGE_FILE}}" alt="help tooltip"
-                             title="Show operations on device.">
-                    </span>
                 </label>
+                <input class="form-check-input" type="checkbox" name="showop"
+                       [(ngModel)]="widgetHelper.getWidgetConfig().showOperations"
+                       (ngModelChange)="onConfigChanged()" /> Show operations<span class="help-icon">
+                    <img src="{{CONST_HELP_IMAGE_FILE}}" alt="help tooltip"
+                         title="Show operations on device.">
+                </span>
             </div>
 
             <div class="form-check-inline col-lg-2">
                 <label class="label-with-help" class="form-check-label" for="showfilters" translate>
-                    <input class="form-check-input" type="checkbox" name="showfilters"
-                           [(ngModel)]="widgetHelper.getWidgetConfig().showFilters"
-                           (ngModelChange)="onConfigChanged()" /> Show filters<span class="help-icon">
-                        <img src="{{CONST_HELP_IMAGE_FILE}}" alt="help tooltip"
-                             title="Should the search and at risk filters be shown.">
-                    </span>
                 </label>
+                <input class="form-check-input" type="checkbox" name="showfilters"
+                       [(ngModel)]="widgetHelper.getWidgetConfig().showFilters"
+                       (ngModelChange)="onConfigChanged()" /> Show filters<span class="help-icon">
+                    <img src="{{CONST_HELP_IMAGE_FILE}}" alt="help tooltip"
+                         title="Should the search and at risk filters be shown.">
+                </span>
             </div>
 
             <!-- <div class="m-r-8">
@@ -129,13 +129,13 @@
 
             <div class="form-check-inline col-lg-2">
                 <label class="label-with-help" class="form-check-label" for="showatRisk" translate>
-                    <input class="form-check-input" type="checkbox" name="showatRisk"
-                           [(ngModel)]="widgetHelper.getWidgetConfig().atRisk"
-                           (ngModelChange)="onConfigChanged()" /> Show at risk only<span class="help-icon">
-                        <img src="{{CONST_HELP_IMAGE_FILE}}" alt="help tooltip"
-                             title="Only show at risk devices.">
-                    </span>
                 </label>
+                <input class="form-check-input" type="checkbox" name="showatRisk"
+                       [(ngModel)]="widgetHelper.getWidgetConfig().atRisk"
+                       (ngModelChange)="onConfigChanged()" /> Show at risk only<span class="help-icon">
+                    <img src="{{CONST_HELP_IMAGE_FILE}}" alt="help tooltip"
+                         title="Only show at risk devices.">
+                </span>
             </div>
         </div>
 
@@ -145,10 +145,10 @@
                     <div class="col-lg-12">
                         <label class="label-with-help">
                             {{mo.name}} group dashboard url
-                            <input class="form-control" type="text" [ngModelOptions]="{ standalone: true }"
-                                   [(ngModel)]="this.widgetHelper.getWidgetConfig().deviceSettings['group'+mo.name]"
-                                   (change)="onConfigChanged()" />
                         </label>
+                        <input class="form-control" type="text" [ngModelOptions]="{ standalone: true }"
+                               [(ngModel)]="this.widgetHelper.getWidgetConfig().deviceSettings['group'+mo.name]"
+                               (change)="onConfigChanged()" />
 
                     </div>
 

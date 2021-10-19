@@ -109,9 +109,9 @@ export class DeviceControlWidget implements OnDestroy, OnInit {
 
         } else {
             try {
-                //console.log(op.payload);
+                console.log(op.payload);
                 let payload = JSON.parse(op.payload);
-                //console.log(payload);
+                console.log(payload);
 
                 let operation: IOperation = {
                     deviceId: mo.id,
