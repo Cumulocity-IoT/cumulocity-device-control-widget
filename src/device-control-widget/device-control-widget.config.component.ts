@@ -139,7 +139,7 @@ export class DeviceControlWidgetConfig implements OnInit, OnDestroy {
                 operation: o,
                 name: o,
                 icon: falist.icons[0],
-                payload: "value",
+                payload: '{"text","value"}',
                 toggle: false,
                 source: "key",
                 description: ""
