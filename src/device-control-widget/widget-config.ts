@@ -6,7 +6,7 @@
 import { IManagedObject } from '@c8y/client';
 import { Observable, of } from 'rxjs';
 import * as _ from "lodash";
-import { IconEntry } from './font-awesome4-list';
+import { IconEntry } from './delite-list';
 
 
 //there will be a finite set of operations which can be represented 
@@ -172,9 +172,9 @@ export class WidgetConfig {
                 this.deviceSettings[op] = this.deviceSettings['default-operation'];
             }
             else
-                return 'fa ' + this.deviceSettings[op].key + ' fa-lg';
+                return this.deviceSettings[op].key;
         } else {
-            return 'fa ' + op.icon.key + ' fa-lg';
+            return op.icon.key;
         }
     }
 

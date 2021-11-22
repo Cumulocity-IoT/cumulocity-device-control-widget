@@ -19,7 +19,7 @@
  * @format
  */
 
-import { CoreModule, HOOK_COMPONENTS } from "@c8y/ngx-components";
+import { CoreModule, CommonModule, HOOK_COMPONENTS } from "@c8y/ngx-components";
 import { DeviceControlWidgetConfig } from "./device-control-widget.config.component";
 import { DeviceControlWidget } from "./device-control-widget.component";
 import { NgModule } from "@angular/core";
@@ -28,7 +28,7 @@ import { NgSelectModule } from "@ng-select/ng-select";
 import { SafeImage } from "./safeImage.pipe";
 
 @NgModule({
-    imports: [CoreModule, HttpClientModule, NgSelectModule],
+    imports: [CoreModule, CommonModule, HttpClientModule, NgSelectModule],
     declarations: [DeviceControlWidget, DeviceControlWidgetConfig, SafeImage],
     entryComponents: [DeviceControlWidget, DeviceControlWidgetConfig],
     providers: [

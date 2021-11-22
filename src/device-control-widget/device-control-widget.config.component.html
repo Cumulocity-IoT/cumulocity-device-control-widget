@@ -168,7 +168,7 @@
                     style="color:#1776BF;"
                     type="button" class="button"
                     (click)="addToggle()">
-                <span class="fa fa-plus"></span>
+                <i c8yIcon="plus"></i>
             </button>
         </div>
 
@@ -224,7 +224,8 @@
                             style="color:#1776BF;"
                             type="button" class="button"
                             (click)="removeToggle(i)">
-                        <span class="fa fa-minus fa-lg"></span>Delete
+                            <i c8yIcon="minus"></i>
+                            Delete
                     </button>
                 </div>
 
@@ -242,7 +243,7 @@
                             style="color:#1776BF;"
                             type="button" class="button"
                             (click)="addCommand(op)">
-                        <span class="fa fa-plus"></span>
+                            <i c8yIcon="plus" aria-hidden="true"></i>
                     </button>
             
                     <label class="label-with-help">
@@ -256,7 +257,7 @@
                             style="color:#1776BF;"
                             type="button" class="button"
                             (click)="deleteCommand(i)">
-                        <span class="fa fa-minus"></span>
+                            <i c8yIcon="minus" aria-hidden="true"></i>
                     </button>
 
                     <label>
@@ -279,12 +280,14 @@
                                [(ngModel)]="op.icon"
                                placeholder="select icon for operation"
                                (change)="onConfigChanged()">
-                        <ng-template class="fa mb-1 fa-lg" ng-label-tmp let-item="item" let-index="index">
-                            <span [ngClass]="'fa '+ item.key + ' fa-lg'" aria-hidden="true"></span>
+                        <ng-template class="mb-1" ng-label-tmp let-item="item" let-index="index">
+                            <i [c8yIcon]="item.key" aria-hidden="true"></i>
+                            <!-- <i c8y-icon="minus-circle" class="text-danger dlt-c8y-icon-minus-circle"></i> -->
                             {{item.name}}
                         </ng-template>
-                        <ng-template class="fa mb-1 fa-lg" ng-option-tmp let-item="item" let-index="index">
-                            <span [ngClass]="'fa ' + item.key + ' fa-lg'" aria-hidden="true"></span>
+                        <ng-template class="mb-1" ng-option-tmp let-item="item" let-index="index">
+                            <i [c8yIcon]="item.key" aria-hidden="true"></i>
+                            <!-- <span [ngClass]="'fa ' + item.key + ' fa-lg'" aria-hidden="true"></span> -->
                             {{item.name}}
                         </ng-template>
                     </ng-select>
@@ -358,7 +361,8 @@
                                         type="button"
                                         class="button"
                                         title="{{op.name}}">
-                                    <span [ngClass]="widgetHelper.getWidgetConfig().operationIcon(op)"></span>
+                                        <i [c8yIcon]="widgetHelper.getWidgetConfig().operationIcon(op)" aria-hidden="true"></i>
+                                        <!-- <i [ngClass]="'c8y-icon ' + widgetHelper.getWidgetConfig().operationIcon(op)"></i> -->
                                 </button>
                             </div>
                         </div>

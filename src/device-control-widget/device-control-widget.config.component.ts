@@ -21,7 +21,7 @@ import { WidgetConfig, DeviceOperation } from "./widget-config";
 import { OperationService, IManagedObject, InventoryService } from '@c8y/client';
 import * as _ from "lodash";
 import { BehaviorSubject, from, Observable } from 'rxjs';
-import { falist } from './font-awesome4-list';
+import { deliteList } from './delite-list';
 import { AlertService } from '@c8y/ngx-components';
 
 //shared css with main widget
@@ -48,7 +48,7 @@ export class DeviceControlWidgetConfig implements OnInit, OnDestroy {
 
     constructor(public operations: OperationService, public inventoryService: InventoryService, public alertService: AlertService) {
         //make availiable for choosing
-        this.icons = [...falist.icons];
+        this.icons = [...deliteList.icons];
         this.rawOperations = new BehaviorSubject<DeviceOperation[]>([]);
         this.assets = new BehaviorSubject<IManagedObject[]>([]);
     }
@@ -138,8 +138,8 @@ export class DeviceControlWidgetConfig implements OnInit, OnDestroy {
             return <DeviceOperation>{
                 operation: o,
                 name: o,
-                icon: falist.icons[0],
-                payload: '{"text","value"}',
+                icon: deliteList.icons[0],
+                payload: '{"text":"value"}',
                 toggle: false,
                 source: "key",
                 description: ""
@@ -162,7 +162,7 @@ export class DeviceControlWidgetConfig implements OnInit, OnDestroy {
             <DeviceOperation>{
                 operation: "toggle",
                 name: "toggle",
-                icon: falist.icons[0],
+                icon: deliteList.icons[0],
                 payload: "NA",
                 toggle: true,
                 source: "managed object key",

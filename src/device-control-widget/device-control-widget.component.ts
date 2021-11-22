@@ -129,7 +129,7 @@ export class DeviceControlWidget implements OnDestroy, OnInit {
                         if (data.status == OperationStatus.SUCCESSFUL) {
                             this.alertService.success(`operation ${op.name} for ${mo.name} is ${data.status}`);
                         } else if (data.status == OperationStatus.PENDING || data.status == OperationStatus.PENDING) {
-                            this.alertService.warning(`operation ${op.name} for ${mo.name} is ${data.status}`);
+                            this.alertService.success(`operation ${op.name} for ${mo.name} is ${data.status}`);
                         } else {
                             this.alertService.danger(`operation ${op.name} for ${mo.name} is ${data.status}`);
                         }

@@ -6,10 +6,10 @@ export interface IconEntry {
 }
 
 
-export const falist = {
+export const deliteList = {
     "icons": [
         {
-            "key": "fa-glass",
+            "key": "glass",
             "name": "Glass",
             "code": "f000",
             "filter": [
@@ -21,7 +21,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-music",
+            "key": "music",
             "name": "Music",
             "code": "f001",
             "filter": [
@@ -30,7 +30,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-search",
+            "key": "search",
             "name": "Search",
             "code": "f002",
             "filter": [
@@ -41,7 +41,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-envelope-o",
+            "key": "envelope-o",
             "name": "Envelope Outlined",
             "code": "f003",
             "filter": [
@@ -55,7 +55,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-heart",
+            "key": "heart",
             "name": "Heart",
             "code": "f004",
             "filter": [
@@ -65,7 +65,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-star",
+            "key": "star",
             "name": "Star",
             "code": "f005",
             "filter": [
@@ -78,7 +78,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-star-o",
+            "key": "star-o",
             "name": "Star Outlined",
             "code": "f006",
             "filter": [
@@ -91,7 +91,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-user",
+            "key": "user",
             "name": "User",
             "code": "f007",
             "filter": [
@@ -102,7 +102,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-film",
+            "key": "film",
             "name": "Film",
             "code": "f008",
             "filter": [
@@ -110,7 +110,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-th-large",
+            "key": "th-large",
             "name": "th-large",
             "code": "f009",
             "filter": [
@@ -121,7 +121,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-th",
+            "key": "th",
             "name": "th",
             "code": "f00a",
             "filter": [
@@ -132,7 +132,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-th-list",
+            "key": "th-list",
             "name": "th-list",
             "code": "f00b",
             "filter": [
@@ -146,7 +146,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-check",
+            "key": "check",
             "name": "Check",
             "code": "f00c",
             "filter": [
@@ -161,7 +161,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-times",
+            "key": "times",
             "name": "Times",
             "code": "f00d",
             "filter": [
@@ -172,7 +172,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-search-plus",
+            "key": "search-plus",
             "name": "Search Plus",
             "code": "f00e",
             "filter": [
@@ -183,7 +183,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-search-minus",
+            "key": "search-minus",
             "name": "Search Minus",
             "code": "f010",
             "filter": [
@@ -194,7 +194,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-power-off",
+            "key": "power-off",
             "name": "Power Off",
             "code": "f011",
             "filter": [
@@ -202,7 +202,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-signal",
+            "key": "signal",
             "name": "signal",
             "code": "f012",
             "filter": [
@@ -211,7 +211,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-cog",
+            "key": "cog",
             "name": "cog",
             "code": "f013",
             "filter": [
@@ -219,7 +219,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-trash-o",
+            "key": "trash-o",
             "name": "Trash Outlined",
             "code": "f014",
             "filter": [
@@ -231,7 +231,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-home",
+            "key": "home",
             "name": "home",
             "code": "f015",
             "filter": [
@@ -240,7 +240,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-file-o",
+            "key": "file-o",
             "name": "File Outlined",
             "code": "f016",
             "filter": [
@@ -251,7 +251,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-clock-o",
+            "key": "clock-o",
             "name": "Clock Outlined",
             "code": "f017",
             "filter": [
@@ -262,7 +262,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-road",
+            "key": "road",
             "name": "road",
             "code": "f018",
             "filter": [
@@ -270,7 +270,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-download",
+            "key": "download",
             "name": "Download",
             "code": "f019",
             "filter": [
@@ -278,7 +278,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-arrow-circle-o-down",
+            "key": "arrow-circle-o-down",
             "name": "Arrow Circle Outlined Down",
             "code": "f01a",
             "filter": [
@@ -286,22 +286,22 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-arrow-circle-o-up",
+            "key": "arrow-circle-o-up",
             "name": "Arrow Circle Outlined Up",
             "code": "f01b"
         },
         {
-            "key": "fa-inbox",
+            "key": "inbox",
             "name": "inbox",
             "code": "f01c"
         },
         {
-            "key": "fa-play-circle-o",
+            "key": "play-circle-o",
             "name": "Play Circle Outlined",
             "code": "f01d"
         },
         {
-            "key": "fa-repeat",
+            "key": "repeat",
             "name": "Repeat",
             "code": "f01e",
             "filter": [
@@ -310,7 +310,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-refresh",
+            "key": "refresh",
             "name": "refresh",
             "code": "f021",
             "filter": [
@@ -319,7 +319,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-list-alt",
+            "key": "list-alt",
             "name": "list-alt",
             "code": "f022",
             "filter": [
@@ -333,7 +333,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-lock",
+            "key": "lock",
             "name": "lock",
             "code": "f023",
             "filter": [
@@ -343,7 +343,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-flag",
+            "key": "flag",
             "name": "flag",
             "code": "f024",
             "filter": [
@@ -353,7 +353,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-headphones",
+            "key": "headphones",
             "name": "headphones",
             "code": "f025",
             "filter": [
@@ -364,7 +364,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-volume-off",
+            "key": "volume-off",
             "name": "volume-off",
             "code": "f026",
             "filter": [
@@ -375,7 +375,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-volume-down",
+            "key": "volume-down",
             "name": "volume-down",
             "code": "f027",
             "filter": [
@@ -387,7 +387,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-volume-up",
+            "key": "volume-up",
             "name": "volume-up",
             "code": "f028",
             "filter": [
@@ -399,7 +399,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-qrcode",
+            "key": "qrcode",
             "name": "qrcode",
             "code": "f029",
             "filter": [
@@ -407,7 +407,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-barcode",
+            "key": "barcode",
             "name": "barcode",
             "code": "f02a",
             "filter": [
@@ -415,7 +415,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-tag",
+            "key": "tag",
             "name": "tag",
             "code": "f02b",
             "filter": [
@@ -423,7 +423,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-tags",
+            "key": "tags",
             "name": "tags",
             "code": "f02c",
             "filter": [
@@ -431,7 +431,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-book",
+            "key": "book",
             "name": "book",
             "code": "f02d",
             "filter": [
@@ -440,7 +440,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-bookmark",
+            "key": "bookmark",
             "name": "bookmark",
             "code": "f02e",
             "filter": [
@@ -448,12 +448,12 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-print",
+            "key": "print",
             "name": "print",
             "code": "f02f"
         },
         {
-            "key": "fa-camera",
+            "key": "camera",
             "name": "camera",
             "code": "f030",
             "filter": [
@@ -463,7 +463,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-font",
+            "key": "font",
             "name": "font",
             "code": "f031",
             "filter": [
@@ -471,12 +471,12 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-bold",
+            "key": "bold",
             "name": "bold",
             "code": "f032"
         },
         {
-            "key": "fa-italic",
+            "key": "italic",
             "name": "italic",
             "code": "f033",
             "filter": [
@@ -484,17 +484,17 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-text-height",
+            "key": "text-height",
             "name": "text-height",
             "code": "f034"
         },
         {
-            "key": "fa-text-width",
+            "key": "text-width",
             "name": "text-width",
             "code": "f035"
         },
         {
-            "key": "fa-align-left",
+            "key": "align-left",
             "name": "align-left",
             "code": "f036",
             "filter": [
@@ -502,7 +502,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-align-center",
+            "key": "align-center",
             "name": "align-center",
             "code": "f037",
             "filter": [
@@ -511,7 +511,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-align-right",
+            "key": "align-right",
             "name": "align-right",
             "code": "f038",
             "filter": [
@@ -519,7 +519,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-align-justify",
+            "key": "align-justify",
             "name": "align-justify",
             "code": "f039",
             "filter": [
@@ -527,7 +527,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-list",
+            "key": "list",
             "name": "list",
             "code": "f03a",
             "filter": [
@@ -541,17 +541,17 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-outdent",
+            "key": "outdent",
             "name": "Outdent",
             "code": "f03b"
         },
         {
-            "key": "fa-indent",
+            "key": "indent",
             "name": "Indent",
             "code": "f03c"
         },
         {
-            "key": "fa-video-camera",
+            "key": "video-camera",
             "name": "Video Camera",
             "code": "f03d",
             "filter": [
@@ -561,12 +561,12 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-picture-o",
+            "key": "picture-o",
             "name": "Picture Outlined",
             "code": "f03e"
         },
         {
-            "key": "fa-pencil",
+            "key": "pencil",
             "name": "pencil",
             "code": "f040",
             "filter": [
@@ -576,7 +576,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-map-marker",
+            "key": "map-marker",
             "name": "map-marker",
             "code": "f041",
             "filter": [
@@ -592,7 +592,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-adjust",
+            "key": "adjust",
             "name": "adjust",
             "code": "f042",
             "filter": [
@@ -600,7 +600,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-tint",
+            "key": "tint",
             "name": "tint",
             "code": "f043",
             "filter": [
@@ -611,7 +611,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-pencil-square-o",
+            "key": "pencil-square-o",
             "name": "Pencil Square Outlined",
             "code": "f044",
             "filter": [
@@ -621,7 +621,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-share-square-o",
+            "key": "share-square-o",
             "name": "Share Square Outlined",
             "code": "f045",
             "filter": [
@@ -631,7 +631,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-check-square-o",
+            "key": "check-square-o",
             "name": "Check Square Outlined",
             "code": "f046",
             "filter": [
@@ -644,7 +644,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-arrows",
+            "key": "arrows",
             "name": "Arrows",
             "code": "f047",
             "filter": [
@@ -654,7 +654,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-step-backward",
+            "key": "step-backward",
             "name": "step-backward",
             "code": "f048",
             "filter": [
@@ -666,7 +666,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-fast-backward",
+            "key": "fast-backward",
             "name": "fast-backward",
             "code": "f049",
             "filter": [
@@ -678,7 +678,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-backward",
+            "key": "backward",
             "name": "backward",
             "code": "f04a",
             "filter": [
@@ -687,7 +687,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-play",
+            "key": "play",
             "name": "play",
             "code": "f04b",
             "filter": [
@@ -698,7 +698,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-pause",
+            "key": "pause",
             "name": "pause",
             "code": "f04c",
             "filter": [
@@ -706,7 +706,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-stop",
+            "key": "stop",
             "name": "stop",
             "code": "f04d",
             "filter": [
@@ -716,7 +716,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-forward",
+            "key": "forward",
             "name": "forward",
             "code": "f04e",
             "filter": [
@@ -725,7 +725,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-fast-forward",
+            "key": "fast-forward",
             "name": "fast-forward",
             "code": "f050",
             "filter": [
@@ -735,7 +735,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-step-forward",
+            "key": "step-forward",
             "name": "step-forward",
             "code": "f051",
             "filter": [
@@ -745,12 +745,12 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-eject",
+            "key": "eject",
             "name": "eject",
             "code": "f052"
         },
         {
-            "key": "fa-chevron-left",
+            "key": "chevron-left",
             "name": "chevron-left",
             "code": "f053",
             "filter": [
@@ -760,7 +760,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-chevron-right",
+            "key": "chevron-right",
             "name": "chevron-right",
             "code": "f054",
             "filter": [
@@ -770,7 +770,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-plus-circle",
+            "key": "plus-circle",
             "name": "Plus Circle",
             "code": "f055",
             "filter": [
@@ -781,7 +781,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-minus-circle",
+            "key": "minus-circle",
             "name": "Minus Circle",
             "code": "f056",
             "filter": [
@@ -792,7 +792,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-times-circle",
+            "key": "times-circle",
             "name": "Times Circle",
             "code": "f057",
             "filter": [
@@ -802,7 +802,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-check-circle",
+            "key": "check-circle",
             "name": "Check Circle",
             "code": "f058",
             "filter": [
@@ -815,7 +815,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-question-circle",
+            "key": "question-circle",
             "name": "Question Circle",
             "code": "f059",
             "filter": [
@@ -826,7 +826,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-info-circle",
+            "key": "info-circle",
             "name": "Info Circle",
             "code": "f05a",
             "filter": [
@@ -837,7 +837,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-crosshairs",
+            "key": "crosshairs",
             "name": "Crosshairs",
             "code": "f05b",
             "filter": [
@@ -845,7 +845,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-times-circle-o",
+            "key": "times-circle-o",
             "name": "Times Circle Outlined",
             "code": "f05c",
             "filter": [
@@ -855,7 +855,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-check-circle-o",
+            "key": "check-circle-o",
             "name": "Check Circle Outlined",
             "code": "f05d",
             "filter": [
@@ -868,7 +868,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-ban",
+            "key": "ban",
             "name": "ban",
             "code": "f05e",
             "filter": [
@@ -883,7 +883,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-arrow-left",
+            "key": "arrow-left",
             "name": "arrow-left",
             "code": "f060",
             "filter": [
@@ -892,7 +892,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-arrow-right",
+            "key": "arrow-right",
             "name": "arrow-right",
             "code": "f061",
             "filter": [
@@ -901,12 +901,12 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-arrow-up",
+            "key": "arrow-up",
             "name": "arrow-up",
             "code": "f062"
         },
         {
-            "key": "fa-arrow-down",
+            "key": "arrow-down",
             "name": "arrow-down",
             "code": "f063",
             "filter": [
@@ -914,12 +914,12 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-share",
+            "key": "share",
             "name": "Share",
             "code": "f064"
         },
         {
-            "key": "fa-expand",
+            "key": "expand",
             "name": "Expand",
             "code": "f065",
             "filter": [
@@ -929,7 +929,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-compress",
+            "key": "compress",
             "name": "Compress",
             "code": "f066",
             "filter": [
@@ -941,7 +941,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-plus",
+            "key": "plus",
             "name": "plus",
             "code": "f067",
             "filter": [
@@ -952,7 +952,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-minus",
+            "key": "minus",
             "name": "minus",
             "code": "f068",
             "filter": [
@@ -966,7 +966,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-asterisk",
+            "key": "asterisk",
             "name": "asterisk",
             "code": "f069",
             "filter": [
@@ -974,7 +974,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-exclamation-circle",
+            "key": "exclamation-circle",
             "name": "Exclamation Circle",
             "code": "f06a",
             "filter": [
@@ -986,7 +986,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-gift",
+            "key": "gift",
             "name": "gift",
             "code": "f06b",
             "filter": [
@@ -994,7 +994,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-leaf",
+            "key": "leaf",
             "name": "leaf",
             "code": "f06c",
             "filter": [
@@ -1004,7 +1004,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-fire",
+            "key": "fire",
             "name": "fire",
             "code": "f06d",
             "filter": [
@@ -1014,7 +1014,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-eye",
+            "key": "eye",
             "name": "Eye",
             "code": "f06e",
             "filter": [
@@ -1024,7 +1024,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-eye-slash",
+            "key": "eye-slash",
             "name": "Eye Slash",
             "code": "f070",
             "filter": [
@@ -1037,7 +1037,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-exclamation-triangle",
+            "key": "exclamation-triangle",
             "name": "Exclamation Triangle",
             "code": "f071",
             "filter": [
@@ -1049,7 +1049,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-plane",
+            "key": "plane",
             "name": "plane",
             "code": "f072",
             "filter": [
@@ -1063,7 +1063,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-calendar",
+            "key": "calendar",
             "name": "calendar",
             "code": "f073",
             "filter": [
@@ -1074,7 +1074,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-random",
+            "key": "random",
             "name": "random",
             "code": "f074",
             "filter": [
@@ -1083,7 +1083,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-comment",
+            "key": "comment",
             "name": "comment",
             "code": "f075",
             "filter": [
@@ -1100,22 +1100,22 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-magnet",
+            "key": "magnet",
             "name": "magnet",
             "code": "f076"
         },
         {
-            "key": "fa-chevron-up",
+            "key": "chevron-up",
             "name": "chevron-up",
             "code": "f077"
         },
         {
-            "key": "fa-chevron-down",
+            "key": "chevron-down",
             "name": "chevron-down",
             "code": "f078"
         },
         {
-            "key": "fa-retweet",
+            "key": "retweet",
             "name": "retweet",
             "code": "f079",
             "filter": [
@@ -1125,7 +1125,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-shopping-cart",
+            "key": "shopping-cart",
             "name": "shopping-cart",
             "code": "f07a",
             "filter": [
@@ -1136,17 +1136,17 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-folder",
+            "key": "folder",
             "name": "Folder",
             "code": "f07b"
         },
         {
-            "key": "fa-folder-open",
+            "key": "folder-open",
             "name": "Folder Open",
             "code": "f07c"
         },
         {
-            "key": "fa-arrows-v",
+            "key": "arrows-v",
             "name": "Arrows Vertical",
             "code": "f07d",
             "filter": [
@@ -1154,7 +1154,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-arrows-h",
+            "key": "arrows-h",
             "name": "Arrows Horizontal",
             "code": "f07e",
             "filter": [
@@ -1162,7 +1162,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-bar-chart",
+            "key": "bar-chart",
             "name": "Bar Chart",
             "code": "f080",
             "filter": [
@@ -1172,7 +1172,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-twitter-square",
+            "key": "twitter-square",
             "name": "Twitter Square",
             "code": "f081",
             "filter": [
@@ -1181,7 +1181,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-facebook-square",
+            "key": "facebook-square",
             "name": "Facebook Square",
             "code": "f082",
             "filter": [
@@ -1189,7 +1189,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-camera-retro",
+            "key": "camera-retro",
             "name": "camera-retro",
             "code": "f083",
             "filter": [
@@ -1199,7 +1199,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-key",
+            "key": "key",
             "name": "key",
             "code": "f084",
             "filter": [
@@ -1208,7 +1208,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-cogs",
+            "key": "cogs",
             "name": "cogs",
             "code": "f085",
             "filter": [
@@ -1216,7 +1216,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-comments",
+            "key": "comments",
             "name": "comments",
             "code": "f086",
             "filter": [
@@ -1233,7 +1233,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-thumbs-o-up",
+            "key": "thumbs-o-up",
             "name": "Thumbs Up Outlined",
             "code": "f087",
             "filter": [
@@ -1245,7 +1245,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-thumbs-o-down",
+            "key": "thumbs-o-down",
             "name": "Thumbs Down Outlined",
             "code": "f088",
             "filter": [
@@ -1256,7 +1256,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-star-half",
+            "key": "star-half",
             "name": "star-half",
             "code": "f089",
             "filter": [
@@ -1267,7 +1267,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-heart-o",
+            "key": "heart-o",
             "name": "Heart Outlined",
             "code": "f08a",
             "filter": [
@@ -1277,7 +1277,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-sign-out",
+            "key": "sign-out",
             "name": "Sign Out",
             "code": "f08b",
             "filter": [
@@ -1289,12 +1289,12 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-linkedin-square",
+            "key": "linkedin-square",
             "name": "LinkedIn Square",
             "code": "f08c"
         },
         {
-            "key": "fa-thumb-tack",
+            "key": "thumb-tack",
             "name": "Thumb Tack",
             "code": "f08d",
             "filter": [
@@ -1305,7 +1305,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-external-link",
+            "key": "external-link",
             "name": "External Link",
             "code": "f08e",
             "filter": [
@@ -1314,7 +1314,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-sign-in",
+            "key": "sign-in",
             "name": "Sign In",
             "code": "f090",
             "filter": [
@@ -1330,7 +1330,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-trophy",
+            "key": "trophy",
             "name": "trophy",
             "code": "f091",
             "filter": [
@@ -1342,7 +1342,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-github-square",
+            "key": "github-square",
             "name": "GitHub Square",
             "code": "f092",
             "filter": [
@@ -1350,7 +1350,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-upload",
+            "key": "upload",
             "name": "Upload",
             "code": "f093",
             "filter": [
@@ -1358,7 +1358,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-lemon-o",
+            "key": "lemon-o",
             "name": "Lemon Outlined",
             "code": "f094",
             "filter": [
@@ -1366,7 +1366,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-phone",
+            "key": "phone",
             "name": "Phone",
             "code": "f095",
             "filter": [
@@ -1379,7 +1379,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-square-o",
+            "key": "square-o",
             "name": "Square Outlined",
             "code": "f096",
             "filter": [
@@ -1389,7 +1389,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-bookmark-o",
+            "key": "bookmark-o",
             "name": "Bookmark Outlined",
             "code": "f097",
             "filter": [
@@ -1397,7 +1397,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-phone-square",
+            "key": "phone-square",
             "name": "Phone Square",
             "code": "f098",
             "filter": [
@@ -1409,7 +1409,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-twitter",
+            "key": "twitter",
             "name": "Twitter",
             "code": "f099",
             "filter": [
@@ -1418,7 +1418,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-facebook",
+            "key": "facebook",
             "name": "Facebook",
             "code": "f09a",
             "filter": [
@@ -1426,7 +1426,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-github",
+            "key": "github",
             "name": "GitHub",
             "code": "f09b",
             "filter": [
@@ -1434,7 +1434,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-unlock",
+            "key": "unlock",
             "name": "unlock",
             "code": "f09c",
             "filter": [
@@ -1445,7 +1445,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-credit-card",
+            "key": "credit-card",
             "name": "credit-card",
             "code": "f09d",
             "filter": [
@@ -1458,7 +1458,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-rss",
+            "key": "rss",
             "name": "rss",
             "code": "f09e",
             "filter": [
@@ -1466,7 +1466,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-hdd-o",
+            "key": "hdd-o",
             "name": "HDD",
             "code": "f0a0",
             "filter": [
@@ -1477,7 +1477,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-bullhorn",
+            "key": "bullhorn",
             "name": "bullhorn",
             "code": "f0a1",
             "filter": [
@@ -1489,7 +1489,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-bell",
+            "key": "bell",
             "name": "bell",
             "code": "f0f3",
             "filter": [
@@ -1499,7 +1499,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-certificate",
+            "key": "certificate",
             "name": "certificate",
             "code": "f0a3",
             "filter": [
@@ -1508,7 +1508,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-hand-o-right",
+            "key": "hand-o-right",
             "name": "Hand Outlined Right",
             "code": "f0a4",
             "filter": [
@@ -1520,7 +1520,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-hand-o-left",
+            "key": "hand-o-left",
             "name": "Hand Outlined Left",
             "code": "f0a5",
             "filter": [
@@ -1532,7 +1532,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-hand-o-up",
+            "key": "hand-o-up",
             "name": "Hand Outlined Up",
             "code": "f0a6",
             "filter": [
@@ -1541,7 +1541,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-hand-o-down",
+            "key": "hand-o-down",
             "name": "Hand Outlined Down",
             "code": "f0a7",
             "filter": [
@@ -1550,7 +1550,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-arrow-circle-left",
+            "key": "arrow-circle-left",
             "name": "Arrow Circle Left",
             "code": "f0a8",
             "filter": [
@@ -1559,7 +1559,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-arrow-circle-right",
+            "key": "arrow-circle-right",
             "name": "Arrow Circle Right",
             "code": "f0a9",
             "filter": [
@@ -1568,12 +1568,12 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-arrow-circle-up",
+            "key": "arrow-circle-up",
             "name": "Arrow Circle Up",
             "code": "f0aa"
         },
         {
-            "key": "fa-arrow-circle-down",
+            "key": "arrow-circle-down",
             "name": "Arrow Circle Down",
             "code": "f0ab",
             "filter": [
@@ -1581,7 +1581,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-globe",
+            "key": "globe",
             "name": "Globe",
             "code": "f0ac",
             "filter": [
@@ -1602,7 +1602,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-wrench",
+            "key": "wrench",
             "name": "Wrench",
             "code": "f0ad",
             "filter": [
@@ -1613,7 +1613,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-tasks",
+            "key": "tasks",
             "name": "Tasks",
             "code": "f0ae",
             "filter": [
@@ -1625,7 +1625,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-filter",
+            "key": "filter",
             "name": "Filter",
             "code": "f0b0",
             "filter": [
@@ -1634,7 +1634,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-briefcase",
+            "key": "briefcase",
             "name": "Briefcase",
             "code": "f0b1",
             "filter": [
@@ -1646,7 +1646,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-arrows-alt",
+            "key": "arrows-alt",
             "name": "Arrows Alt",
             "code": "f0b2",
             "filter": [
@@ -1661,7 +1661,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-users",
+            "key": "users",
             "name": "Users",
             "code": "f0c0",
             "filter": [
@@ -1671,7 +1671,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-link",
+            "key": "link",
             "name": "Link",
             "code": "f0c1",
             "filter": [
@@ -1679,7 +1679,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-cloud",
+            "key": "cloud",
             "name": "Cloud",
             "code": "f0c2",
             "filter": [
@@ -1687,7 +1687,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-flask",
+            "key": "flask",
             "name": "Flask",
             "code": "f0c3",
             "filter": [
@@ -1698,12 +1698,12 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-scissors",
+            "key": "scissors",
             "name": "Scissors",
             "code": "f0c4"
         },
         {
-            "key": "fa-files-o",
+            "key": "files-o",
             "name": "Files Outlined",
             "code": "f0c5",
             "filter": [
@@ -1713,7 +1713,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-paperclip",
+            "key": "paperclip",
             "name": "Paperclip",
             "code": "f0c6",
             "filter": [
@@ -1721,12 +1721,12 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-floppy-o",
+            "key": "floppy-o",
             "name": "Floppy Outlined",
             "code": "f0c7"
         },
         {
-            "key": "fa-square",
+            "key": "square",
             "name": "Square",
             "code": "f0c8",
             "filter": [
@@ -1735,7 +1735,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-bars",
+            "key": "bars",
             "name": "Bars",
             "code": "f0c9",
             "filter": [
@@ -1753,7 +1753,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-list-ul",
+            "key": "list-ul",
             "name": "list-ul",
             "code": "f0ca",
             "filter": [
@@ -1765,7 +1765,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-list-ol",
+            "key": "list-ol",
             "name": "list-ol",
             "code": "f0cb",
             "filter": [
@@ -1779,17 +1779,17 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-strikethrough",
+            "key": "strikethrough",
             "name": "Strikethrough",
             "code": "f0cc"
         },
         {
-            "key": "fa-underline",
+            "key": "underline",
             "name": "Underline",
             "code": "f0cd"
         },
         {
-            "key": "fa-table",
+            "key": "table",
             "name": "table",
             "code": "f0ce",
             "filter": [
@@ -1799,7 +1799,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-magic",
+            "key": "magic",
             "name": "magic",
             "code": "f0d0",
             "filter": [
@@ -1809,7 +1809,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-truck",
+            "key": "truck",
             "name": "truck",
             "code": "f0d1",
             "filter": [
@@ -1817,17 +1817,17 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-pinterest",
+            "key": "pinterest",
             "name": "Pinterest",
             "code": "f0d2"
         },
         {
-            "key": "fa-pinterest-square",
+            "key": "pinterest-square",
             "name": "Pinterest Square",
             "code": "f0d3"
         },
         {
-            "key": "fa-google-plus-square",
+            "key": "google-plus-square",
             "name": "Google Plus Square",
             "code": "f0d4",
             "filter": [
@@ -1835,7 +1835,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-google-plus",
+            "key": "google-plus",
             "name": "Google Plus",
             "code": "f0d5",
             "filter": [
@@ -1843,7 +1843,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-money",
+            "key": "money",
             "name": "Money",
             "code": "f0d6",
             "filter": [
@@ -1856,7 +1856,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-caret-down",
+            "key": "caret-down",
             "name": "Caret Down",
             "code": "f0d7",
             "filter": [
@@ -1868,7 +1868,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-caret-up",
+            "key": "caret-up",
             "name": "Caret Up",
             "code": "f0d8",
             "filter": [
@@ -1877,7 +1877,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-caret-left",
+            "key": "caret-left",
             "name": "Caret Left",
             "code": "f0d9",
             "filter": [
@@ -1888,7 +1888,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-caret-right",
+            "key": "caret-right",
             "name": "Caret Right",
             "code": "f0da",
             "filter": [
@@ -1899,7 +1899,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-columns",
+            "key": "columns",
             "name": "Columns",
             "code": "f0db",
             "filter": [
@@ -1908,7 +1908,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-sort",
+            "key": "sort",
             "name": "Sort",
             "code": "f0dc",
             "filter": [
@@ -1916,7 +1916,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-sort-desc",
+            "key": "sort-desc",
             "name": "Sort Descending",
             "code": "f0dd",
             "filter": [
@@ -1927,7 +1927,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-sort-asc",
+            "key": "sort-asc",
             "name": "Sort Ascending",
             "code": "f0de",
             "filter": [
@@ -1935,7 +1935,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-envelope",
+            "key": "envelope",
             "name": "Envelope",
             "code": "f0e0",
             "filter": [
@@ -1949,12 +1949,12 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-linkedin",
+            "key": "linkedin",
             "name": "LinkedIn",
             "code": "f0e1"
         },
         {
-            "key": "fa-undo",
+            "key": "undo",
             "name": "Undo",
             "code": "f0e2",
             "filter": [
@@ -1962,7 +1962,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-gavel",
+            "key": "gavel",
             "name": "Gavel",
             "code": "f0e3",
             "filter": [
@@ -1972,7 +1972,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-tachometer",
+            "key": "tachometer",
             "name": "Tachometer",
             "code": "f0e4",
             "filter": [
@@ -1981,7 +1981,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-comment-o",
+            "key": "comment-o",
             "name": "comment-o",
             "code": "f0e5",
             "filter": [
@@ -1998,7 +1998,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-comments-o",
+            "key": "comments-o",
             "name": "comments-o",
             "code": "f0e6",
             "filter": [
@@ -2015,7 +2015,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-bolt",
+            "key": "bolt",
             "name": "Lightning Bolt",
             "code": "f0e7",
             "filter": [
@@ -2024,7 +2024,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-sitemap",
+            "key": "sitemap",
             "name": "Sitemap",
             "code": "f0e8",
             "filter": [
@@ -2034,12 +2034,12 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-umbrella",
+            "key": "umbrella",
             "name": "Umbrella",
             "code": "f0e9"
         },
         {
-            "key": "fa-clipboard",
+            "key": "clipboard",
             "name": "Clipboard",
             "code": "f0ea",
             "filter": [
@@ -2047,7 +2047,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-lightbulb-o",
+            "key": "lightbulb-o",
             "name": "Lightbulb Outlined",
             "code": "f0eb",
             "filter": [
@@ -2056,7 +2056,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-exchange",
+            "key": "exchange",
             "name": "Exchange",
             "code": "f0ec",
             "filter": [
@@ -2066,7 +2066,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-cloud-download",
+            "key": "cloud-download",
             "name": "Cloud Download",
             "code": "f0ed",
             "filter": [
@@ -2074,7 +2074,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-cloud-upload",
+            "key": "cloud-upload",
             "name": "Cloud Upload",
             "code": "f0ee",
             "filter": [
@@ -2082,7 +2082,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-user-md",
+            "key": "user-md",
             "name": "user-md",
             "code": "f0f0",
             "filter": [
@@ -2093,12 +2093,12 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-stethoscope",
+            "key": "stethoscope",
             "name": "Stethoscope",
             "code": "f0f1"
         },
         {
-            "key": "fa-suitcase",
+            "key": "suitcase",
             "name": "Suitcase",
             "code": "f0f2",
             "filter": [
@@ -2110,7 +2110,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-bell-o",
+            "key": "bell-o",
             "name": "Bell Outlined",
             "code": "f0a2",
             "filter": [
@@ -2120,7 +2120,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-coffee",
+            "key": "coffee",
             "name": "Coffee",
             "code": "f0f4",
             "filter": [
@@ -2133,7 +2133,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-cutlery",
+            "key": "cutlery",
             "name": "Cutlery",
             "code": "f0f5",
             "filter": [
@@ -2146,7 +2146,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-file-text-o",
+            "key": "file-text-o",
             "name": "File Text Outlined",
             "code": "f0f6",
             "filter": [
@@ -2157,7 +2157,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-building-o",
+            "key": "building-o",
             "name": "Building Outlined",
             "code": "f0f7",
             "filter": [
@@ -2169,7 +2169,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-hospital-o",
+            "key": "hospital-o",
             "name": "hospital Outlined",
             "code": "f0f8",
             "filter": [
@@ -2177,7 +2177,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-ambulance",
+            "key": "ambulance",
             "name": "ambulance",
             "code": "f0f9",
             "filter": [
@@ -2187,7 +2187,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-medkit",
+            "key": "medkit",
             "name": "medkit",
             "code": "f0fa",
             "filter": [
@@ -2199,7 +2199,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-fighter-jet",
+            "key": "fighter-jet",
             "name": "fighter-jet",
             "code": "f0fb",
             "filter": [
@@ -2212,7 +2212,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-beer",
+            "key": "beer",
             "name": "beer",
             "code": "f0fc",
             "filter": [
@@ -2225,7 +2225,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-h-square",
+            "key": "h-square",
             "name": "H Square",
             "code": "f0fd",
             "filter": [
@@ -2234,7 +2234,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-plus-square",
+            "key": "plus-square",
             "name": "Plus Square",
             "code": "f0fe",
             "filter": [
@@ -2245,7 +2245,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-angle-double-left",
+            "key": "angle-double-left",
             "name": "Angle Double Left",
             "code": "f100",
             "filter": [
@@ -2257,7 +2257,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-angle-double-right",
+            "key": "angle-double-right",
             "name": "Angle Double Right",
             "code": "f101",
             "filter": [
@@ -2269,7 +2269,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-angle-double-up",
+            "key": "angle-double-up",
             "name": "Angle Double Up",
             "code": "f102",
             "filter": [
@@ -2277,7 +2277,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-angle-double-down",
+            "key": "angle-double-down",
             "name": "Angle Double Down",
             "code": "f103",
             "filter": [
@@ -2285,7 +2285,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-angle-left",
+            "key": "angle-left",
             "name": "angle-left",
             "code": "f104",
             "filter": [
@@ -2295,7 +2295,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-angle-right",
+            "key": "angle-right",
             "name": "angle-right",
             "code": "f105",
             "filter": [
@@ -2305,7 +2305,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-angle-up",
+            "key": "angle-up",
             "name": "angle-up",
             "code": "f106",
             "filter": [
@@ -2313,7 +2313,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-angle-down",
+            "key": "angle-down",
             "name": "angle-down",
             "code": "f107",
             "filter": [
@@ -2321,7 +2321,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-desktop",
+            "key": "desktop",
             "name": "Desktop",
             "code": "f108",
             "filter": [
@@ -2334,7 +2334,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-laptop",
+            "key": "laptop",
             "name": "Laptop",
             "code": "f109",
             "filter": [
@@ -2344,7 +2344,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-tablet",
+            "key": "tablet",
             "name": "tablet",
             "code": "f10a",
             "filter": [
@@ -2353,7 +2353,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-mobile",
+            "key": "mobile",
             "name": "Mobile Phone",
             "code": "f10b",
             "filter": [
@@ -2367,22 +2367,22 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-circle-o",
+            "key": "circle-o",
             "name": "Circle Outlined",
             "code": "f10c"
         },
         {
-            "key": "fa-quote-left",
+            "key": "quote-left",
             "name": "quote-left",
             "code": "f10d"
         },
         {
-            "key": "fa-quote-right",
+            "key": "quote-right",
             "name": "quote-right",
             "code": "f10e"
         },
         {
-            "key": "fa-spinner",
+            "key": "spinner",
             "name": "Spinner",
             "code": "f110",
             "filter": [
@@ -2391,7 +2391,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-circle",
+            "key": "circle",
             "name": "Circle",
             "code": "f111",
             "filter": [
@@ -2400,12 +2400,12 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-reply",
+            "key": "reply",
             "name": "Reply",
             "code": "f112"
         },
         {
-            "key": "fa-github-alt",
+            "key": "github-alt",
             "name": "GitHub Alt",
             "code": "f113",
             "filter": [
@@ -2413,17 +2413,17 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-folder-o",
+            "key": "folder-o",
             "name": "Folder Outlined",
             "code": "f114"
         },
         {
-            "key": "fa-folder-open-o",
+            "key": "folder-open-o",
             "name": "Folder Open Outlined",
             "code": "f115"
         },
         {
-            "key": "fa-smile-o",
+            "key": "smile-o",
             "name": "Smile Outlined",
             "code": "f118",
             "filter": [
@@ -2436,7 +2436,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-frown-o",
+            "key": "frown-o",
             "name": "Frown Outlined",
             "code": "f119",
             "filter": [
@@ -2448,7 +2448,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-meh-o",
+            "key": "meh-o",
             "name": "Meh Outlined",
             "code": "f11a",
             "filter": [
@@ -2459,7 +2459,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-gamepad",
+            "key": "gamepad",
             "name": "Gamepad",
             "code": "f11b",
             "filter": [
@@ -2467,7 +2467,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-keyboard-o",
+            "key": "keyboard-o",
             "name": "Keyboard Outlined",
             "code": "f11c",
             "filter": [
@@ -2476,7 +2476,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-flag-o",
+            "key": "flag-o",
             "name": "Flag Outlined",
             "code": "f11d",
             "filter": [
@@ -2485,7 +2485,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-flag-checkered",
+            "key": "flag-checkered",
             "name": "flag-checkered",
             "code": "f11e",
             "filter": [
@@ -2495,7 +2495,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-terminal",
+            "key": "terminal",
             "name": "Terminal",
             "code": "f120",
             "filter": [
@@ -2505,7 +2505,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-code",
+            "key": "code",
             "name": "Code",
             "code": "f121",
             "filter": [
@@ -2514,12 +2514,12 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-reply-all",
+            "key": "reply-all",
             "name": "reply-all",
             "code": "f122"
         },
         {
-            "key": "fa-star-half-o",
+            "key": "star-half-o",
             "name": "Star Half Outlined",
             "code": "f123",
             "filter": [
@@ -2530,7 +2530,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-location-arrow",
+            "key": "location-arrow",
             "name": "location-arrow",
             "code": "f124",
             "filter": [
@@ -2543,12 +2543,12 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-crop",
+            "key": "crop",
             "name": "crop",
             "code": "f125"
         },
         {
-            "key": "fa-code-fork",
+            "key": "code-fork",
             "name": "code-fork",
             "code": "f126",
             "filter": [
@@ -2563,7 +2563,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-chain-broken",
+            "key": "chain-broken",
             "name": "Chain Broken",
             "code": "f127",
             "filter": [
@@ -2571,7 +2571,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-question",
+            "key": "question",
             "name": "Question",
             "code": "f128",
             "filter": [
@@ -2582,7 +2582,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-info",
+            "key": "info",
             "name": "Info",
             "code": "f129",
             "filter": [
@@ -2593,7 +2593,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-exclamation",
+            "key": "exclamation",
             "name": "exclamation",
             "code": "f12a",
             "filter": [
@@ -2606,7 +2606,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-superscript",
+            "key": "superscript",
             "name": "superscript",
             "code": "f12b",
             "filter": [
@@ -2614,12 +2614,12 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-subscript",
+            "key": "subscript",
             "name": "subscript",
             "code": "f12c"
         },
         {
-            "key": "fa-eraser",
+            "key": "eraser",
             "name": "eraser",
             "code": "f12d",
             "filter": [
@@ -2628,7 +2628,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-puzzle-piece",
+            "key": "puzzle-piece",
             "name": "Puzzle Piece",
             "code": "f12e",
             "filter": [
@@ -2638,7 +2638,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-microphone",
+            "key": "microphone",
             "name": "microphone",
             "code": "f130",
             "filter": [
@@ -2648,7 +2648,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-microphone-slash",
+            "key": "microphone-slash",
             "name": "Microphone Slash",
             "code": "f131",
             "filter": [
@@ -2659,7 +2659,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-shield",
+            "key": "shield",
             "name": "shield",
             "code": "f132",
             "filter": [
@@ -2670,7 +2670,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-calendar-o",
+            "key": "calendar-o",
             "name": "calendar-o",
             "code": "f133",
             "filter": [
@@ -2681,12 +2681,12 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-fire-extinguisher",
+            "key": "fire-extinguisher",
             "name": "fire-extinguisher",
             "code": "f134"
         },
         {
-            "key": "fa-rocket",
+            "key": "rocket",
             "name": "rocket",
             "code": "f135",
             "filter": [
@@ -2694,12 +2694,12 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-maxcdn",
+            "key": "maxcdn",
             "name": "MaxCDN",
             "code": "f136"
         },
         {
-            "key": "fa-chevron-circle-left",
+            "key": "chevron-circle-left",
             "name": "Chevron Circle Left",
             "code": "f137",
             "filter": [
@@ -2709,7 +2709,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-chevron-circle-right",
+            "key": "chevron-circle-right",
             "name": "Chevron Circle Right",
             "code": "f138",
             "filter": [
@@ -2719,7 +2719,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-chevron-circle-up",
+            "key": "chevron-circle-up",
             "name": "Chevron Circle Up",
             "code": "f139",
             "filter": [
@@ -2727,7 +2727,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-chevron-circle-down",
+            "key": "chevron-circle-down",
             "name": "Chevron Circle Down",
             "code": "f13a",
             "filter": [
@@ -2738,12 +2738,12 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-html5",
+            "key": "html5",
             "name": "HTML 5 Logo",
             "code": "f13b"
         },
         {
-            "key": "fa-css3",
+            "key": "css3",
             "name": "CSS 3 Logo",
             "code": "f13c",
             "filter": [
@@ -2751,7 +2751,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-anchor",
+            "key": "anchor",
             "name": "Anchor",
             "code": "f13d",
             "filter": [
@@ -2759,7 +2759,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-unlock-alt",
+            "key": "unlock-alt",
             "name": "Unlock Alt",
             "code": "f13e",
             "filter": [
@@ -2770,7 +2770,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-bullseye",
+            "key": "bullseye",
             "name": "Bullseye",
             "code": "f140",
             "filter": [
@@ -2778,7 +2778,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-ellipsis-h",
+            "key": "ellipsis-h",
             "name": "Ellipsis Horizontal",
             "code": "f141",
             "filter": [
@@ -2786,7 +2786,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-ellipsis-v",
+            "key": "ellipsis-v",
             "name": "Ellipsis Vertical",
             "code": "f142",
             "filter": [
@@ -2794,7 +2794,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-rss-square",
+            "key": "rss-square",
             "name": "RSS Square",
             "code": "f143",
             "filter": [
@@ -2803,7 +2803,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-play-circle",
+            "key": "play-circle",
             "name": "Play Circle",
             "code": "f144",
             "filter": [
@@ -2812,7 +2812,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-ticket",
+            "key": "ticket",
             "name": "Ticket",
             "code": "f145",
             "filter": [
@@ -2822,7 +2822,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-minus-square",
+            "key": "minus-square",
             "name": "Minus Square",
             "code": "f146",
             "filter": [
@@ -2836,7 +2836,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-minus-square-o",
+            "key": "minus-square-o",
             "name": "Minus Square Outlined",
             "code": "f147",
             "filter": [
@@ -2850,7 +2850,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-level-up",
+            "key": "level-up",
             "name": "Level Up",
             "code": "f148",
             "filter": [
@@ -2858,7 +2858,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-level-down",
+            "key": "level-down",
             "name": "Level Down",
             "code": "f149",
             "filter": [
@@ -2866,7 +2866,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-check-square",
+            "key": "check-square",
             "name": "Check Square",
             "code": "f14a",
             "filter": [
@@ -2880,7 +2880,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-pencil-square",
+            "key": "pencil-square",
             "name": "Pencil Square",
             "code": "f14b",
             "filter": [
@@ -2890,7 +2890,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-external-link-square",
+            "key": "external-link-square",
             "name": "External Link Square",
             "code": "f14c",
             "filter": [
@@ -2899,7 +2899,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-share-square",
+            "key": "share-square",
             "name": "Share Square",
             "code": "f14d",
             "filter": [
@@ -2908,7 +2908,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-compass",
+            "key": "compass",
             "name": "Compass",
             "code": "f14e",
             "filter": [
@@ -2919,7 +2919,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-caret-square-o-down",
+            "key": "caret-square-o-down",
             "name": "Caret Square Outlined Down",
             "code": "f150",
             "filter": [
@@ -2929,12 +2929,12 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-caret-square-o-up",
+            "key": "caret-square-o-up",
             "name": "Caret Square Outlined Up",
             "code": "f151"
         },
         {
-            "key": "fa-caret-square-o-right",
+            "key": "caret-square-o-right",
             "name": "Caret Square Outlined Right",
             "code": "f152",
             "filter": [
@@ -2943,47 +2943,47 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-eur",
+            "key": "eur",
             "name": "Euro (EUR)",
             "code": "f153"
         },
         {
-            "key": "fa-gbp",
+            "key": "gbp",
             "name": "GBP",
             "code": "f154"
         },
         {
-            "key": "fa-usd",
+            "key": "usd",
             "name": "US Dollar",
             "code": "f155"
         },
         {
-            "key": "fa-inr",
+            "key": "inr",
             "name": "Indian Rupee (INR)",
             "code": "f156"
         },
         {
-            "key": "fa-jpy",
+            "key": "jpy",
             "name": "Japanese Yen (JPY)",
             "code": "f157"
         },
         {
-            "key": "fa-rub",
+            "key": "rub",
             "name": "Russian Ruble (RUB)",
             "code": "f158"
         },
         {
-            "key": "fa-krw",
+            "key": "krw",
             "name": "Korean Won (KRW)",
             "code": "f159"
         },
         {
-            "key": "fa-btc",
+            "key": "btc",
             "name": "Bitcoin (BTC)",
             "code": "f15a"
         },
         {
-            "key": "fa-file",
+            "key": "file",
             "name": "File",
             "code": "f15b",
             "filter": [
@@ -2994,7 +2994,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-file-text",
+            "key": "file-text",
             "name": "File Text",
             "code": "f15c",
             "filter": [
@@ -3005,27 +3005,27 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-sort-alpha-asc",
+            "key": "sort-alpha-asc",
             "name": "Sort Alpha Ascending",
             "code": "f15d"
         },
         {
-            "key": "fa-sort-alpha-desc",
+            "key": "sort-alpha-desc",
             "name": "Sort Alpha Descending",
             "code": "f15e"
         },
         {
-            "key": "fa-sort-amount-asc",
+            "key": "sort-amount-asc",
             "name": "Sort Amount Ascending",
             "code": "f160"
         },
         {
-            "key": "fa-sort-amount-desc",
+            "key": "sort-amount-desc",
             "name": "Sort Amount Descending",
             "code": "f161"
         },
         {
-            "key": "fa-sort-numeric-asc",
+            "key": "sort-numeric-asc",
             "name": "Sort Numeric Ascending",
             "code": "f162",
             "filter": [
@@ -3033,7 +3033,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-sort-numeric-desc",
+            "key": "sort-numeric-desc",
             "name": "Sort Numeric Descending",
             "code": "f163",
             "filter": [
@@ -3041,7 +3041,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-thumbs-up",
+            "key": "thumbs-up",
             "name": "thumbs-up",
             "code": "f164",
             "filter": [
@@ -3053,7 +3053,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-thumbs-down",
+            "key": "thumbs-down",
             "name": "thumbs-down",
             "code": "f165",
             "filter": [
@@ -3064,7 +3064,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-youtube-square",
+            "key": "youtube-square",
             "name": "YouTube Square",
             "code": "f166",
             "filter": [
@@ -3073,7 +3073,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-youtube",
+            "key": "youtube",
             "name": "YouTube",
             "code": "f167",
             "filter": [
@@ -3082,17 +3082,17 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-xing",
+            "key": "xing",
             "name": "Xing",
             "code": "f168"
         },
         {
-            "key": "fa-xing-square",
+            "key": "xing-square",
             "name": "Xing Square",
             "code": "f169"
         },
         {
-            "key": "fa-youtube-play",
+            "key": "youtube-play",
             "name": "YouTube Play",
             "code": "f16a",
             "filter": [
@@ -3101,32 +3101,32 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-dropbox",
+            "key": "dropbox",
             "name": "Dropbox",
             "code": "f16b"
         },
         {
-            "key": "fa-stack-overflow",
+            "key": "stack-overflow",
             "name": "Stack Overflow",
             "code": "f16c"
         },
         {
-            "key": "fa-instagram",
+            "key": "instagram",
             "name": "Instagram",
             "code": "f16d"
         },
         {
-            "key": "fa-flickr",
+            "key": "flickr",
             "name": "Flickr",
             "code": "f16e"
         },
         {
-            "key": "fa-adn",
+            "key": "adn",
             "name": "App.net",
             "code": "f170"
         },
         {
-            "key": "fa-bitbucket",
+            "key": "bitbucket",
             "name": "Bitbucket",
             "code": "f171",
             "filter": [
@@ -3134,7 +3134,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-bitbucket-square",
+            "key": "bitbucket-square",
             "name": "Bitbucket Square",
             "code": "f172",
             "filter": [
@@ -3142,27 +3142,27 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-tumblr",
+            "key": "tumblr",
             "name": "Tumblr",
             "code": "f173"
         },
         {
-            "key": "fa-tumblr-square",
+            "key": "tumblr-square",
             "name": "Tumblr Square",
             "code": "f174"
         },
         {
-            "key": "fa-long-arrow-down",
+            "key": "long-arrow-down",
             "name": "Long Arrow Down",
             "code": "f175"
         },
         {
-            "key": "fa-long-arrow-up",
+            "key": "long-arrow-up",
             "name": "Long Arrow Up",
             "code": "f176"
         },
         {
-            "key": "fa-long-arrow-left",
+            "key": "long-arrow-left",
             "name": "Long Arrow Left",
             "code": "f177",
             "filter": [
@@ -3171,12 +3171,12 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-long-arrow-right",
+            "key": "long-arrow-right",
             "name": "Long Arrow Right",
             "code": "f178"
         },
         {
-            "key": "fa-apple",
+            "key": "apple",
             "name": "Apple",
             "code": "f179",
             "filter": [
@@ -3185,7 +3185,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-windows",
+            "key": "windows",
             "name": "Windows",
             "code": "f17a",
             "filter": [
@@ -3193,7 +3193,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-android",
+            "key": "android",
             "name": "Android",
             "code": "f17b",
             "filter": [
@@ -3201,7 +3201,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-linux",
+            "key": "linux",
             "name": "Linux",
             "code": "f17c",
             "filter": [
@@ -3209,27 +3209,27 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-dribbble",
+            "key": "dribbble",
             "name": "Dribbble",
             "code": "f17d"
         },
         {
-            "key": "fa-skype",
+            "key": "skype",
             "name": "Skype",
             "code": "f17e"
         },
         {
-            "key": "fa-foursquare",
+            "key": "foursquare",
             "name": "Foursquare",
             "code": "f180"
         },
         {
-            "key": "fa-trello",
+            "key": "trello",
             "name": "Trello",
             "code": "f181"
         },
         {
-            "key": "fa-female",
+            "key": "female",
             "name": "Female",
             "code": "f182",
             "filter": [
@@ -3240,7 +3240,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-male",
+            "key": "male",
             "name": "Male",
             "code": "f183",
             "filter": [
@@ -3251,7 +3251,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-gratipay",
+            "key": "gratipay",
             "name": "Gratipay (Gittip)",
             "code": "f184",
             "filter": [
@@ -3262,7 +3262,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-sun-o",
+            "key": "sun-o",
             "name": "Sun Outlined",
             "code": "f185",
             "filter": [
@@ -3274,7 +3274,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-moon-o",
+            "key": "moon-o",
             "name": "Moon Outlined",
             "code": "f186",
             "filter": [
@@ -3284,7 +3284,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-archive",
+            "key": "archive",
             "name": "Archive",
             "code": "f187",
             "filter": [
@@ -3293,7 +3293,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-bug",
+            "key": "bug",
             "name": "Bug",
             "code": "f188",
             "filter": [
@@ -3302,22 +3302,22 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-vk",
+            "key": "vk",
             "name": "VK",
             "code": "f189"
         },
         {
-            "key": "fa-weibo",
+            "key": "weibo",
             "name": "Weibo",
             "code": "f18a"
         },
         {
-            "key": "fa-renren",
+            "key": "renren",
             "name": "Renren",
             "code": "f18b"
         },
         {
-            "key": "fa-pagelines",
+            "key": "pagelines",
             "name": "Pagelines",
             "code": "f18c",
             "filter": [
@@ -3330,12 +3330,12 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-stack-exchange",
+            "key": "stack-exchange",
             "name": "Stack Exchange",
             "code": "f18d"
         },
         {
-            "key": "fa-arrow-circle-o-right",
+            "key": "arrow-circle-o-right",
             "name": "Arrow Circle Outlined Right",
             "code": "f18e",
             "filter": [
@@ -3344,7 +3344,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-arrow-circle-o-left",
+            "key": "arrow-circle-o-left",
             "name": "Arrow Circle Outlined Left",
             "code": "f190",
             "filter": [
@@ -3353,7 +3353,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-caret-square-o-left",
+            "key": "caret-square-o-left",
             "name": "Caret Square Outlined Left",
             "code": "f191",
             "filter": [
@@ -3362,7 +3362,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-dot-circle-o",
+            "key": "dot-circle-o",
             "name": "Dot Circle Outlined",
             "code": "f192",
             "filter": [
@@ -3372,7 +3372,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-wheelchair",
+            "key": "wheelchair",
             "name": "Wheelchair",
             "code": "f193",
             "filter": [
@@ -3381,17 +3381,17 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-vimeo-square",
+            "key": "vimeo-square",
             "name": "Vimeo Square",
             "code": "f194"
         },
         {
-            "key": "fa-try",
+            "key": "try",
             "name": "Turkish Lira (TRY)",
             "code": "f195"
         },
         {
-            "key": "fa-plus-square-o",
+            "key": "plus-square-o",
             "name": "Plus Square Outlined",
             "code": "f196",
             "filter": [
@@ -3402,13 +3402,13 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-space-shuttle",
+            "key": "space-shuttle",
             "name": "Space Shuttle",
             "code": "f197",
             "filter": null
         },
         {
-            "key": "fa-slack",
+            "key": "slack",
             "name": "Slack Logo",
             "code": "f198",
             "filter": [
@@ -3418,7 +3418,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-envelope-square",
+            "key": "envelope-square",
             "name": "Envelope Square",
             "code": "f199",
             "filter": [
@@ -3432,22 +3432,22 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-wordpress",
+            "key": "wordpress",
             "name": "WordPress Logo",
             "code": "f19a"
         },
         {
-            "key": "fa-openid",
+            "key": "openid",
             "name": "OpenID",
             "code": "f19b"
         },
         {
-            "key": "fa-university",
+            "key": "university",
             "name": "University",
             "code": "f19c"
         },
         {
-            "key": "fa-graduation-cap",
+            "key": "graduation-cap",
             "name": "Graduation Cap",
             "code": "f19d",
             "filter": [
@@ -3457,67 +3457,67 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-yahoo",
+            "key": "yahoo",
             "name": "Yahoo Logo",
             "code": "f19e"
         },
         {
-            "key": "fa-google",
+            "key": "google",
             "name": "Google Logo",
             "code": "f1a0"
         },
         {
-            "key": "fa-reddit",
+            "key": "reddit",
             "name": "reddit Logo",
             "code": "f1a1"
         },
         {
-            "key": "fa-reddit-square",
+            "key": "reddit-square",
             "name": "reddit Square",
             "code": "f1a2"
         },
         {
-            "key": "fa-stumbleupon-circle",
+            "key": "stumbleupon-circle",
             "name": "StumbleUpon Circle",
             "code": "f1a3"
         },
         {
-            "key": "fa-stumbleupon",
+            "key": "stumbleupon",
             "name": "StumbleUpon Logo",
             "code": "f1a4"
         },
         {
-            "key": "fa-delicious",
+            "key": "delicious",
             "name": "Delicious Logo",
             "code": "f1a5"
         },
         {
-            "key": "fa-digg",
+            "key": "digg",
             "name": "Digg Logo",
             "code": "f1a6"
         },
         {
-            "key": "fa-pied-piper-pp",
+            "key": "pied-piper-pp",
             "name": "Pied Piper PP Logo (Old)",
             "code": "f1a7"
         },
         {
-            "key": "fa-pied-piper-alt",
+            "key": "pied-piper-alt",
             "name": "Pied Piper Alternate Logo",
             "code": "f1a8"
         },
         {
-            "key": "fa-drupal",
+            "key": "drupal",
             "name": "Drupal Logo",
             "code": "f1a9"
         },
         {
-            "key": "fa-joomla",
+            "key": "joomla",
             "name": "Joomla Logo",
             "code": "f1aa"
         },
         {
-            "key": "fa-language",
+            "key": "language",
             "name": "Language",
             "code": "f1ab",
             "filter": [
@@ -3525,12 +3525,12 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-fax",
+            "key": "fax",
             "name": "Fax",
             "code": "f1ac"
         },
         {
-            "key": "fa-building",
+            "key": "building",
             "name": "Building",
             "code": "f1ad",
             "filter": [
@@ -3542,12 +3542,12 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-child",
+            "key": "child",
             "name": "Child",
             "code": "f1ae"
         },
         {
-            "key": "fa-paw",
+            "key": "paw",
             "name": "Paw",
             "code": "f1b0",
             "filter": [
@@ -3555,47 +3555,47 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-spoon",
+            "key": "spoon",
             "name": "spoon",
             "code": "f1b1"
         },
         {
-            "key": "fa-cube",
+            "key": "cube",
             "name": "Cube",
             "code": "f1b2"
         },
         {
-            "key": "fa-cubes",
+            "key": "cubes",
             "name": "Cubes",
             "code": "f1b3"
         },
         {
-            "key": "fa-behance",
+            "key": "behance",
             "name": "Behance",
             "code": "f1b4"
         },
         {
-            "key": "fa-behance-square",
+            "key": "behance-square",
             "name": "Behance Square",
             "code": "f1b5"
         },
         {
-            "key": "fa-steam",
+            "key": "steam",
             "name": "Steam",
             "code": "f1b6"
         },
         {
-            "key": "fa-steam-square",
+            "key": "steam-square",
             "name": "Steam Square",
             "code": "f1b7"
         },
         {
-            "key": "fa-recycle",
+            "key": "recycle",
             "name": "Recycle",
             "code": "f1b8"
         },
         {
-            "key": "fa-car",
+            "key": "car",
             "name": "Car",
             "code": "f1b9",
             "filter": [
@@ -3603,7 +3603,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-taxi",
+            "key": "taxi",
             "name": "Taxi",
             "code": "f1ba",
             "filter": [
@@ -3611,152 +3611,152 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-tree",
+            "key": "tree",
             "name": "Tree",
             "code": "f1bb"
         },
         {
-            "key": "fa-spotify",
+            "key": "spotify",
             "name": "Spotify",
             "code": "f1bc"
         },
         {
-            "key": "fa-deviantart",
+            "key": "deviantart",
             "name": "deviantART",
             "code": "f1bd"
         },
         {
-            "key": "fa-soundcloud",
+            "key": "soundcloud",
             "name": "SoundCloud",
             "code": "f1be"
         },
         {
-            "key": "fa-database",
+            "key": "database",
             "name": "Database",
             "code": "f1c0"
         },
         {
-            "key": "fa-file-pdf-o",
+            "key": "file-pdf-o",
             "name": "PDF File Outlined",
             "code": "f1c1"
         },
         {
-            "key": "fa-file-word-o",
+            "key": "file-word-o",
             "name": "Word File Outlined",
             "code": "f1c2"
         },
         {
-            "key": "fa-file-excel-o",
+            "key": "file-excel-o",
             "name": "Excel File Outlined",
             "code": "f1c3"
         },
         {
-            "key": "fa-file-powerpoint-o",
+            "key": "file-powerpoint-o",
             "name": "Powerpoint File Outlined",
             "code": "f1c4"
         },
         {
-            "key": "fa-file-image-o",
+            "key": "file-image-o",
             "name": "Image File Outlined",
             "code": "f1c5"
         },
         {
-            "key": "fa-file-archive-o",
+            "key": "file-archive-o",
             "name": "Archive File Outlined",
             "code": "f1c6"
         },
         {
-            "key": "fa-file-audio-o",
+            "key": "file-audio-o",
             "name": "Audio File Outlined",
             "code": "f1c7"
         },
         {
-            "key": "fa-file-video-o",
+            "key": "file-video-o",
             "name": "Video File Outlined",
             "code": "f1c8"
         },
         {
-            "key": "fa-file-code-o",
+            "key": "file-code-o",
             "name": "Code File Outlined",
             "code": "f1c9"
         },
         {
-            "key": "fa-vine",
+            "key": "vine",
             "name": "Vine",
             "code": "f1ca"
         },
         {
-            "key": "fa-codepen",
+            "key": "codepen",
             "name": "Codepen",
             "code": "f1cb"
         },
         {
-            "key": "fa-jsfiddle",
+            "key": "jsfiddle",
             "name": "jsFiddle",
             "code": "f1cc"
         },
         {
-            "key": "fa-life-ring",
+            "key": "life-ring",
             "name": "Life Ring",
             "code": "f1cd"
         },
         {
-            "key": "fa-circle-o-notch",
+            "key": "circle-o-notch",
             "name": "Circle Outlined Notched",
             "code": "f1ce"
         },
         {
-            "key": "fa-rebel",
+            "key": "rebel",
             "name": "Rebel Alliance",
             "code": "f1d0"
         },
         {
-            "key": "fa-empire",
+            "key": "empire",
             "name": "Galactic Empire",
             "code": "f1d1"
         },
         {
-            "key": "fa-git-square",
+            "key": "git-square",
             "name": "Git Square",
             "code": "f1d2"
         },
         {
-            "key": "fa-git",
+            "key": "git",
             "name": "Git",
             "code": "f1d3"
         },
         {
-            "key": "fa-hacker-news",
+            "key": "hacker-news",
             "name": "Hacker News",
             "code": "f1d4"
         },
         {
-            "key": "fa-tencent-weibo",
+            "key": "tencent-weibo",
             "name": "Tencent Weibo",
             "code": "f1d5"
         },
         {
-            "key": "fa-qq",
+            "key": "qq",
             "name": "QQ",
             "code": "f1d6"
         },
         {
-            "key": "fa-weixin",
+            "key": "weixin",
             "name": "Weixin (WeChat)",
             "code": "f1d7"
         },
         {
-            "key": "fa-paper-plane",
+            "key": "paper-plane",
             "name": "Paper Plane",
             "code": "f1d8"
         },
         {
-            "key": "fa-paper-plane-o",
+            "key": "paper-plane-o",
             "name": "Paper Plane Outlined",
             "code": "f1d9"
         },
         {
-            "key": "fa-history",
+            "key": "history",
             "name": "History",
             "code": "f1da",
             "filter": [
@@ -3764,12 +3764,12 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-circle-thin",
+            "key": "circle-thin",
             "name": "Circle Outlined Thin",
             "code": "f1db"
         },
         {
-            "key": "fa-header",
+            "key": "header",
             "name": "header",
             "code": "f1dc",
             "filter": [
@@ -3777,12 +3777,12 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-paragraph",
+            "key": "paragraph",
             "name": "paragraph",
             "code": "f1dd"
         },
         {
-            "key": "fa-sliders",
+            "key": "sliders",
             "name": "Sliders",
             "code": "f1de",
             "filter": [
@@ -3790,37 +3790,37 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-share-alt",
+            "key": "share-alt",
             "name": "Share Alt",
             "code": "f1e0"
         },
         {
-            "key": "fa-share-alt-square",
+            "key": "share-alt-square",
             "name": "Share Alt Square",
             "code": "f1e1"
         },
         {
-            "key": "fa-bomb",
+            "key": "bomb",
             "name": "Bomb",
             "code": "f1e2"
         },
         {
-            "key": "fa-futbol-o",
+            "key": "futbol-o",
             "name": "Futbol Outlined",
             "code": "f1e3"
         },
         {
-            "key": "fa-tty",
+            "key": "tty",
             "name": "TTY",
             "code": "f1e4"
         },
         {
-            "key": "fa-binoculars",
+            "key": "binoculars",
             "name": "Binoculars",
             "code": "f1e5"
         },
         {
-            "key": "fa-plug",
+            "key": "plug",
             "name": "Plug",
             "code": "f1e6",
             "filter": [
@@ -3829,22 +3829,22 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-slideshare",
+            "key": "slideshare",
             "name": "Slideshare",
             "code": "f1e7"
         },
         {
-            "key": "fa-twitch",
+            "key": "twitch",
             "name": "Twitch",
             "code": "f1e8"
         },
         {
-            "key": "fa-yelp",
+            "key": "yelp",
             "name": "Yelp",
             "code": "f1e9"
         },
         {
-            "key": "fa-newspaper-o",
+            "key": "newspaper-o",
             "name": "Newspaper Outlined",
             "code": "f1ea",
             "filter": [
@@ -3852,42 +3852,42 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-wifi",
+            "key": "wifi",
             "name": "WiFi",
             "code": "f1eb"
         },
         {
-            "key": "fa-calculator",
+            "key": "calculator",
             "name": "Calculator",
             "code": "f1ec"
         },
         {
-            "key": "fa-paypal",
+            "key": "paypal",
             "name": "Paypal",
             "code": "f1ed"
         },
         {
-            "key": "fa-google-wallet",
+            "key": "google-wallet",
             "name": "Google Wallet",
             "code": "f1ee"
         },
         {
-            "key": "fa-cc-visa",
+            "key": "cc-visa",
             "name": "Visa Credit Card",
             "code": "f1f0"
         },
         {
-            "key": "fa-cc-mastercard",
+            "key": "cc-mastercard",
             "name": "MasterCard Credit Card",
             "code": "f1f1"
         },
         {
-            "key": "fa-cc-discover",
+            "key": "cc-discover",
             "name": "Discover Credit Card",
             "code": "f1f2"
         },
         {
-            "key": "fa-cc-amex",
+            "key": "cc-amex",
             "name": "American Express Credit Card",
             "code": "f1f3",
             "filter": [
@@ -3895,27 +3895,27 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-cc-paypal",
+            "key": "cc-paypal",
             "name": "Paypal Credit Card",
             "code": "f1f4"
         },
         {
-            "key": "fa-cc-stripe",
+            "key": "cc-stripe",
             "name": "Stripe Credit Card",
             "code": "f1f5"
         },
         {
-            "key": "fa-bell-slash",
+            "key": "bell-slash",
             "name": "Bell Slash",
             "code": "f1f6"
         },
         {
-            "key": "fa-bell-slash-o",
+            "key": "bell-slash-o",
             "name": "Bell Slash Outlined",
             "code": "f1f7"
         },
         {
-            "key": "fa-trash",
+            "key": "trash",
             "name": "Trash",
             "code": "f1f8",
             "filter": [
@@ -3926,12 +3926,12 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-copyright",
+            "key": "copyright",
             "name": "Copyright",
             "code": "f1f9"
         },
         {
-            "key": "fa-at",
+            "key": "at",
             "name": "At",
             "code": "f1fa",
             "filter": [
@@ -3940,22 +3940,22 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-eyedropper",
+            "key": "eyedropper",
             "name": "Eyedropper",
             "code": "f1fb"
         },
         {
-            "key": "fa-paint-brush",
+            "key": "paint-brush",
             "name": "Paint Brush",
             "code": "f1fc"
         },
         {
-            "key": "fa-birthday-cake",
+            "key": "birthday-cake",
             "name": "Birthday Cake",
             "code": "f1fd"
         },
         {
-            "key": "fa-area-chart",
+            "key": "area-chart",
             "name": "Area Chart",
             "code": "f1fe",
             "filter": [
@@ -3965,7 +3965,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-pie-chart",
+            "key": "pie-chart",
             "name": "Pie Chart",
             "code": "f200",
             "filter": [
@@ -3975,7 +3975,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-line-chart",
+            "key": "line-chart",
             "name": "Line Chart",
             "code": "f201",
             "filter": [
@@ -3985,27 +3985,27 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-lastfm",
+            "key": "lastfm",
             "name": "last.fm",
             "code": "f202"
         },
         {
-            "key": "fa-lastfm-square",
+            "key": "lastfm-square",
             "name": "last.fm Square",
             "code": "f203"
         },
         {
-            "key": "fa-toggle-off",
+            "key": "toggle-off",
             "name": "Toggle Off",
             "code": "f204"
         },
         {
-            "key": "fa-toggle-on",
+            "key": "toggle-on",
             "name": "Toggle On",
             "code": "f205"
         },
         {
-            "key": "fa-bicycle",
+            "key": "bicycle",
             "name": "Bicycle",
             "code": "f206",
             "filter": [
@@ -4014,7 +4014,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-bus",
+            "key": "bus",
             "name": "Bus",
             "code": "f207",
             "filter": [
@@ -4022,77 +4022,77 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-ioxhost",
+            "key": "ioxhost",
             "name": "ioxhost",
             "code": "f208"
         },
         {
-            "key": "fa-angellist",
+            "key": "angellist",
             "name": "AngelList",
             "code": "f209"
         },
         {
-            "key": "fa-cc",
+            "key": "cc",
             "name": "Closed Captions",
             "code": "f20a"
         },
         {
-            "key": "fa-ils",
+            "key": "ils",
             "name": "Shekel (ILS)",
             "code": "f20b"
         },
         {
-            "key": "fa-meanpath",
+            "key": "meanpath",
             "name": "meanpath",
             "code": "f20c"
         },
         {
-            "key": "fa-buysellads",
+            "key": "buysellads",
             "name": "BuySellAds",
             "code": "f20d"
         },
         {
-            "key": "fa-connectdevelop",
+            "key": "connectdevelop",
             "name": "Connect Develop",
             "code": "f20e"
         },
         {
-            "key": "fa-dashcube",
+            "key": "dashcube",
             "name": "DashCube",
             "code": "f210"
         },
         {
-            "key": "fa-forumbee",
+            "key": "forumbee",
             "name": "Forumbee",
             "code": "f211"
         },
         {
-            "key": "fa-leanpub",
+            "key": "leanpub",
             "name": "Leanpub",
             "code": "f212"
         },
         {
-            "key": "fa-sellsy",
+            "key": "sellsy",
             "name": "Sellsy",
             "code": "f213"
         },
         {
-            "key": "fa-shirtsinbulk",
+            "key": "shirtsinbulk",
             "name": "Shirts in Bulk",
             "code": "f214"
         },
         {
-            "key": "fa-simplybuilt",
+            "key": "simplybuilt",
             "name": "SimplyBuilt",
             "code": "f215"
         },
         {
-            "key": "fa-skyatlas",
+            "key": "skyatlas",
             "name": "skyatlas",
             "code": "f216"
         },
         {
-            "key": "fa-cart-plus",
+            "key": "cart-plus",
             "name": "Add to Shopping Cart",
             "code": "f217",
             "filter": [
@@ -4101,7 +4101,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-cart-arrow-down",
+            "key": "cart-arrow-down",
             "name": "Shopping Cart Arrow Down",
             "code": "f218",
             "filter": [
@@ -4109,7 +4109,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-diamond",
+            "key": "diamond",
             "name": "Diamond",
             "code": "f219",
             "filter": [
@@ -4118,7 +4118,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-ship",
+            "key": "ship",
             "name": "Ship",
             "code": "f21a",
             "filter": [
@@ -4127,7 +4127,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-user-secret",
+            "key": "user-secret",
             "name": "User Secret",
             "code": "f21b",
             "filter": [
@@ -4138,7 +4138,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-motorcycle",
+            "key": "motorcycle",
             "name": "Motorcycle",
             "code": "f21c",
             "filter": [
@@ -4147,7 +4147,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-street-view",
+            "key": "street-view",
             "name": "Street View",
             "code": "f21d",
             "filter": [
@@ -4155,7 +4155,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-heartbeat",
+            "key": "heartbeat",
             "name": "Heartbeat",
             "code": "f21e",
             "filter": [
@@ -4163,7 +4163,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-venus",
+            "key": "venus",
             "name": "Venus",
             "code": "f221",
             "filter": [
@@ -4171,7 +4171,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-mars",
+            "key": "mars",
             "name": "Mars",
             "code": "f222",
             "filter": [
@@ -4179,7 +4179,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-mercury",
+            "key": "mercury",
             "name": "Mercury",
             "code": "f223",
             "filter": [
@@ -4187,77 +4187,77 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-transgender",
+            "key": "transgender",
             "name": "Transgender",
             "code": "f224"
         },
         {
-            "key": "fa-transgender-alt",
+            "key": "transgender-alt",
             "name": "Transgender Alt",
             "code": "f225"
         },
         {
-            "key": "fa-venus-double",
+            "key": "venus-double",
             "name": "Venus Double",
             "code": "f226"
         },
         {
-            "key": "fa-mars-double",
+            "key": "mars-double",
             "name": "Mars Double",
             "code": "f227"
         },
         {
-            "key": "fa-venus-mars",
+            "key": "venus-mars",
             "name": "Venus Mars",
             "code": "f228"
         },
         {
-            "key": "fa-mars-stroke",
+            "key": "mars-stroke",
             "name": "Mars Stroke",
             "code": "f229"
         },
         {
-            "key": "fa-mars-stroke-v",
+            "key": "mars-stroke-v",
             "name": "Mars Stroke Vertical",
             "code": "f22a"
         },
         {
-            "key": "fa-mars-stroke-h",
+            "key": "mars-stroke-h",
             "name": "Mars Stroke Horizontal",
             "code": "f22b"
         },
         {
-            "key": "fa-neuter",
+            "key": "neuter",
             "name": "Neuter",
             "code": "f22c"
         },
         {
-            "key": "fa-genderless",
+            "key": "genderless",
             "name": "Genderless",
             "code": "f22d"
         },
         {
-            "key": "fa-facebook-official",
+            "key": "facebook-official",
             "name": "Facebook Official",
             "code": "f230"
         },
         {
-            "key": "fa-pinterest-p",
+            "key": "pinterest-p",
             "name": "Pinterest P",
             "code": "f231"
         },
         {
-            "key": "fa-whatsapp",
+            "key": "whatsapp",
             "name": "What's App",
             "code": "f232"
         },
         {
-            "key": "fa-server",
+            "key": "server",
             "name": "Server",
             "code": "f233"
         },
         {
-            "key": "fa-user-plus",
+            "key": "user-plus",
             "name": "Add User",
             "code": "f234",
             "filter": [
@@ -4266,12 +4266,12 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-user-times",
+            "key": "user-times",
             "name": "Remove User",
             "code": "f235"
         },
         {
-            "key": "fa-bed",
+            "key": "bed",
             "name": "Bed",
             "code": "f236",
             "filter": [
@@ -4279,47 +4279,47 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-viacoin",
+            "key": "viacoin",
             "name": "Viacoin (VIA)",
             "code": "f237"
         },
         {
-            "key": "fa-train",
+            "key": "train",
             "name": "Train",
             "code": "f238"
         },
         {
-            "key": "fa-subway",
+            "key": "subway",
             "name": "Subway",
             "code": "f239"
         },
         {
-            "key": "fa-medium",
+            "key": "medium",
             "name": "Medium",
             "code": "f23a"
         },
         {
-            "key": "fa-y-combinator",
+            "key": "y-combinator",
             "name": "Y Combinator",
             "code": "f23b"
         },
         {
-            "key": "fa-optin-monster",
+            "key": "optin-monster",
             "name": "Optin Monster",
             "code": "f23c"
         },
         {
-            "key": "fa-opencart",
+            "key": "opencart",
             "name": "OpenCart",
             "code": "f23d"
         },
         {
-            "key": "fa-expeditedssl",
+            "key": "expeditedssl",
             "name": "ExpeditedSSL",
             "code": "f23e"
         },
         {
-            "key": "fa-battery-full",
+            "key": "battery-full",
             "name": "Battery Full",
             "code": "f240",
             "filter": [
@@ -4327,7 +4327,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-battery-three-quarters",
+            "key": "battery-three-quarters",
             "name": "Battery 3/4 Full",
             "code": "f241",
             "filter": [
@@ -4335,7 +4335,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-battery-half",
+            "key": "battery-half",
             "name": "Battery 1/2 Full",
             "code": "f242",
             "filter": [
@@ -4343,7 +4343,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-battery-quarter",
+            "key": "battery-quarter",
             "name": "Battery 1/4 Full",
             "code": "f243",
             "filter": [
@@ -4351,7 +4351,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-battery-empty",
+            "key": "battery-empty",
             "name": "Battery Empty",
             "code": "f244",
             "filter": [
@@ -4359,47 +4359,47 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-mouse-pointer",
+            "key": "mouse-pointer",
             "name": "Mouse Pointer",
             "code": "f245"
         },
         {
-            "key": "fa-i-cursor",
+            "key": "i-cursor",
             "name": "I Beam Cursor",
             "code": "f246"
         },
         {
-            "key": "fa-object-group",
+            "key": "object-group",
             "name": "Object Group",
             "code": "f247"
         },
         {
-            "key": "fa-object-ungroup",
+            "key": "object-ungroup",
             "name": "Object Ungroup",
             "code": "f248"
         },
         {
-            "key": "fa-sticky-note",
+            "key": "sticky-note",
             "name": "Sticky Note",
             "code": "f249"
         },
         {
-            "key": "fa-sticky-note-o",
+            "key": "sticky-note-o",
             "name": "Sticky Note Outlined",
             "code": "f24a"
         },
         {
-            "key": "fa-cc-jcb",
+            "key": "cc-jcb",
             "name": "JCB Credit Card",
             "code": "f24b"
         },
         {
-            "key": "fa-cc-diners-club",
+            "key": "cc-diners-club",
             "name": "Diner's Club Credit Card",
             "code": "f24c"
         },
         {
-            "key": "fa-clone",
+            "key": "clone",
             "name": "Clone",
             "code": "f24d",
             "filter": [
@@ -4407,42 +4407,42 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-balance-scale",
+            "key": "balance-scale",
             "name": "Balance Scale",
             "code": "f24e"
         },
         {
-            "key": "fa-hourglass-o",
+            "key": "hourglass-o",
             "name": "Hourglass Outlined",
             "code": "f250"
         },
         {
-            "key": "fa-hourglass-start",
+            "key": "hourglass-start",
             "name": "Hourglass Start",
             "code": "f251"
         },
         {
-            "key": "fa-hourglass-half",
+            "key": "hourglass-half",
             "name": "Hourglass Half",
             "code": "f252"
         },
         {
-            "key": "fa-hourglass-end",
+            "key": "hourglass-end",
             "name": "Hourglass End",
             "code": "f253"
         },
         {
-            "key": "fa-hourglass",
+            "key": "hourglass",
             "name": "Hourglass",
             "code": "f254"
         },
         {
-            "key": "fa-hand-rock-o",
+            "key": "hand-rock-o",
             "name": "Rock (Hand)",
             "code": "f255"
         },
         {
-            "key": "fa-hand-paper-o",
+            "key": "hand-paper-o",
             "name": "Paper (Hand)",
             "code": "f256",
             "filter": [
@@ -4450,82 +4450,82 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-hand-scissors-o",
+            "key": "hand-scissors-o",
             "name": "Scissors (Hand)",
             "code": "f257"
         },
         {
-            "key": "fa-hand-lizard-o",
+            "key": "hand-lizard-o",
             "name": "Lizard (Hand)",
             "code": "f258"
         },
         {
-            "key": "fa-hand-spock-o",
+            "key": "hand-spock-o",
             "name": "Spock (Hand)",
             "code": "f259"
         },
         {
-            "key": "fa-hand-pointer-o",
+            "key": "hand-pointer-o",
             "name": "Hand Pointer",
             "code": "f25a"
         },
         {
-            "key": "fa-hand-peace-o",
+            "key": "hand-peace-o",
             "name": "Hand Peace",
             "code": "f25b"
         },
         {
-            "key": "fa-trademark",
+            "key": "trademark",
             "name": "Trademark",
             "code": "f25c"
         },
         {
-            "key": "fa-registered",
+            "key": "registered",
             "name": "Registered Trademark",
             "code": "f25d"
         },
         {
-            "key": "fa-creative-commons",
+            "key": "creative-commons",
             "name": "Creative Commons",
             "code": "f25e"
         },
         {
-            "key": "fa-gg",
+            "key": "gg",
             "name": "GG Currency",
             "code": "f260"
         },
         {
-            "key": "fa-gg-circle",
+            "key": "gg-circle",
             "name": "GG Currency Circle",
             "code": "f261"
         },
         {
-            "key": "fa-tripadvisor",
+            "key": "tripadvisor",
             "name": "TripAdvisor",
             "code": "f262"
         },
         {
-            "key": "fa-odnoklassniki",
+            "key": "odnoklassniki",
             "name": "Odnoklassniki",
             "code": "f263"
         },
         {
-            "key": "fa-odnoklassniki-square",
+            "key": "odnoklassniki-square",
             "name": "Odnoklassniki Square",
             "code": "f264"
         },
         {
-            "key": "fa-get-pocket",
+            "key": "get-pocket",
             "name": "Get Pocket",
             "code": "f265"
         },
         {
-            "key": "fa-wikipedia-w",
+            "key": "wikipedia-w",
             "name": "Wikipedia W",
             "code": "f266"
         },
         {
-            "key": "fa-safari",
+            "key": "safari",
             "name": "Safari",
             "code": "f267",
             "filter": [
@@ -4533,7 +4533,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-chrome",
+            "key": "chrome",
             "name": "Chrome",
             "code": "f268",
             "filter": [
@@ -4541,7 +4541,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-firefox",
+            "key": "firefox",
             "name": "Firefox",
             "code": "f269",
             "filter": [
@@ -4549,12 +4549,12 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-opera",
+            "key": "opera",
             "name": "Opera",
             "code": "f26a"
         },
         {
-            "key": "fa-internet-explorer",
+            "key": "internet-explorer",
             "name": "Internet-explorer",
             "code": "f26b",
             "filter": [
@@ -4563,7 +4563,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-television",
+            "key": "television",
             "name": "Television",
             "code": "f26c",
             "filter": [
@@ -4573,37 +4573,37 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-contao",
+            "key": "contao",
             "name": "Contao",
             "code": "f26d"
         },
         {
-            "key": "fa-500px",
+            "key": "500px",
             "name": "500px",
             "code": "f26e"
         },
         {
-            "key": "fa-amazon",
+            "key": "amazon",
             "name": "Amazon",
             "code": "f270"
         },
         {
-            "key": "fa-calendar-plus-o",
+            "key": "calendar-plus-o",
             "name": "Calendar Plus Outlined",
             "code": "f271"
         },
         {
-            "key": "fa-calendar-minus-o",
+            "key": "calendar-minus-o",
             "name": "Calendar Minus Outlined",
             "code": "f272"
         },
         {
-            "key": "fa-calendar-times-o",
+            "key": "calendar-times-o",
             "name": "Calendar Times Outlined",
             "code": "f273"
         },
         {
-            "key": "fa-calendar-check-o",
+            "key": "calendar-check-o",
             "name": "Calendar Check Outlined",
             "code": "f274",
             "filter": [
@@ -4611,7 +4611,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-industry",
+            "key": "industry",
             "name": "Industry",
             "code": "f275",
             "filter": [
@@ -4619,27 +4619,27 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-map-pin",
+            "key": "map-pin",
             "name": "Map Pin",
             "code": "f276"
         },
         {
-            "key": "fa-map-signs",
+            "key": "map-signs",
             "name": "Map Signs",
             "code": "f277"
         },
         {
-            "key": "fa-map-o",
+            "key": "map-o",
             "name": "Map Outlined",
             "code": "f278"
         },
         {
-            "key": "fa-map",
+            "key": "map",
             "name": "Map",
             "code": "f279"
         },
         {
-            "key": "fa-commenting",
+            "key": "commenting",
             "name": "Commenting",
             "code": "f27a",
             "filter": [
@@ -4656,7 +4656,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-commenting-o",
+            "key": "commenting-o",
             "name": "Commenting Outlined",
             "code": "f27b",
             "filter": [
@@ -4673,32 +4673,32 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-houzz",
+            "key": "houzz",
             "name": "Houzz",
             "code": "f27c"
         },
         {
-            "key": "fa-vimeo",
+            "key": "vimeo",
             "name": "Vimeo",
             "code": "f27d"
         },
         {
-            "key": "fa-black-tie",
+            "key": "black-tie",
             "name": "Font Awesome Black Tie",
             "code": "f27e"
         },
         {
-            "key": "fa-fonticons",
+            "key": "fonticons",
             "name": "Fonticons",
             "code": "f280"
         },
         {
-            "key": "fa-reddit-alien",
+            "key": "reddit-alien",
             "name": "reddit Alien",
             "code": "f281"
         },
         {
-            "key": "fa-edge",
+            "key": "edge",
             "name": "Edge Browser",
             "code": "f282",
             "filter": [
@@ -4707,7 +4707,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-credit-card-alt",
+            "key": "credit-card-alt",
             "name": "Credit Card",
             "code": "f283",
             "filter": [
@@ -4721,107 +4721,107 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-codiepie",
+            "key": "codiepie",
             "name": "Codie Pie",
             "code": "f284"
         },
         {
-            "key": "fa-modx",
+            "key": "modx",
             "name": "MODX",
             "code": "f285"
         },
         {
-            "key": "fa-fort-awesome",
+            "key": "fort-awesome",
             "name": "Fort Awesome",
             "code": "f286"
         },
         {
-            "key": "fa-usb",
+            "key": "usb",
             "name": "USB",
             "code": "f287"
         },
         {
-            "key": "fa-product-hunt",
+            "key": "product-hunt",
             "name": "Product Hunt",
             "code": "f288"
         },
         {
-            "key": "fa-mixcloud",
+            "key": "mixcloud",
             "name": "Mixcloud",
             "code": "f289"
         },
         {
-            "key": "fa-scribd",
+            "key": "scribd",
             "name": "Scribd",
             "code": "f28a"
         },
         {
-            "key": "fa-pause-circle",
+            "key": "pause-circle",
             "name": "Pause Circle",
             "code": "f28b"
         },
         {
-            "key": "fa-pause-circle-o",
+            "key": "pause-circle-o",
             "name": "Pause Circle Outlined",
             "code": "f28c"
         },
         {
-            "key": "fa-stop-circle",
+            "key": "stop-circle",
             "name": "Stop Circle",
             "code": "f28d"
         },
         {
-            "key": "fa-stop-circle-o",
+            "key": "stop-circle-o",
             "name": "Stop Circle Outlined",
             "code": "f28e"
         },
         {
-            "key": "fa-shopping-bag",
+            "key": "shopping-bag",
             "name": "Shopping Bag",
             "code": "f290"
         },
         {
-            "key": "fa-shopping-basket",
+            "key": "shopping-basket",
             "name": "Shopping Basket",
             "code": "f291"
         },
         {
-            "key": "fa-hashtag",
+            "key": "hashtag",
             "name": "Hashtag",
             "code": "f292"
         },
         {
-            "key": "fa-bluetooth",
+            "key": "bluetooth",
             "name": "Bluetooth",
             "code": "f293"
         },
         {
-            "key": "fa-bluetooth-b",
+            "key": "bluetooth-b",
             "name": "Bluetooth",
             "code": "f294"
         },
         {
-            "key": "fa-percent",
+            "key": "percent",
             "name": "Percent",
             "code": "f295"
         },
         {
-            "key": "fa-gitlab",
+            "key": "gitlab",
             "name": "GitLab",
             "code": "f296"
         },
         {
-            "key": "fa-wpbeginner",
+            "key": "wpbeginner",
             "name": "WPBeginner",
             "code": "f297"
         },
         {
-            "key": "fa-wpforms",
+            "key": "wpforms",
             "name": "WPForms",
             "code": "f298"
         },
         {
-            "key": "fa-envira",
+            "key": "envira",
             "name": "Envira Gallery",
             "code": "f299",
             "filter": [
@@ -4829,12 +4829,12 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-universal-access",
+            "key": "universal-access",
             "name": "Universal Access",
             "code": "f29a"
         },
         {
-            "key": "fa-wheelchair-alt",
+            "key": "wheelchair-alt",
             "name": "Wheelchair Alt",
             "code": "f29b",
             "filter": [
@@ -4843,22 +4843,22 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-question-circle-o",
+            "key": "question-circle-o",
             "name": "Question Circle Outlined",
             "code": "f29c"
         },
         {
-            "key": "fa-blind",
+            "key": "blind",
             "name": "Blind",
             "code": "f29d"
         },
         {
-            "key": "fa-audio-description",
+            "key": "audio-description",
             "name": "Audio Description",
             "code": "f29e"
         },
         {
-            "key": "fa-volume-control-phone",
+            "key": "volume-control-phone",
             "name": "Volume Control Phone",
             "code": "f2a0",
             "filter": [
@@ -4866,107 +4866,107 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-braille",
+            "key": "braille",
             "name": "Braille",
             "code": "f2a1"
         },
         {
-            "key": "fa-assistive-listening-systems",
+            "key": "assistive-listening-systems",
             "name": "Assistive Listening Systems",
             "code": "f2a2"
         },
         {
-            "key": "fa-american-sign-language-interpreting",
+            "key": "american-sign-language-interpreting",
             "name": "American Sign Language Interpreting",
             "code": "f2a3"
         },
         {
-            "key": "fa-deaf",
+            "key": "deaf",
             "name": "Deaf",
             "code": "f2a4"
         },
         {
-            "key": "fa-glide",
+            "key": "glide",
             "name": "Glide",
             "code": "f2a5"
         },
         {
-            "key": "fa-glide-g",
+            "key": "glide-g",
             "name": "Glide G",
             "code": "f2a6"
         },
         {
-            "key": "fa-sign-language",
+            "key": "sign-language",
             "name": "Sign Language",
             "code": "f2a7"
         },
         {
-            "key": "fa-low-vision",
+            "key": "low-vision",
             "name": "Low Vision",
             "code": "f2a8"
         },
         {
-            "key": "fa-viadeo",
+            "key": "viadeo",
             "name": "Viadeo",
             "code": "f2a9"
         },
         {
-            "key": "fa-viadeo-square",
+            "key": "viadeo-square",
             "name": "Viadeo Square",
             "code": "f2aa"
         },
         {
-            "key": "fa-snapchat",
+            "key": "snapchat",
             "name": "Snapchat",
             "code": "f2ab"
         },
         {
-            "key": "fa-snapchat-ghost",
+            "key": "snapchat-ghost",
             "name": "Snapchat Ghost",
             "code": "f2ac"
         },
         {
-            "key": "fa-snapchat-square",
+            "key": "snapchat-square",
             "name": "Snapchat Square",
             "code": "f2ad"
         },
         {
-            "key": "fa-pied-piper",
+            "key": "pied-piper",
             "name": "Pied Piper Logo",
             "code": "f2ae"
         },
         {
-            "key": "fa-first-order",
+            "key": "first-order",
             "name": "First Order",
             "code": "f2b0"
         },
         {
-            "key": "fa-yoast",
+            "key": "yoast",
             "name": "Yoast",
             "code": "f2b1"
         },
         {
-            "key": "fa-themeisle",
+            "key": "themeisle",
             "name": "ThemeIsle",
             "code": "f2b2"
         },
         {
-            "key": "fa-google-plus-official",
+            "key": "google-plus-official",
             "name": "Google Plus Official",
             "code": "f2b3"
         },
         {
-            "key": "fa-font-awesome",
+            "key": "font-awesome",
             "name": "Font Awesome",
             "code": "f2b4"
         },
         {
-            "key": "fa-handshake-o",
+            "key": "handshake-o",
             "name": "Handshake Outlined",
             "code": "f2b5"
         },
         {
-            "key": "fa-envelope-open",
+            "key": "envelope-open",
             "name": "Envelope Open",
             "code": "f2b6",
             "filter": [
@@ -4980,7 +4980,7 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-envelope-open-o",
+            "key": "envelope-open-o",
             "name": "Envelope Open Outlined",
             "code": "f2b7",
             "filter": [
@@ -4994,192 +4994,192 @@ export const falist = {
             ]
         },
         {
-            "key": "fa-linode",
+            "key": "linode",
             "name": "Linode",
             "code": "f2b8"
         },
         {
-            "key": "fa-address-book",
+            "key": "address-book",
             "name": "Address Book",
             "code": "f2b9"
         },
         {
-            "key": "fa-address-book-o",
+            "key": "address-book-o",
             "name": "Address Book Outlined",
             "code": "f2ba"
         },
         {
-            "key": "fa-address-card",
+            "key": "address-card",
             "name": "Address Card",
             "code": "f2bb"
         },
         {
-            "key": "fa-address-card-o",
+            "key": "address-card-o",
             "name": "Address Card Outlined",
             "code": "f2bc"
         },
         {
-            "key": "fa-user-circle",
+            "key": "user-circle",
             "name": "User Circle",
             "code": "f2bd"
         },
         {
-            "key": "fa-user-circle-o",
+            "key": "user-circle-o",
             "name": "User Circle Outlined",
             "code": "f2be"
         },
         {
-            "key": "fa-user-o",
+            "key": "user-o",
             "name": "User Outlined",
             "code": "f2c0"
         },
         {
-            "key": "fa-id-badge",
+            "key": "id-badge",
             "name": "Identification Badge",
             "code": "f2c1"
         },
         {
-            "key": "fa-id-card",
+            "key": "id-card",
             "name": "Identification Card",
             "code": "f2c2"
         },
         {
-            "key": "fa-id-card-o",
+            "key": "id-card-o",
             "name": "Identification Card Outlined",
             "code": "f2c3"
         },
         {
-            "key": "fa-quora",
+            "key": "quora",
             "name": "Quora",
             "code": "f2c4"
         },
         {
-            "key": "fa-free-code-camp",
+            "key": "free-code-camp",
             "name": "Free Code Camp",
             "code": "f2c5"
         },
         {
-            "key": "fa-telegram",
+            "key": "telegram",
             "name": "Telegram",
             "code": "f2c6"
         },
         {
-            "key": "fa-thermometer-full",
+            "key": "thermometer-full",
             "name": "Thermometer Full",
             "code": "f2c7"
         },
         {
-            "key": "fa-thermometer-three-quarters",
+            "key": "thermometer-three-quarters",
             "name": "Thermometer 3/4 Full",
             "code": "f2c8"
         },
         {
-            "key": "fa-thermometer-half",
+            "key": "thermometer-half",
             "name": "Thermometer 1/2 Full",
             "code": "f2c9"
         },
         {
-            "key": "fa-thermometer-quarter",
+            "key": "thermometer-quarter",
             "name": "Thermometer 1/4 Full",
             "code": "f2ca"
         },
         {
-            "key": "fa-thermometer-empty",
+            "key": "thermometer-empty",
             "name": "Thermometer Empty",
             "code": "f2cb"
         },
         {
-            "key": "fa-shower",
+            "key": "shower",
             "name": "Shower",
             "code": "f2cc"
         },
         {
-            "key": "fa-bath",
+            "key": "bath",
             "name": "Bath",
             "code": "f2cd"
         },
         {
-            "key": "fa-podcast",
+            "key": "podcast",
             "name": "Podcast",
             "code": "f2ce"
         },
         {
-            "key": "fa-window-maximize",
+            "key": "window-maximize",
             "name": "Window Maximize",
             "code": "f2d0"
         },
         {
-            "key": "fa-window-minimize",
+            "key": "window-minimize",
             "name": "Window Minimize",
             "code": "f2d1"
         },
         {
-            "key": "fa-window-restore",
+            "key": "window-restore",
             "name": "Window Restore",
             "code": "f2d2"
         },
         {
-            "key": "fa-window-close",
+            "key": "window-close",
             "name": "Window Close",
             "code": "f2d3"
         },
         {
-            "key": "fa-window-close-o",
+            "key": "window-close-o",
             "name": "Window Close Outline",
             "code": "f2d4"
         },
         {
-            "key": "fa-bandcamp",
+            "key": "bandcamp",
             "name": "Bandcamp",
             "code": "f2d5"
         },
         {
-            "key": "fa-grav",
+            "key": "grav",
             "name": "Grav",
             "code": "f2d6"
         },
         {
-            "key": "fa-etsy",
+            "key": "etsy",
             "name": "Etsy",
             "code": "f2d7"
         },
         {
-            "key": "fa-imdb",
+            "key": "imdb",
             "name": "IMDB",
             "code": "f2d8"
         },
         {
-            "key": "fa-ravelry",
+            "key": "ravelry",
             "name": "Ravelry",
             "code": "f2d9"
         },
         {
-            "key": "fa-eercast",
+            "key": "eercast",
             "name": "Eercast",
             "code": "f2da"
         },
         {
-            "key": "fa-microchip",
+            "key": "microchip",
             "name": "Microchip",
             "code": "f2db"
         },
         {
-            "key": "fa-snowflake-o",
+            "key": "snowflake-o",
             "name": "Snowflake Outlined",
             "code": "f2dc"
         },
         {
-            "key": "fa-superpowers",
+            "key": "superpowers",
             "name": "Superpowers",
             "code": "f2dd"
         },
         {
-            "key": "fa-wpexplorer",
+            "key": "wpexplorer",
             "name": "WPExplorer",
             "code": "f2de"
         },
         {
-            "key": "fa-meetup",
+            "key": "meetup",
             "name": "Meetup",
             "code": "f2e0"
         }

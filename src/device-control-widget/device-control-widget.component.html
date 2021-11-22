@@ -92,7 +92,7 @@
                                     class="button"
                                     (click)="performOperation(mo,op)"
                                     title="{{op.name}}">
-                                <span [ngClass]="widgetHelper.getWidgetConfig().operationIcon(op)"></span>
+                                    <i [c8yIcon]="widgetHelper.getWidgetConfig().operationIcon(op)" aria-hidden="true"></i>
                             </button>
                         </div>
                     </div>
