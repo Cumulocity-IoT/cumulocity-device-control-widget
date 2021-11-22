@@ -230,6 +230,35 @@
 
                 <ng-template #normalOp>
                     <h4>Operation</h4>
+
+                    <label class="label-with-help">
+                        Duplicate operation
+                        <span class="help-icon">
+                            <img src="{{CONST_HELP_IMAGE_FILE}}" alt="help tooltip"
+                                    title="Add an extra version of this command.">
+                        </span>
+                    </label>
+                    <button
+                            style="color:#1776BF;"
+                            type="button" class="button"
+                            (click)="addCommand(op)">
+                        <span class="fa fa-plus"></span>
+                    </button>
+            
+                    <label class="label-with-help">
+                        Delete operation
+                        <span class="help-icon">
+                            <img src="{{CONST_HELP_IMAGE_FILE}}" alt="help tooltip"
+                                    title="Add an extra version of this command.">
+                        </span>
+                    </label>
+                    <button
+                            style="color:#1776BF;"
+                            type="button" class="button"
+                            (click)="deleteCommand(i)">
+                        <span class="fa fa-minus"></span>
+                    </button>
+
                     <label>
                         Tooltip text
                     </label>

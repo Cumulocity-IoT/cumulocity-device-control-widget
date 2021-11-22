@@ -171,6 +171,17 @@ export class DeviceControlWidgetConfig implements OnInit, OnDestroy {
         );
     }
 
+    addCommand(op: DeviceOperation) {
+        let copy =  _.cloneDeep(op);
+        this.widgetHelper.getWidgetConfig().selectedOperations.push(
+            copy
+        );
+    }
+
+    deleteCommand(index: number) {
+        this.widgetHelper.getWidgetConfig().selectedOperations.splice(index, 1);
+    }
+
     removeToggle(index: number) {
         this.widgetHelper.getWidgetConfig().selectedToggles.splice(index, 1);
     }
