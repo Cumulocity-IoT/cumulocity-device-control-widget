@@ -109,6 +109,19 @@ export class DeviceControlWidget implements OnDestroy, OnInit {
 
         } else {
             try {
+                //There needs to be a minimum of 
+                // "com_cumulocity_model_Agent": {},
+                // so that the object can recieve operations. 
+                if (!_.has(mo, 'com_cumulocity_model_Agent')) {
+                    const partialUpdateObject: Partial<IManagedObject> = {
+                        id: `${mo.id}`,
+                    };
+                    partialUpdateObject['com_cumulocity_model_Agent'] = {};
+                    let { data, res } = await this.inventoryService.update(partialUpdateObject);
+                }
+
+
+                //Now we can try to send this.
                 console.log(op.payload);
                 let payload = JSON.parse(op.payload);
                 console.log(payload);

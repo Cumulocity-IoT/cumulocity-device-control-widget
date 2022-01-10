@@ -103,12 +103,14 @@ export class DeviceControlWidgetConfig implements OnInit, OnDestroy {
         let r: string[] = [];
 
         this.widgetHelper.getWidgetConfig().assets = [];
+        console.log("Selected", this.widgetHelper.getWidgetConfig().selectedDevices);
         for (let index = 0; index < this.widgetHelper.getWidgetConfig().selectedDevices.length; index++) {
 
             const m = this.widgetHelper.getWidgetConfig().selectedDevices[index];
 
             //if m is a group we should expand it
             if (_.has(m, "c8y_IsDeviceGroup")) {
+                this.widgetHelper.getWidgetConfig().assets.push(m);//as well as add it.
                 let children = await this.widgetHelper.getDevicesForGroup(this.inventoryService, m);
                 for (const child of children) {
                     this.widgetHelper.getWidgetConfig().addToGroup(m.name, child);
@@ -124,14 +126,12 @@ export class DeviceControlWidgetConfig implements OnInit, OnDestroy {
             } else {
                 this.widgetHelper.getWidgetConfig().assets.push(m);
             }
-
-
-
+            r.push("User Defined"); //allow user to create own operation 
         }
         //unique 
         r = [...new Set(r)];
         this.widgetHelper.getWidgetConfig().assets = [...new Set(this.widgetHelper.getWidgetConfig().assets)];
-        //console.log("after", this.widgetHelper.getWidgetConfig().assets);
+        console.log("assets", this.widgetHelper.getWidgetConfig().assets);
 
         //map to objects
         let ops = r.map(o => {
@@ -142,10 +142,12 @@ export class DeviceControlWidgetConfig implements OnInit, OnDestroy {
                 payload: '{"text":"value"}',
                 toggle: false,
                 source: "key",
-                description: ""
+                description: "",
+                unsupported : (o === "User Defined"? true : false)
             };
         });
 
+        console.log("ops", ops);
         this.rawOperations.next(ops);
         this.assets.next([...this.widgetHelper.getWidgetConfig().assets.sort((a, b) => a.name.localeCompare(b.name))]);
     }

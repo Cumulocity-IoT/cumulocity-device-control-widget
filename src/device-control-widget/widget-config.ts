@@ -19,6 +19,7 @@ export interface DeviceOperation {
     description: string;
     toggle: boolean;
     source: string;
+    unsupported: boolean;
 }
 
 /**
@@ -105,8 +106,9 @@ export class WidgetConfig {
             if (mo.c8y_SupportedOperations.includes(op.operation)) {
                 return true;
             }
-        }
-        return op.toggle;
+        } 
+
+        return (op.toggle || op.unsupported);
     }
 
 
