@@ -1,5 +1,3 @@
-<!-- @format -->
-
 # Device control and status widget [<img width="35" src="https://user-images.githubusercontent.com/67993842/97668428-f360cc80-1aa7-11eb-8801-da578bda4334.png"/>](https://github.com/SoftwareAG/cumulocity-datapoints-charting-widget/releases/download/v1.1.0/device-control-widget-1.1.0.zip)
 
 This widget allows display and control of devices and groups of devices. 
