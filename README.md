@@ -6,14 +6,14 @@ This widget allows display and control of devices and groups of devices.
 
 ## Features
 
--   the user can select groups and individual devices.
--   the user can use images (including vector graphics) to represent the devices.
--   select operations and define tooltips, and payload for each.
--   filter and display "at risk" devices
--   Toggling of flags on the managed object supported.
-    -   > N.B. referred to as "toggles" below.
--   Supports group template dashboard
--   Realtime update of the managed objects
+*   The user can select groups and individual devices.
+*   The user can use images (including vector graphics) to represent the devices.
+*   Select operations and define tooltips, and payload for each.
+*   Filter and display **at risk** devices
+*   Toggling of flags on the managed object supported.
+    *   N.B. referred to as **toggles** below.
+*   Supports group template dashboard
+*   Realtime update of the managed objects
 
 ## Installation
 
