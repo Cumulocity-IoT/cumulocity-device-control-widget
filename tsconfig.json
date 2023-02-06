@@ -15,7 +15,7 @@
         "moduleResolution": "node",
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
-        "target": "es5",
+        "target": "es2015",
         "downlevelIteration": true,
         "typeRoots": [
             "node_modules/@types"
@@ -24,5 +24,10 @@
             "dom",
             "es2016"
         ]
+    },
+    "angularCompilerOptions": {
+      "fullTemplateTypeCheck": true,
+      "strictInjectionParameters": true,
+      "enableIvy": false
     }
 }

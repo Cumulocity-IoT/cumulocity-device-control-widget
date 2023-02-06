@@ -1,6 +1,6 @@
 {
     "name": "device-control-widget",
-    "version": "1.1.6",
+    "version": "1.1.31",
     "description": "",
     "main": "index.js",
     "scripts": {
@@ -29,7 +29,7 @@
         "@c8y/ngx-components": "1010.0.8",
         "@c8y/style": "1010.0.8",
         "@ng-select/ng-select": "^3.7.3",
-        "angular": "1.6.9",
+        "angular": "1.8.3",
         "core-js": "^3.4.0",
         "lodash": "^4.17.21",
         "rxjs": "~6.4.0",

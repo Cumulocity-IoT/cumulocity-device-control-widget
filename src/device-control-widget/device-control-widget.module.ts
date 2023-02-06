@@ -26,17 +26,19 @@ import { NgModule } from "@angular/core";
 import { HttpClientModule } from "@angular/common/http";
 import { NgSelectModule } from "@ng-select/ng-select";
 import { SafeImage } from "./safeImage.pipe";
+import {DeviceControlService} from "./device-control.service"
 
 @NgModule({
     imports: [CoreModule, CommonModule, HttpClientModule, NgSelectModule],
     declarations: [DeviceControlWidget, DeviceControlWidgetConfig, SafeImage],
     entryComponents: [DeviceControlWidget, DeviceControlWidgetConfig],
     providers: [
-        {
+        DeviceControlService,
+        {  
             provide: HOOK_COMPONENTS,
             multi: true,
             useValue: {
-                id: "global.presales.device.control.widget.widget",
+                id: "global.presales.device.control.widget",
                 label: "Device Control Widget",
                 description: "widget to show devices status and allow operations to be performed.",
                 component: DeviceControlWidget,

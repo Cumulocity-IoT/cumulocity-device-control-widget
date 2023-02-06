@@ -1,5 +1,11 @@
 <div class="device-control-widget-container">
-
+    <div class="header-container">
+        <div class="header-item">
+          <div class="refresh-panel">
+            <button type="button" class="btn btn-link" (click)="reload()"><span class="fa fa-refresh"></span></button>
+          </div>
+        </div>
+      </div>
     <div [hidden]="!widgetHelper.getWidgetConfig().showFilters">
         <div class="d-flex" style="flex-wrap: wrap;">
             <!-- Filter row-->

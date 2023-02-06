@@ -20,7 +20,7 @@
  */
 
 import { Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { OperationService, OperationStatus, IOperation, IManagedObject, InventoryService } from '@c8y/client';
+import { OperationService, OperationStatus, IOperation, IManagedObject, InventoryService, IApplication, ApplicationService} from '@c8y/client';
 import { WidgetHelper } from "./widget-helper";
 import { WidgetConfig, DeviceOperation } from "./widget-config";
 import * as _ from 'lodash';
@@ -28,7 +28,7 @@ import { Observable, Subscription, interval, Subject, fromEvent, BehaviorSubject
 import { debounceTime, distinctUntilChanged, map, tap } from 'rxjs/operators';
 import { AlertService } from '@c8y/ngx-components';
 import { Realtime } from '@c8y/ngx-components/api';
-
+import { DeviceControlService } from './device-control.service';
 @Component({
     selector: "lib-device-control-widget",
     templateUrl: "./device-control-widget.component.html",
@@ -45,10 +45,13 @@ export class DeviceControlWidget implements OnDestroy, OnInit {
     private subs: Subscription[] = [];
     public input$ = new Subject<string | null>();
     public moSubs$ = new BehaviorSubject<any | null>(null);
+    appId!: string;
+    appsimdata!: any;
+    appdata!:any;
 
 
 
-    constructor(private realtime: Realtime, private operations: OperationService, private inventoryService: InventoryService, private alertService: AlertService) {
+    constructor(private appService: ApplicationService,private realtime: Realtime, private operations: OperationService, private inventoryService: InventoryService, private alertService: AlertService, private deviceControlService: DeviceControlService) {
 
     }
 
@@ -56,7 +59,8 @@ export class DeviceControlWidget implements OnDestroy, OnInit {
         this.widgetHelper = new WidgetHelper(this.config, WidgetConfig); //default access through here
         await this.updateDeviceStates(true); //all devices
         this.timerObs = interval(60000);
-
+        this.appId = this.getAppId();
+        console.log("appID",this.appId)
         this.subs.push(fromEvent(this.filterInput.nativeElement, 'keyup')
             .pipe(
                 debounceTime(200),
@@ -79,6 +83,17 @@ export class DeviceControlWidget implements OnDestroy, OnInit {
 
         return;
     }
+
+    async reload(): Promise<void> {
+        this.appId = '';
+        this.appsimdata = '';
+        this.appdata = '';
+        this.widgetHelper = new WidgetHelper(this.config, WidgetConfig); //default access through here
+        await this.updateDeviceStates(true); //all devices
+        this.timerObs = interval(60000);
+        this.appId = this.getAppId();
+        console.log("appID",this.appId)
+      }
 
     async performOperation(mo: IManagedObject, op: DeviceOperation): Promise<void> {
         //let ops: IResult<IOperation> = await this.operations.detail('37661367');
@@ -120,21 +135,54 @@ export class DeviceControlWidget implements OnDestroy, OnInit {
                     let { data, res } = await this.inventoryService.update(partialUpdateObject);
                 }
 
-
                 //Now we can try to send this.
-                console.log(op.payload);
                 let payload = JSON.parse(op.payload);
-                console.log(payload);
-
                 let operation: IOperation = {
                     deviceId: mo.id,
                     id: op.operation,
                 };
                 operation[op.operation] = payload;
-                //console.log("operation", operation);
+                console.log("operation", operation);
 
+                //get list of all simulators
+                this.appdata = await this.deviceControlService.getAppSimulator(this.appId);
+                if(this.appdata && this.appdata.applicationBuilder && this.appdata.applicationBuilder.simulators)
+                {
+                 console.log("appdata", this.appdata);
+                 this.appsimdata  = this.appdata.applicationBuilder.simulators;
+                 console.log("appsimdata", this.appsimdata);
+
+                }
+                if(operation && operation.id === "Start Simulators")
+                {
+                   this.appsimdata.forEach((sim) => {
+                       if (sim.config.deviceId === operation.deviceId) {
+                           sim.started = true; 
+                       }
+                   });
+                   this.appdata.applicationBuilder.simulators = [...this.appsimdata];
+                   console.log("updated appdata",this.appdata);    
+                 await this.appService.update({
+                    id: this.appdata.id,
+                    applicationBuilder: this.appdata.applicationBuilder
+                } as any);
+                }
+                if(operation && operation.id === "Stop Simulators")
+                {
+                   this.appsimdata.forEach((sim) => {
+                       if (sim.config.deviceId === operation.deviceId) {
+                           sim.started = false; 
+                       }
+                   });
+                   this.appdata.applicationBuilder.simulators = [...this.appsimdata];
+                   console.log("updated appdata",this.appdata);    
+                 await this.appService.update({
+                    id: this.appdata.id,
+                    applicationBuilder: this.appdata.applicationBuilder
+                } as any);
+                }
                 let { data, res } = await this.operations.create(operation);
-                //console.log("operation res", res);
+                console.log("operation res", res);
 
                 if (res.status >= 200 && res.status < 300) {
 
@@ -152,7 +200,7 @@ export class DeviceControlWidget implements OnDestroy, OnInit {
                 } else {
                     this.alertService.danger(`operation ${op.name} for ${mo.name} failed, reason: ${res}`);
                 }
-                //console.log("RESP", data);
+                console.log("RESP", data);
 
             } catch (e) {
                 //console.log("ERROR", e);
@@ -230,6 +278,19 @@ export class DeviceControlWidget implements OnDestroy, OnInit {
         r = r || this.widgetHelper.getWidgetConfig().getAlarmCount(mo) > 0;
         return r;
     }
+
+    getAppId() {
+        const currentURL = window.location.href;
+        const routeParam = currentURL.split('#');
+        if (routeParam.length > 1) {
+          const appParamArray = routeParam[1].split('/');
+          const appIndex = appParamArray.indexOf('application');
+          if (appIndex !== -1) {
+            return appParamArray[appIndex + 1];
+          }
+        }
+        return '';
+      }
 
 }
 

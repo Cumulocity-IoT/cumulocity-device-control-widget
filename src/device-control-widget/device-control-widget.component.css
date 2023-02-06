@@ -9,7 +9,23 @@
     width: 5em;
     height: 5em;
 }
-
+.header-container {
+    display: flex;
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+  }
+  
+  .header-item {
+    flex-grow: 1;
+  }
+  
+  .header-mode {
+    color: #8a72ff;
+  }
+  
 img.small-icon.withhover:hover {
     background: gray;
 }

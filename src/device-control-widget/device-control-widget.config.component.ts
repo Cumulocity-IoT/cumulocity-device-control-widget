@@ -127,6 +127,8 @@ export class DeviceControlWidgetConfig implements OnInit, OnDestroy {
                 this.widgetHelper.getWidgetConfig().assets.push(m);
             }
             r.push("User Defined"); //allow user to create own operation 
+            r.push("Start Simulators"); //allow user to start all device specific simulators with this operation 
+            r.push("Stop Simulators"); //allow user to stop all device specific simulators with this operation 
         }
         //unique 
         r = [...new Set(r)];
@@ -143,7 +145,7 @@ export class DeviceControlWidgetConfig implements OnInit, OnDestroy {
                 toggle: false,
                 source: "key",
                 description: "",
-                unsupported : (o === "User Defined"? true : false)
+                unsupported : (o === "User Defined"? true : false || o === "Start Simulators"? true : false || o === "Stop Simulators"? true : false)
             };
         });
 
