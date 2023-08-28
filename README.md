@@ -2,6 +2,8 @@
 
 This widget allows display and control of devices and groups of devices. 
 
+### ⚠️ This project is no longer under development. Please use [cumulocity-device-control-plugin](https://github.com/SoftwareAG/cumulocity-device-control-plugin) for Application Builder >=2.x.x and Cumulocity >=1016.x.x⚠️
+
 ![Preview](src/device-control-widget/assets/img-preview.png)
 
 ## Features
